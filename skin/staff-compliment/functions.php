@@ -98,3 +98,16 @@ if(!function_exists('kboard_ask_one_get_template_field_html')){
 		return $field_html;
 	}
 }
+
+
+function dalia_self_compliment_kboard_get_username(&$content, &$boardBuilder) {
+	return apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder);
+}
+
+function dalia_self_compliment_kboard_get_email(&$content) {
+	return $content->option->{'compliment_email'} ?: '';
+}
+
+function dalia_self_compliment_kboard_get_tel(&$content) {
+	return $content->option->{'compliment_tel'} ?: '';
+}

@@ -46,8 +46,6 @@
 			</div>
 			</div>
 			
-			
-			
 			<div class="kboard-thumbnail before-after-photo">
 				<img src="/wp-content/uploads/2024/04/test-02.jpg" alt="">
 				<img src="/wp-content/uploads/2024/04/test-01.jpg"" alt="">
@@ -224,7 +222,7 @@
 
     <script>
         jQuery(window).on('load', function() {
-            jQuery(".before-after-photo").twentytwenty();
+            // jQuery(".before-after-photo").twentytwenty();
         });
     </script>
 <?php

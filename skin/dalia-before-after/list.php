@@ -1,8 +1,3 @@
-<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/124874/twentytwenty.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/124874/jquery.event.move.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/124874/jquery.twentytwenty.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
 <div id="kboard-dalia-before-after-list">
 	
 	<!-- 버튼 시작 -->
@@ -31,33 +26,29 @@
 	?>
 	<!-- 카테고리 끝 -->
 
-	<!-- 공지 글 더미 -->
 	<div class="kboard-list notice-list notice-list-02">
 		<ul>
-			<li class="kboard-list-notice">
-				<a href="">
+			<?php while($content = $list->hasNextNotice()):?>
+			<li class="kboard-list-notice <?php echo esc_attr($content->getClass())?>">
+				<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
 					<div class="kboard-list-title">
-						<div class="kboard-list-uid"> <span class="notice-tag">공지</span> </div>
-							<p class="kboard-default-cut-strings">
-								[공지] 달리아 에스테틱 2023년 추석 연휴 지점안내
-							</p>
-						
+						<div class="kboard-list-uid">
+							<?php dalia_print_notice_tag($content); ?>
+						</div>
+						<p class="kboard-default-cut-strings">
+							<?php echo $content->title?>
+						</p>
 						<div class="kboard-mobile-contents">
-							<span class="contents-item kboard-date">2024.04.08</span>
+							<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 						</div>
 					</div>
-					<span class="kboard-list-date">2024.04.08</span>
+					<span class="kboard-list-date"><?php echo $content->getDate()?></span>
 				</a>
 			</li>
+			<?php endwhile?>
 		</ul>
 	</div>
 	<!-- 공지 글 -->
-
-	
-	<div class="kboard-thumbnail before-after-photo">
-		<img src="/wp-content/uploads/2024/04/test-02.jpg" alt="">
-		<img src="/wp-content/uploads/2024/04/test-01.jpg"" alt="">
-	</div>
 			
 	<!-- 슬라이드 시작 -->
 	<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
@@ -127,7 +118,80 @@ wp_enqueue_script('kboard-dalia-before-after-list', "{$skin_path}/list.js", arra
 ?>
 
 <script>
-	jQuery(window).on('load', function() {
-		jQuery(".before-after-photo").twentytwenty();
+	jQuery(window).on('DOMContentLoaded', function() {
+		const beforeAfterPhotos = [...(document.querySelectorAll('.before-after-photo') ?? [])];
+		
+		beforeAfterPhotos.forEach(function(beforeAfterPhoto) {
+			let active = false;
+			const wrapper = beforeAfterPhoto.querySelector('.wrapper');
+			if (!wrapper) return;
+			const scroller = wrapper.querySelector('.scroller');
+			const before = wrapper.querySelector('.before-img-container');
+			const after = wrapper.querySelector('.after-img-container');
+			if (!scroller) return;
+
+			scroller.addEventListener('mousedown',function(){
+				active = true;
+				scroller.classList.add('scrolling');
+			});
+
+			document.body.addEventListener('mouseup',function(){
+				active = false;
+				scroller.classList.remove('scrolling');
+			});
+			document.body.addEventListener('mouseleave',function(){
+				active = false;
+				scroller.classList.remove('scrolling');
+			});
+
+			document.body.addEventListener('mousemove',function(e){
+				if (!active) return;
+				let x = e.pageX;
+				x -= wrapper.getBoundingClientRect().left;
+				scrollIt(x);
+			});
+
+			function scrollIt(x){
+				let transform = Math.max(0,(Math.min(x, wrapper.offsetWidth)));
+				after.style.width = transform+"px";
+				scroller.style.left = transform-25+"px";
+			}
+
+			scrollIt(150);
+
+			scroller.addEventListener('touchstart',function(){
+				active = true;
+				scroller.classList.add('scrolling');
+			});
+			document.body.addEventListener('touchend',function(){
+				active = false;
+				scroller.classList.remove('scrolling');
+			});
+			document.body.addEventListener('touchcancel',function(){
+				active = false;
+				scroller.classList.remove('scrolling');
+			});
+
+			// set width of content-image to width of .wrapper
+			const contentImages = [...(beforeAfterPhoto.querySelectorAll('.content-image') ?? [])];
+			contentImages.forEach(function(contentImage) {
+				contentImage.style.width = wrapper.offsetWidth + 'px';
+			});
+
+			// add click event listener to all `.before-after-photo > .wrapper a` and when click, go to the href of the link
+			const links = [...(beforeAfterPhoto.querySelectorAll('.wrapper a') ?? [])];
+			links.forEach(function(link) {
+				link.addEventListener('click', function(e) {
+					e.preventDefault();
+					window.location
+						? window
+							.location
+							.assign(link.href)
+						: window
+							.location
+							.replace(link.href);
+				});
+			});
+		});
 	});
 </script>

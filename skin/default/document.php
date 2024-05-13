@@ -36,7 +36,7 @@
 					</div>
 					<?php endfor?>
 					<?php endif?>
-					<span class="notice-tag">공지</span>
+					<?php dalia_print_notice_tag($content); ?>
 					<!-- <div class="detail-attr detail-writer">
 						<div class="detail-name"><?php echo __('Author', 'kboard')?></div>
 						<div class="detail-value"><?php echo $content->getUserDisplay()?></div>

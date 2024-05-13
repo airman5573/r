@@ -4,7 +4,8 @@
 			<meta itemprop="name" content="<?php echo kboard_htmlclear(strip_tags($content->title))?>">
 			<div class="document-header">
 				<div class="document-header-top flex-item">
-					<span class="category-bullet">창원 프레스티지점</span>
+					<?php dalia_print_notice_tag($content); ?>
+					<?php dalia_print_branch_term_name($content); ?>
 					<?php if($content->category1):?>
 						<span class="category-bullet"><?php echo $content->category1?></span>
 					<?php endif?>
@@ -39,13 +40,11 @@
 					<?php endif?>
 					<div class="detail-attr">
 						<div class="detail-name">작성자 :</div>
-						<div class="detail-value"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></div>
+						<div class="detail-value"><?php echo dalia_self_compliment_kboard_get_username($content, $boardBuilder); ?></div>
 					</div>
 					<div class="detail-attr">
 						<div class="detail-name">이메일 :</div>
-						<div class="detail-value">
-							<?php echo $content->option->{'66262255f0393'}?>
-						</div>
+						<div class="detail-value"><?php echo dalia_self_compliment_kboard_get_email($content); ?></div>
 					</div>
 					<div class="detail-attr detail-view">
 						<div class="detail-name"><?php echo __('Views', 'kboard')?></div>

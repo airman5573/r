@@ -4,6 +4,7 @@
 			<meta itemprop="name" content="<?php echo kboard_htmlclear(strip_tags($content->title))?>">
 			<div class="document-header">
 				<div class="document-header-top flex-item">
+					<?php dalia_print_notice_tag($content); ?>
 					<?php if($content->category1):?>
 						<span class="category-bullet"><?php echo $content->category1?></span>
 					<?php endif?>

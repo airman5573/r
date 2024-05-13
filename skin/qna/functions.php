@@ -42,3 +42,32 @@ if(!function_exists('kboard_qna_get_template_field_html')){
 		return $html;
 	}
 }
+
+if (!function_exists('kboard_qna_get_all_category_count')) {
+	function kboard_qna_get_all_category_count(&$board) {
+		$all_category_count = 0;
+		while ($board->hasNextCategory()) {
+			$count = $board->getCategoryCount(array('category1' => $board->currentCategory()));
+			if ($count) {
+				$all_category_count += absint($count);
+			}
+		}
+		return $all_category_count;
+	}
+}
+
+function dalia_qna_kboard_get_username(&$content, &$boardBuilder) {
+	return apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder);
+}
+
+function dalia_qna_kboard_get_notify_method(&$content) {
+	return $content->option->{'notification_method'} ?: '';
+}
+
+function dalia_qna_kboard_get_email(&$content) {
+	return $content->option->{'qna_email'} ?: '';
+}
+
+function dalia_qna_kboard_get_tel(&$content) {
+	return $content->option->{'qna_tel'} ?: '';
+}

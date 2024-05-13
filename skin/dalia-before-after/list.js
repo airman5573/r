@@ -17,6 +17,10 @@ jQuery(document).ready(function(){
 			itemClass: 'kboard-list-item',
 			responsiveBaseElement: list,
 			autoplay: false,
+			mouseDrag: false,
+			touchDrag: false,
+			pullDrag: false,
+			freeDrag: false,
 		});
 	});
 	

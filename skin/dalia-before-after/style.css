@@ -82,40 +82,6 @@
 	display: none;
 }
 
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.after {
-    position: absolute;
-	top: 0;
-	left: 0;
-}
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail img {
-	width: 100%;
-	height: 560px;
-	margin-bottom: 0;
-}
-
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind {
-	padding: 50px;
-}
-
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-sticker {
-	position: absolute;
-	top: 7px !important;
-    line-height: 1.4;
-    padding: 4px 8px;
-    font-size: 12px;
-	background: rgba(255, 255, 255, 0.2);
-	color: #ffffff;
-	text-align: center;
-	border-radius: 2px;
-	letter-spacing: 0.1em;
-}
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.after .kboard-list-thumbnail-sticker {
-	top: 10px !important;
-    right: 10px;
-}
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.before .kboard-list-thumbnail-sticker {
-	left: 10px;
-}
 #kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav {
 	margin: 0;
 }
@@ -301,9 +267,6 @@
 	box-sizing: content-box;
 }
 
-#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail  {
-	height: auto!important;
-}
 .kboard-dalia-before-after-list.other .kboard-list-thumbnail {
     height: auto !important;
 	position: relative;
@@ -820,6 +783,104 @@
     color: #888;
     padding-top: 4px;
 }
+
+.before-after-photo {
+	position: relative;
+}
+
+.before-after-photo > .wrapper {
+	width: 800px;
+	height: 688px;
+	overflow: hidden;
+	position: relative;
+}
+
+.before-after-photo > .wrapper .before-img-container,
+.before-after-photo > .wrapper .after-img-container {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-color: white;
+	background-size: cover;
+	background-position: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+	overflow: hidden;
+	max-width: initial;
+}
+
+.before-after-photo > .wrapper a {
+	display: flex;
+	width: 100%;
+	height: 100%;
+}
+
+.before-after-photo > .wrapper .content-image {
+	height: 100%;
+	max-width: initial;
+	width: 100%;
+	object-fit: cover;
+}
+
+.before-after-photo > .wrapper .after-img-container {
+	width: 125px;
+}
+
+.before-after-photo > .wrapper .scroller {
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	left: 100px;
+	top: 50%;
+	transform: translateY(-50%);
+	border-radius: 50%;
+	background-color: transparent;
+	opacity: 0.9;
+	pointer-events: auto;
+	cursor: pointer;
+	border: 5px solid #fff;
+	z-index: 2;
+}
+
+.before-after-photo > .wrapper .scroller:hover {
+	opacity: 1;
+}
+
+.before-after-photo > .wrapper .scrolling {
+	pointer-events: none;
+	opacity: 1;
+}
+
+.before-after-photo > .wrapper .scroller__thumb {
+	width: 100% !important;
+	height: 100% !important;
+	padding: 5px;
+}
+
+.before-after-photo > .wrapper .scroller:before,
+.before-after-photo > .wrapper .scroller:after {
+	content: " ";
+	display: block;
+	width: 7px;
+	height: 9999px;
+	position: absolute;
+	left: 50%;
+	margin-left: -3.5px;
+	z-index: 30;
+	transition: 0.1s;
+	background-color: #fff;
+}
+
+.before-after-photo > .wrapper .scroller:before {
+	top: 100%;
+}
+
+.before-after-photo > .wrapper .scroller:after {
+	bottom: 100%;
+}
+
 @media screen and (max-width: 600px) {
 	#kboard-dalia-before-after-list .kboard-dalia-before-after-search select {
 		float: left;
@@ -876,20 +937,6 @@
 
 	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item {
 		justify-content: center;
-	}
-
-	#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail {
-		width: 70%;
-		margin-bottom: 0;
-	}
-
-	#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-sticker {
-		font-size: 11px;
-		padding: 2px 4px;
-	}
-
-	#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind {
-		padding: 15px;
 	}
 
 	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav,
@@ -1036,7 +1083,6 @@
 		width: 100%;
 		text-align: left;
 	}
-
 }
 
 @keyframes fadein {

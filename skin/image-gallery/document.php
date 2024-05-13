@@ -5,10 +5,12 @@
 			<div class="document-header-top">
 				<?php
 					$info_value = array();
+					if (wp_validate_boolean( $content->notice )) {
+						$info_value[] = dalia_get_notice_tag();
+					}
 					if($content->category1){
 						$info_value[] = sprintf('<span class="kboard-info-value category-bullet kboard-category1">%s</span>', $content->category1);
 					}
-					$info_value[] = sprintf('<span class="kboard-info-value kboard-date">%s</span>', $content->getDate());
 					
 					if($content->category2){
 						$info_value[] = sprintf('<span class="kboard-info-value kboard-category2">%s</span>', $content->category2);
@@ -18,6 +20,7 @@
 							$info_value[] = sprintf('<span class="kboard-info-value kboard-tree-category-'.$i.'">%s</span>', $content->option->{'tree_category_'.$i});
 						}
 					}
+					$info_value[] = sprintf('<span class="kboard-info-value kboard-date">%s</span>', $content->getDate());
 					?>
 					<?php if($info_value):?>
 					<div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">

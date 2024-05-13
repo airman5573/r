@@ -3,7 +3,7 @@
     	<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
 			<div class="document-header">
 				<div class="kboard-detail document-header-top">
-					
+					<?php dalia_print_notice_tag($content); ?>
 					<?php echo date('Y-m-d H:i', strtotime($content->date))?>
 					<!-- ·
 					<?php echo __('Views', 'kboard')?> <?php echo $content->view?> -->

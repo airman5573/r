@@ -1,4 +1,4 @@
-<div class="kboard-tree-category-search">
+<div class="kboard-tree-category-search herego">
 	<form id="kboard-tree-category-search-form-<?php echo $board->id?>" method="get" action="<?php echo $url->toString()?>">
 		<?php echo $url->set('pageid', '1')->set('target', '')->set('keyword', '')->set('mod', 'list')->toInput()?>
 		

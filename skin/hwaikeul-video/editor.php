@@ -6,16 +6,6 @@
 			<?php echo $board->fields()->getTemplate($field, $content, $boardBuilder)?>
 		<?php endforeach?>
 
-		<!-- html 입력 필드 -->
-		<div class="kboard-attr-row html-field">
-			<label class="attr-name" for="title">
-				<span class="field-name">네이버TV /<span class="pc-br">인스타그램 URL</span> </span></label>
-			<div class="attr-value">
-				<textarea name="" id="" rows="4"></textarea>
-			</div>
-		</div>
-		<!-- html 입력 필드 -->
-
 		<div class="kboard-control">
 			<div class="left">
 				<?php if($content->uid):?>

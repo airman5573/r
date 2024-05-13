@@ -1,37 +1,12 @@
+<?php
+$locations = dalia_get_location_with_branches();
+$fields = $board->fields();
+?>
+
 <div id="kboard-qna-editor">
 	<form class="kboard-form" method="post" action="<?php echo $url->getContentEditorExecute()?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
 		<?php $skin->editorHeader($content, $board)?>
-		<!-- 지점선택 더미 -->
-		<div class="kboard-attr-row">
-			<label class="attr-name" for="select-branch"><span class="field-name">지점선택</span> <span class="attr-required-text">*</span></label>
-			<div class="attr-value flex-item flex-start">
-				<div class="half">
-					<select id="select-area" name="mainCategory" class=" tabindex="-1" aria-hidden="true">
-						<option value="">지역선택</option>
-					</select>
-				</div>
-				<div class="half">
-					<select id="select-branch" name="subCategory" class=" tabindex="-1" aria-hidden="true">
-						<option value="">지점선택</option>
-					</select>
-				</div>
 
-			</div>
-		</div>
-		<div class="kboard-attr-row">
-			<label class="attr-name" for="contact-way"><span class="field-name">통보방법</span> <span class="attr-required-text">*</span></label>
-			<div class="attr-value">
-				<div class="">
-					<select id="contact-way" name="contactWay" class=" tabindex="-1" aria-hidden="true">
-						<option value="">이메일</option>
-						<option value="">휴대전화</option>
-						<option value="">문자메세지</option>
-					</select>
-				</div>
-
-			</div>
-		</div>
-		<!-- 지점선택 더미 -->
 		<?php foreach($board->fields()->getSkinFields() as $key=>$field):?>
 			<?php echo $board->fields()->getTemplate($field, $content, $boardBuilder)?>
 		<?php endforeach?>
@@ -42,7 +17,7 @@
 				<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('Back', 'kboard')?></a>
 				<a href="<?php echo $url->getBoardList()?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('List', 'kboard')?></a>
 				<?php else:?>
-				<a href="<?php echo $url->getBoardList()?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('Back', 'kboard')?></a>
+				<a href="<?php echo $url->getBoardList()?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('Back', 'kboard')?></a>  
 				<?php endif?>
 			</div>
 			<div class="right">
@@ -65,94 +40,142 @@ jQuery(document).ready(function(){
 	}
 });
 </script>
+
+
 <script type="text/javascript">
- jQuery(document).ready(function() {
-		
-		//Main 카테고리를 선택 할때 마다 AJAX를 호출할 수 있지만 DB접속을 매번 해야 하기 때문에 main, sub카테고리 전체을 들고온다.
-		
-		//****************이부분은 DB로 셋팅하세요.
-		//Main 카테고리 셋팅 (DB에서 값을 가져와 셋팅 하세요.)
-		var mainCategoryArray = new Array();
-		var mainCategoryObject = new Object();
-		
-		mainCategoryObject = new Object();
-		mainCategoryObject.main_category_id = "1";
-		mainCategoryObject.main_category_name = "서울특별시";
-		mainCategoryArray.push(mainCategoryObject);
-		
-		mainCategoryObject = new Object();
-		mainCategoryObject.main_category_id = "2";
-		mainCategoryObject.main_category_name = "경기도";
-		mainCategoryArray.push(mainCategoryObject);
-		
-		//Sub 카테고리 셋팅 (DB에서 값을 가져와 셋팅 하세요.)
-		var subCategoryArray = new Array();
-		var subCategoryObject = new Object();
-		
-		//스포츠에 해당하는 sub category 리스트
-		subCategoryObject = new Object();
-		subCategoryObject.main_category_id = "1";
-		subCategoryObject.sub_category_id = "1"
-		subCategoryObject.sub_category_name = "건대입구점"    
-		subCategoryArray.push(subCategoryObject);
-		
-		subCategoryObject = new Object();
-		subCategoryObject.main_category_id = "1";
-		subCategoryObject.sub_category_id = "2"
-		subCategoryObject.sub_category_name = "반포점"    
-		subCategoryArray.push(subCategoryObject);
-		
-		subCategoryObject = new Object();
-		subCategoryObject.main_category_id = "1";
-		subCategoryObject.sub_category_id = "3"
-		subCategoryObject.sub_category_name = "상암점"    
-		subCategoryArray.push(subCategoryObject);
-		
-		//공연에 해당하는 sub category 리스트
-		subCategoryObject = new Object();
-		subCategoryObject.main_category_id = "2";
-		subCategoryObject.sub_category_id = "1"
-		subCategoryObject.sub_category_name = "일산점"    
-		subCategoryArray.push(subCategoryObject);
-		
-		subCategoryObject = new Object();
-		subCategoryObject.main_category_id = "2";
-		subCategoryObject.sub_category_id = "2"
-		subCategoryObject.sub_category_name = "수원점"    
-		subCategoryArray.push(subCategoryObject);
-		
-		//****************이부분은 DB로 셋팅하세요.
-		
-		
-		//메인 카테고리 셋팅
-		var mainCategorySelectBox = jQuery("select[name='mainCategory']");
-		
-		for(var i=0;i<mainCategoryArray.length;i++){
-			mainCategorySelectBox.append("<option value='"+mainCategoryArray[i].main_category_id+"'>"+mainCategoryArray[i].main_category_name+"</option>");
-		}
-		
-		//*********** 1depth카테고리 선택 후 2depth 생성 START ***********
-		jQuery(document).on("change","select[name='mainCategory']",function(){
-			
-			//두번째 셀렉트 박스를 삭제 시킨다.
-			var subCategorySelectBox = jQuery("select[name='subCategory']");
-			subCategorySelectBox.children().remove(); //기존 리스트 삭제
-			
-			//선택한 첫번째 박스의 값을 가져와 일치하는 값을 두번째 셀렉트 박스에 넣는다.
-			jQuery("option:selected", this).each(function(){
-				var selectValue = jQuery(this).val(); //main category 에서 선택한 값
-				subCategorySelectBox.append("<option value=''>전체</option>");
-				for(var i=0;i<subCategoryArray.length;i++){
-					if(selectValue == subCategoryArray[i].main_category_id){
-						
-						subCategorySelectBox.append("<option value='"+subCategoryArray[i].sub_category_id+"'>"+subCategoryArray[i].sub_category_name+"</option>");
-						
-					}
-				}
-			});
-			
+jQuery(document).ready(function() {
+    const locations = <?php echo json_encode($locations); ?>;
+    const locationSelectBox = jQuery("select[name='location']");
+
+    for (let i = 0; i < locations.length; i++) {
+        locationSelectBox.append("<option value='" + locations[i].term_id + "'>" + locations[i].term_name + "</option>");
+    }
+
+    jQuery(document).on("change", "select[name='location']", function() {
+        const branchSelectBox = jQuery("select[name='branch_select']");
+        branchSelectBox.children().remove();
+
+        jQuery("option:selected", this).each(function() {
+            const selectValue = jQuery(this).val();
+            branchSelectBox.append("<option value=''>전체</option>");
+
+            for (let i = 0; i < locations.length; i++) {
+                if (selectValue == locations[i].term_id) {
+                    const children = locations[i].children;
+                    for (let j = 0; j < children.length; j++) {
+                        branchSelectBox.append("<option value='" + children[j].term_id + "'>" + children[j].term_name + "</option>");
+                    }
+                    break;
+                }
+            }
+        });
+    });
+
+	// insert option value to the hidden input whose name is 'branch' when branch_select is selcted.
+	jQuery(document).on("change", "select[name='branch_select']", function() {
+		jQuery("option:selected", this).each(function() {
+			const selectValue = jQuery(this).val();
+			jQuery("input[name='kboard_option_branch']").val(selectValue);
 		});
-		//*********** 1depth카테고리 선택 후 2depth 생성 END ***********
-			
-    }); 
-    </script>
+	});
+
+	const branchInput = jQuery("input[name='kboard_option_branch']");
+	if (branchInput.val()) {
+		const branchValue = branchInput.val();
+		// find location with branchValue. branchValue is just a term_id
+		let locationValue = null;
+		for (let i = 0; i < locations.length; i++) {
+			const children = locations[i].children;
+			for (let j = 0; j < children.length; j++) {
+				if (children[j].term_id == branchValue) {
+					locationValue = locations[i].term_id;
+					break;
+				}
+			}
+		}
+		locationSelectBox.val(locationValue);
+		locationSelectBox.trigger("change");
+
+		setTimeout(() => {
+			const branchSelectBox = jQuery("select[name='branch_select']");
+			branchSelectBox.val(branchValue);
+			branchSelectBox.trigger("change");
+		}, 500);
+	}
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleClass = (element, className, condition) => {
+    condition ? element.classList.add(className) : element.classList.remove(className);
+  };
+
+  const noticeInput = document.querySelector('input[name="notice"]');
+
+  const emailInput = document.querySelector('input[name="kboard_option_qna_email"]');
+  const emailInputParent = emailInput.closest('.kboard-attr-row');
+
+  const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox[]"]');
+  const agreementInputParent = agreementInput.closest('.kboard-attr-row');
+
+  const telInput = document.querySelector('input[name="kboard_option_qna_tel"]');
+  const telInputParent = telInput.closest('.kboard-attr-row');
+
+  const branchInput = document.querySelector('input[name="kboard_option_branch"]');
+  const branchInputParent = branchInput.closest('.kboard-attr-row');
+
+  const notificationMethodSelect = document.querySelector('select[name="kboard_option_notification_method"]');
+  const notificationMethodSelectParent = notificationMethodSelect.closest('.kboard-attr-row');
+
+  const category1Select = document.querySelector('select[name="category1"]');
+  const category1SelectParent = category1Select.closest('.kboard-attr-row');
+
+  const handleToggle = (isNotice) => {
+	emailInput.value = '';
+	toggleClass(emailInputParent, 'required', !isNotice);
+	toggleClass(emailInputParent, 'hidden', isNotice);
+
+	agreementInput.checked = false;
+	toggleClass(agreementInputParent, 'required', !isNotice);
+	toggleClass(agreementInputParent, 'hidden', isNotice);
+
+	telInput.value = '';
+	toggleClass(telInput, 'required', !isNotice);
+	toggleClass(telInputParent, 'hidden', isNotice);
+
+	branchInput.value = '';
+	toggleClass(branchInputParent, 'required', !isNotice);
+	toggleClass(branchInputParent, 'hidden', isNotice);
+
+	notificationMethodSelect.value = '';
+	toggleClass(notificationMethodSelectParent, 'required', !isNotice);
+	toggleClass(notificationMethodSelectParent, 'hidden', isNotice);
+
+	category1Select.value = '';
+	toggleClass(category1SelectParent, 'required', !isNotice);
+	toggleClass(category1SelectParent, 'hidden', isNotice);
+  };
+
+  // if noticeINput is checked, then required,
+  noticeInput.addEventListener('change', () => {
+	const isNotice = noticeInput.checked;
+	handleToggle(isNotice);
+  });
+
+  // if noticeInput is checked, then required,
+  if (noticeInput.checked) {
+	handleToggle(true);
+  }
+
+  const secretInput = document.querySelector('input[name="secret"]');
+<?php
+	// if this user is admin, then uncheck secret checkbox
+	if (dalia_is_admin()) {
+		echo 'secretInput.checked = false;';
+		echo 'handleToggle(true);';
+		echo 'noticeInput.checked = true;';
+	}
+?>
+});
+</script>

@@ -474,21 +474,21 @@
 }
 
 #kboard-qna-latest table th {
-	padding: 14px 0;
+	padding: 5px 0;
 	height: auto;
 	border: 0;
 	text-align: center;
 }
 
 #kboard-qna-latest table td {
-	padding: 14px 0;
+	padding: 5px 0;
 	height: auto;
 	border: 0;
 	border-top: 1px solid #f1f1f1;
 }
 
 #kboard-qna-latest table .kboard-latest-status {
-	width: 100px;
+	width: 70px;
 	text-align: center;
 }
 
@@ -497,7 +497,8 @@
 }
 
 #kboard-qna-latest table .kboard-latest-title {
-	padding-left: 10px;
+	padding-left: 5px;
+	font-size: 13px;
 }
 
 #kboard-qna-latest table .kboard-latest-title a {
@@ -522,8 +523,9 @@
 #kboard-qna-latest table .kboard-latest-title .kboard-comments-count {}
 
 #kboard-qna-latest table .kboard-latest-date {
-	width: 100px;
+	width: 80px;
 	text-align: center;
+	font-size: 13px;
 }
 
 @media screen and (max-width: 600px) {
