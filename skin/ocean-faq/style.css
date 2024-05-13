@@ -1,0 +1,401 @@
+@charset "utf-8";
+/**
+ * @author https://www.cosmosfarm.com/
+ */
+
+img {
+	border: 0;
+}
+
+.cut_strings {
+	width: auto;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	word-wrap: normal;
+}
+
+
+#kboard-ocean-faq-list {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin: 0;
+	width: 100%;
+}
+
+#kboard-ocean-faq-list .kboard-header {
+	float: left;
+	margin-top: 0;
+	width: 100%;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category-wrap select {
+	display: inline;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+	height: 28px;
+	line-height: 28px;
+	font-size: 12px;
+	border-radius: 0;
+	border: 1px solid #f1f1f1;
+	background: white;
+	vertical-align: middle;
+	box-shadow: none;
+	box-sizing: border-box;
+	text-indent: 0;
+	-webkit-appearance: menulist;
+	-moz-appearance: menulist;
+	appearance: menulist;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category-search .kboard-search-option-wrap.type-select {
+	width: auto;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category-search .kboard-search-option-wrap.type-tab {
+	width: 100%;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category {
+	float: left;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	border: 0;
+	overflow: hidden;
+	background: url(./images/category-background.png) left bottom repeat-x;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #e8eaec;
+	border-right: 1px solid #e8eaec;
+	border-bottom: 1px solid #e8eaec;
+	background-color: #faf7f7;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category li a {
+	display: block;
+	padding: 0 16px;
+	color: black;
+	text-decoration: none;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category li.kboard-category-selected {
+	border-bottom: 1px solid white;
+	background-color: white;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category li.kboard-category-selected a {
+	color: #1a80b6;
+	font-weight: bold;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category-search {
+	float: left;
+	width: 100%;
+}
+
+#kboard-ocean-faq-list .kboard-tree-category-search .kboard-search-option-wrap {
+	margin-right: 5px;
+	float: left;
+}
+
+#kboard-ocean-faq-list .kboard-list {
+	float: left;
+	margin: 0 !important;
+	padding: 0 !important;
+	width: 100%;
+	list-style: none;
+	border: 0;
+}
+
+#kboard-ocean-faq-list .kboard-list img {
+	display: inline;
+	margin: 0;
+	height: auto;
+	vertical-align: middle;
+}
+
+#kboard-ocean-faq-list .kboard-list .kboard-faq-item {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-bottom: 1px solid #e8eaec;
+	background: none;
+	position: relative;
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-item::before {
+	content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+	box-shadow: 0 90px 70px 0 rgba(0, 0, 0, 0.02), 0 40px 35px 0 rgba(0, 0, 0, 0.01), 0 25px 14px 0 rgba(0, 0, 0, 0.01), 0 11px 7px 0 rgba(0, 0, 0, 0.01), 0 2px 5px 0 rgba(0, 0, 0, 0.01);
+	opacity: 0;
+	transition: opacity 0.15s ease;
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-item.answer-open::before {
+    opacity: 1;
+    transition: opacity 0.45s cubic-bezier(.3,.4,.2,1);
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-question {
+	padding: 16px 16px 16px 46px;
+	cursor: pointer;
+	
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-question::before {
+	content: "Q";
+    display: inline-block;
+    position: absolute;
+    left: 14px;
+	top: 14px;
+	font-size: 24px;
+	font-weight: 700;
+	
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-answer {
+	padding: 16px 16px 16px 46px;
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-answer::before {
+	content: "A";
+    display: inline-block;
+    position: absolute;
+	left: 14px;
+	top: 75px;
+	font-weight: 900;
+	color: #6edbd5;
+	font-size: 24px;
+	font-weight: 700;
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-answer .aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#kboard-ocean-faq-list .kboard-list .kboard-faq-answer .alignright {
+	float: right;
+}
+
+#kboard-ocean-faq-list .kboard-list .kboard-faq-answer .alignleft {
+	float: left;
+}
+
+#kboard-ocean-faq-list .kboard-list .kboard-faq-answer .kboard-faq-control {
+	display: inline-block;
+	width: 100%;
+	padding-top: 15px;
+}
+/* #kboard-ocean-faq-list .kboard-list .kboard-faq-item .kboard-faq-answer {
+	display: none;
+} */
+
+#kboard-ocean-faq-list .kboard-list .kboard-faq-item > .kboard-faq-answer  {
+	display: none;
+	overflow: hidden;
+    max-height: 0;
+    /* animation: expandHeight 0.5s ease; */
+}
+#kboard-ocean-faq-list .kboard-list .kboard-faq-item.answer-open > .kboard-faq-answer  {
+	display: block;
+	max-height: 400px;
+	/* animation: expandHeight 0.5s ease; */
+}
+/* @keyframes expandHeight {
+    from {
+        max-height: 0;
+    }
+    to {
+        max-height: 400px;
+    }
+} */
+#kboard-ocean-faq-list .kboard-faq-answer .kboard-ocean-faq-view {
+	display: block;
+	height: 28px;
+	line-height: 28px;
+	vertical-align: middle;
+}
+
+#kboard-ocean-faq-editor .kboard-attr-row .attr-name img {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	max-width: 100%;
+	vertical-align: middle;
+}
+#kboard-ocean-faq-document {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin: 0;
+	width: 100%;
+}
+
+#kboard-ocean-faq-document .kboard-document-wrap {
+	float: left;
+	width: 100%;
+	background-color: white;
+}
+
+#kboard-ocean-faq-document .kboard-title {
+	float: left;
+	width: 100%;
+}
+
+#kboard-ocean-faq-document .kboard-title p {
+	margin: 0;
+	font-size: 20px;
+}
+
+#kboard-ocean-faq-document .kboard-detail .detail-attr {
+	display: flex;
+
+}
+#kboard-ocean-faq-document .kboard-detail .detail-attr .detail-value img {
+	vertical-align: middle;
+}
+
+#kboard-ocean-faq-document .kboard-content {
+	clear: both;
+	float: left;
+	width: 100%;
+	min-height: 200px;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view {
+	margin: 0;
+	word-break: break-all;
+}
+#kboard-ocean-faq-document .kboard-content .content-view iframe {
+	max-width: 100%;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view img {
+	display: inline;
+	margin: 0;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view hr {
+	margin: 10px 0;
+	padding: 0;
+	height: 1px;
+	border: 0;
+	background-color: #f1f1f1;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view p {
+	margin: 0 0 0.75em;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view p:last-child {
+	margin: 0;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view .thumbnail-area {
+	text-align: center;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view .aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view .alignright {
+	float: right;
+}
+
+#kboard-ocean-faq-document .kboard-content .content-view .alignleft {
+	float: left;
+}
+
+#kboard-ocean-faq-document .kboard-attach {
+	padding: 0 0 5px 22px;
+	font-size: 12px;
+}
+
+#kboard-ocean-faq-document .kboard-comments-area {
+	float: left;
+	width: 100%;
+}
+
+#kboard-ocean-faq-document .kboard-control {
+	float: left;
+	padding: 15px 0;
+	width: 100%;
+}
+
+#kboard-ocean-faq-document .kboard-control .left {
+	position: static;
+	float: left;
+}
+
+#kboard-ocean-faq-document .kboard-control .right {
+	position: static;
+	float: right;
+	text-align: right;
+}
+
+#kboard-ocean-faq-latest {
+	float: left;
+	width: 100%;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#kboard-ocean-faq-latest .kboard-ocean-faq-latest-item {
+	padding: 0 0 6px;
+	list-style: none;
+}
+
+#kboard-ocean-faq-latest .kboard-ocean-faq-latest-item a {
+	font-size: 100%;
+	text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+	#kboard-ocean-faq-list .kboard-tree-category-search .kboard-search-option-wrap.type-select {
+		width: 100%;
+	}
+
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li {
+		display: none;
+	}
+
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.first-page,
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.last-page {
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+	}
+
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.prev-page,
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.next-page {
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+	}
+
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.prev-page a,
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.next-page a {
+		padding: 6px 18px;
+	}
+
+	#kboard-ocean-faq-list .kboard-pagination .kboard-pagination-pages li.active {
+		display: inline-block;
+		*display: inline;
+		zoom: 1;
+	}
+}

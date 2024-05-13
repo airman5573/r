@@ -1,0 +1,260 @@
+@charset "utf-8";
+/**
+ * @author https://www.cosmosfarm.com/
+ */
+
+
+ .document-header-bottom .kboard-franchise-qna-status {
+	margin-right: 12px;
+}
+#kboard-franchise-qna-latest table {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #f1f1f1;
+}
+
+#kboard-franchise-qna-latest table tr {
+	padding: 0;
+	border: 0;
+}
+
+#kboard-franchise-qna-latest table th {
+	padding: 5px 0;
+	height: auto;
+	border: 0;
+	text-align: center;
+}
+
+#kboard-franchise-qna-latest table td {
+	padding: 5px 0;
+	height: auto;
+	border: 0;
+	border-top: 1px solid #f1f1f1;
+}
+
+#kboard-franchise-qna-latest table .kboard-latest-status {
+	width: 70px;
+	text-align: center;
+}
+
+#kboard-franchise-qna-latest table .kboard-franchise-qna-status {
+	min-width: 60px;
+}
+
+#kboard-franchise-qna-latest table .kboard-latest-title {
+	padding-left: 5px;
+	font-size: 13px;
+}
+
+#kboard-franchise-qna-latest table .kboard-latest-title a {
+	text-decoration: none;
+	box-shadow: none;
+}
+
+#kboard-franchise-qna-latest table .kboard-latest-title img {
+	display: inline;
+	margin: 0;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-franchise-qna-latest table .kboard-latest-title img.kboard-icon-lock {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+#kboard-franchise-qna-latest table .kboard-latest-title .kboard-comments-count {}
+
+#kboard-franchise-qna-latest table .kboard-latest-date {
+	width: 80px;
+	text-align: center;
+	font-size: 13px;
+}
+
+@media screen and (max-width: 600px) {
+	#kboard-franchise-qna-list .kboard-category.category-mobile {
+		display: block;
+	}
+
+	#kboard-franchise-qna-list .kboard-category.category-pc {
+		display: none;
+	}
+
+	#kboard-franchise-qna-list .kboard-list-header .kboard-left {
+		display: block;
+		padding-bottom: 15px;
+	}
+
+	#kboard-franchise-qna-list .kboard-list-header .kboard-right {
+		display: block;
+	}
+
+	#kboard-franchise-qna-list .kboard-list-header .kboard-right select {
+		width: 100%;
+	}
+
+	#kboard-franchise-qna-list .kboard-tree-category-search .kboard-search-option-wrap.type-select {
+		display: block;
+		margin: 0 0 5px 0;
+	}
+
+	#kboard-franchise-qna-list .kboard-list table {
+		border-top: 1px solid #f1f1f1;
+	}
+
+	#kboard-franchise-qna-list .kboard-list table thead {
+		display: none;
+	}
+
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-title {
+		padding: 10px 5px;
+	}
+
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-title .kboard-franchise-qna-cut-strings {
+		margin-bottom: 10px;
+		white-space: normal;
+		font-size: 15px;
+		line-height: 23px;
+	}
+
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-uid,
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-category,
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-status,
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-user,
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-date,
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-vote,
+	#kboard-franchise-qna-list .kboard-list table td.kboard-list-view {
+		display: none;
+	}
+
+	#kboard-franchise-qna-list .kboard-list .kboard-mobile-category {
+		display: inline;
+	}
+
+	#kboard-franchise-qna-list .kboard-list .kboard-mobile-status {
+		display: block;
+	}
+
+	#kboard-franchise-qna-list .kboard-list .kboard-mobile-status .kboard-franchise-qna-status {
+		padding: 2px;
+		min-width: 60px;
+		text-align: center;
+		font-size: 11px;
+	}
+
+	#kboard-franchise-qna-list .kboard-list .kboard-mobile-contents {
+		display: block;
+	}
+
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li {
+		display: none;
+	}
+
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.first-page,
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.last-page,
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.prev-page,
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.next-page,
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.active {
+		display: inline-block;
+	}
+
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.prev-page a,
+	#kboard-franchise-qna-list .kboard-pagination .kboard-pagination-pages li.next-page a {
+		padding: 0 18px;
+	}
+
+	#kboard-franchise-qna-list .kboard-search select {
+		float: left;
+		margin-right: 1%;
+		width: 29%;
+		min-width: 29%;
+		height: 28px;
+		line-height: 28px;
+		box-sizing: border-box;
+	}
+
+	#kboard-franchise-qna-list .kboard-search input {
+		float: left;
+		margin-right: 1%;
+		width: 49%;
+		min-width: 49%;
+		height: 28px;
+		line-height: 28px;
+		box-sizing: border-box;
+	}
+
+	#kboard-franchise-qna-list .kboard-search button {
+		float: left;
+		width: 20%;
+		min-width: 20%;
+		box-sizing: border-box;
+	}
+
+	#kboard-franchise-qna-editor select,
+	#kboard-franchise-qna-editor input[type=text],
+	#kboard-franchise-qna-editor input[type=email],
+	#kboard-franchise-qna-editor input[type=number],
+	#kboard-franchise-qna-editor input[type=date],
+	#kboard-franchise-qna-editor input[type=password],
+	#kboard-franchise-qna-editor input[type=file] {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	#kboard-franchise-qna-editor .kboard-attr-wrap {
+		display: block;
+		width: auto;
+	}
+
+	#kboard-franchise-qna-editor .kboard-attr-row {
+		display: block;
+		padding: 10px 0;
+		background-color: white;
+	}
+
+	#kboard-franchise-qna-editor .kboard-attr-row .attr-name {
+		display: block;
+		padding: 0;
+		width: 100%;
+		font-size: 14px;
+		background-color: white;
+	}
+
+	#kboard-franchise-qna-editor .kboard-attr-row .attr-value {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+
+	#kboard-franchise-qna-document .kboard-detail .detail-attr {
+		clear: both;
+		padding: 5px 5px;
+	}
+
+	#kboard-franchise-qna-document .kboard-content .content-view {
+		padding: 10px 5px;
+	}
+
+	#kboard-franchise-qna-document .kboard-document-action {
+		padding: 10px 5px 5px 5px;
+	}
+
+	#kboard-franchise-qna-document .kboard-attach {
+		margin: 0 5px;
+	}
+
+	#kboard-franchise-qna-document .kboard-document-navi .kboard-prev-document {
+		width: 100%;
+	}
+
+	#kboard-franchise-qna-document .kboard-document-navi .kboard-next-document {
+		margin-top: 10px;
+		float: left;
+		width: 100%;
+		text-align: left;
+	}
+}

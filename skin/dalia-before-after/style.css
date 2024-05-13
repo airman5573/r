@@ -1,0 +1,1094 @@
+@charset "utf-8";
+/**
+ * @author https://www.cosmosfarm.com/
+ */
+
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
+	position: relative;
+	margin-bottom: 25px;
+	width: 800px;
+	margin: 30px auto;
+	overflow: visible;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list {
+	position: relative;
+	overflow: visible;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-login-message {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background: #000000;
+	background: #000000e0;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-dalia-before-after-cut-strings {
+	height: 100%;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-dalia-before-after-cut-strings img {
+	height: 16px;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-slide-toggle {
+	display: flex;
+	position: absolute;
+	left: 50%;
+	bottom: 46px;
+	z-index: 6;
+	transform: translate(-50%, 0);
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-slide-toggle.position-up {
+	bottom: 46px;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-slide-toggle input {
+	padding: 10px 10px;
+	background: #545861;
+	font-size: 14px;
+	color: #ffffff;
+	border: 0;
+	margin: 0 1px;
+	cursor: pointer;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-slide-toggle input:hover {
+	background: #999999;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-slide-toggle input.selected {
+	background: #eee;
+	color: #333;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-slide-toggle input.hide {
+	display: none;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.after {
+    position: absolute;
+	top: 0;
+	left: 0;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail img {
+	width: 100%;
+	height: 560px;
+	margin-bottom: 0;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind {
+	padding: 50px;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-sticker {
+	position: absolute;
+	top: 7px !important;
+    line-height: 1.4;
+    padding: 4px 8px;
+    font-size: 12px;
+	background: rgba(255, 255, 255, 0.2);
+	color: #ffffff;
+	text-align: center;
+	border-radius: 2px;
+	letter-spacing: 0.1em;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.after .kboard-list-thumbnail-sticker {
+	top: 10px !important;
+    right: 10px;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.before .kboard-list-thumbnail-sticker {
+	left: 10px;
+}
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav {
+	margin: 0;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav span i::before {
+	font-family: xeicon !important;
+    display: inline-block;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+	color: rgb(255 255 255 / .8);
+	font-size: 40px;
+}
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav .owl-prev span i::before {
+	content: "\e93d";
+}
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav .owl-next span i::before {
+	content: "\e93e";
+}
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav [class*=owl-]:hover span {
+	color: #3d62aa;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-prev {
+	position: absolute;
+	left: 5px;
+	top: 40%;
+	margin: 0;
+	line-height: normal;
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-next {
+	position: absolute;
+	right: 5px;
+	top: 40%;
+	margin: 0;
+	line-height: normal;
+}
+.owl-theme .owl-dots .owl-dot span {
+	width: 8px!important;
+	height: 8px!important;
+	background: #000000 !important;
+    opacity: .2;
+	transition: none!important;
+	margin: 0 4px!important;
+}
+.span_12.dark .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #6edbd5 !important;
+    opacity: 1;
+}
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav button:hover {
+	background-color: transparent;
+}
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav button:hover i::before {
+	color: rgb(255 255 255 / .5);
+}
+
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .fa,
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .far,
+#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .fas {
+	font-family: "Font Awesome 5 Free" !important;
+}
+#kboard-dalia-before-after-list .kboard-control {
+	margin: 0;
+	padding: 15px 0;
+}
+
+#kboard-dalia-before-after-list .kboard-control img {
+	display: inline;
+	margin: 0;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-dalia-before-after-list .kboard-control a:hover {
+	opacity: 0.8;
+}
+
+#kboard-dalia-before-after-list .kboard-control .kboard-control-search {
+	float: left;
+}
+
+#kboard-dalia-before-after-list .kboard-control .kboard-control-write {
+	float: right;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-search {
+	display: none;
+	padding-bottom: 15px;
+	overflow: hidden;
+	transition-duration: 0.1s;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-search.active-search {
+	display: block;
+	-webkit-animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-ms-animation: fadein 1s;
+	-o-animation: fadein 1s;
+	animation: fadein 1s;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-search select {
+	display: inline;
+	margin: 0;
+	padding: 0 5px;
+	width: 100px;
+	min-width: 100px;
+	height: 26px;
+	min-height: 0;
+	font-size: 13px;
+	color: black;
+	border-radius: 0;
+	border: 1px solid #f9f9f9;
+	background: #f9f9f9;
+	line-height: 26px;
+	vertical-align: middle;
+	box-shadow: none;
+	box-sizing: content-box;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-search input {
+	display: inline;
+	margin: 0;
+	padding: 0 5px;
+	width: 200px;
+	min-width: 200px;
+	height: 26px;
+	min-height: 0;
+	font-size: 13px;
+	color: black;
+	border-radius: 0;
+	border: 1px solid #f9f9f9;
+	background: #f9f9f9;
+	line-height: 26px;
+	vertical-align: middle;
+	box-shadow: none;
+	box-sizing: content-box;
+}
+#kboard-dalia-before-after-list .kboard-category-list > li a {
+    padding: 18px 11px;
+}
+#kboard-dalia-before-after-list .kboard-category {
+	padding-bottom: 15px;
+}
+
+#kboard-dalia-before-after-list .kboard-category.category-mobile {
+	display: none;
+}
+
+#kboard-dalia-before-after-list .kboard-category.category-pc {
+	display: block;
+}
+
+
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item {
+	visibility: hidden;
+	position: relative;
+	float: left;
+	margin: 0 1% 0 0;
+	padding: 0 0 20px 0;
+	width: 19%;
+	list-style: none;
+	border: 0;
+	cursor: pointer;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item a {
+	display: block;
+	width: 100%;
+	color: black;
+	text-decoration: none;
+	border: 0;
+	text-shadow: none;
+	box-shadow: none;
+	box-sizing: content-box;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail  {
+	height: auto!important;
+}
+.kboard-dalia-before-after-list.other .kboard-list-thumbnail {
+    height: auto !important;
+	position: relative;
+	overflow: hidden;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list.other .kboard-list-item .kboard-list-thumbnail img {
+	margin-bottom: 0;
+	height: auto;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list.other .kboard-list-item .kboard-list-thumbnail::after {
+    content: "";
+    display: block;
+    background: url(/wp-content/uploads/2024/04/comparison-bar.png) no-repeat;
+    position: absolute;
+	width: 100%;
+    height: 100%;
+	top: -5px;
+	background-position: center center;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .front {
+	z-index: 3;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .half-side {
+	z-index: 2;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .side {
+	z-index: 1;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.list {
+	display: inline-block;
+	width: 50%;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail.list img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-child {
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	transition-duration: 0.5s;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: #000000d6;
+	color: white;
+	padding: 10px;
+	box-sizing: border-box;
+	z-index: 5;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind span {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-items: center;
+	color: #aaa;
+	background: #000000;
+	background: #000000d6;
+	border: 1px solid #222222;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-login-message {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	text-align: center;
+	font-size: 13px;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-login-message p {
+	margin: 0 0 10px 0;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-login-message button {
+	padding: 5px 30px;
+	border: 0;
+	background: #222;
+	color: white;
+	border-radius: 10px;
+	font-size: 15px;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-notice {
+	text-align: center;
+	font-size: 10px;
+	height: 16px;
+	line-height: 16px;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-notice .kboard-oneticon-new-notify {
+	color: #f61b5d;
+	background-color: transparent;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-new {
+	text-align: center;
+	font-size: 10px;
+	height: 16px;
+	line-height: 16px;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-new .kboard-oneticon-new-notify {
+	color: #f61b5d;
+	background-color: transparent;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-title {
+	margin-bottom: 8px;
+	text-align: center;
+	font-size: 15px;
+	height: 20px;
+	line-height: 20px;
+}
+#kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-title {
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-title img {
+	display: inline;
+	margin: 0;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-title img.kboard-icon-lock {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-user img.avatar {
+	display: inline;
+	margin: 0;
+	width: 24px;
+	max-width: none;
+	height: 24px;
+	vertical-align: middle;
+	border-radius: 50%;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item:hover .kboard-list-title {
+	opacity: .6;
+}
+
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item.animation-fadein {
+	visibility: visible;
+	-webkit-animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-ms-animation: fadein 1s;
+	-o-animation: fadein 1s;
+	animation: fadein 1s;
+}
+
+#kboard-dalia-before-after-list.mw1400 .kboard-dalia-before-after-list .kboard-list-item {
+	margin: 0 1% 0 0;
+	width: 19%;
+}
+
+#kboard-dalia-before-after-list.mw1200 .kboard-dalia-before-after-list .kboard-list-item {
+	margin: 0 16px 0 0;
+	width: calc(33.3% - 16px);
+}
+
+#kboard-dalia-before-after-list.mw1000 .kboard-dalia-before-after-list .kboard-list-item {
+	margin: 0 1% 0 0;
+	width: 32.3333333333%;
+}
+
+#kboard-dalia-before-after-list.mw800 .kboard-dalia-before-after-list .kboard-list-item {
+	margin: 0 1% 0 0;
+	width: 49%;
+}
+
+#kboard-dalia-before-after-list.mw600 .kboard-dalia-before-after-list .kboard-list-item {
+	margin: 0 1% 0 0;
+	width: 49%;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .category-bullet {
+	margin-right: 0;
+	text-align: center;
+}
+#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .program-title {
+    text-align: center;
+    margin-bottom: 8px;
+}
+#kboard-dalia-before-after-document {
+	-webkit-animation: fadein 1s;
+	-moz-animation: fadein 1s;
+	-ms-animation: fadein 1s;
+	-o-animation: fadein 1s;
+	animation: fadein 1s;
+}
+
+#kboard-dalia-before-after-document .kboard-document-wrap {
+	background-color: white;
+}
+
+#kboard-dalia-before-after-document .detail-attr.detail-date {
+	display: flex;
+}
+#kboard-dalia-before-after-document .document-middle {
+	border-bottom: 1px solid #eee;
+	margin-bottom: 40px;
+}
+.twentytwenty-horizontal .kboard-thumbnail {
+	position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto 0;
+}
+.twentytwenty-horizontal .kboard-thumbnail img {
+	width: 100%;
+	height: auto;
+	margin-bottom: 0;
+}
+.twentytwenty-horizontal .kboard-thumbnail .twentytwenty-handle {
+    height: 44px;
+    background-color: #6edbd5 !important;
+    border: 0;
+    width: 44px;
+}
+.twentytwenty-horizontal .kboard-thumbnail .twentytwenty-handle::before {
+    background-color: #6edbd5 !important;
+    width: 8px;
+    margin-left: -4px;
+	box-shadow: none!important;
+}
+.twentytwenty-horizontal .kboard-thumbnail .twentytwenty-handle::after {
+    background-color: #6edbd5 !important;
+    width: 8px;
+    margin-left: -4px;
+	box-shadow: none!important;
+}
+.twentytwenty-horizontal .twentytwenty-before-label:before, .twentytwenty-horizontal .twentytwenty-after-label:before {
+	top: 28px !important;
+    line-height: 1.4;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-sticker {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: block;
+	padding: 5px 10px;
+	background: #3d62aa;
+	color: #ffffff;
+	font-size: 13px;
+	text-align: center;
+	z-index: 4;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-child {
+	position: relative;
+	height: 100%;
+	width: 50%;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-child img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-child img.front {
+	z-index: 3;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-child img.half-side {
+	z-index: 2;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-child img.side {
+	z-index: 1;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-blind {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	background-image: url(./images/blind-background.png);
+	color: white;
+	box-sizing: border-box;
+	padding: 50px;
+	z-index: 5;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle {
+	display: flex;
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	transform: translate(-50%, 0);
+	z-index: 6;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle input {
+	padding: 10px 10px;
+	background: #545861;
+	font-size: 14px;
+	border: 0;
+	margin: 0 1px;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle input:hover {
+	background: #999999;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle input.selected {
+	background: #eee;
+	color: #333;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle input.hide {
+	display: none;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-login-message {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.8;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-login-message p {
+	margin: 0 0 10px 0;
+	font-size: 13px;
+}
+
+#kboard-dalia-before-after-document .kboard-thumbnail .kboard-login-message button {
+	padding: 5px 30px;
+	border: 0;
+	background: #222;
+	color: white;
+	border-radius: 10px;
+	font-size: 15px;
+}
+
+#kboard-dalia-before-after-document .kboard-content {
+	clear: both;
+	float: left;
+	width: 100%;
+	min-height: 200px;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view {
+	margin: 0;
+	padding: 22px;
+	word-break: break-all;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view img {
+	display: inline;
+	margin: 0;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view p {
+	margin: 0 0 0.75em;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view p:last-child {
+	margin: 0;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view .thumbnail-area {
+	text-align: center;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view .aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view .alignright {
+	float: right;
+}
+
+#kboard-dalia-before-after-document .kboard-content .content-view .alignleft {
+	float: left;
+}
+
+#kboard-dalia-before-after-document .kboard-document-action {
+	padding: 0 22px 5px 22px;
+	overflow: hidden;
+	line-height: 1;
+}
+
+#kboard-dalia-before-after-document .kboard-document-action .left {
+	display: none;
+	position: static;
+	float: left;
+}
+
+#kboard-dalia-before-after-document .kboard-document-action .right {
+	position: static;
+	float: right;
+	text-align: right;
+}
+
+#kboard-dalia-before-after-document .kboard-attach {
+	clear: both;
+	margin: 0 22px;
+	padding: 10px 0 5px 0;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 1;
+	border-top: 1px dashed #ededed;
+}
+
+#kboard-dalia-before-after-document .kboard-button-action {
+	margin: 0 0 5px 0;
+	padding: 4px 5px;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 12px;
+	text-align: left;
+	border: 1px solid #ededed;
+	background: none;
+	background-color: transparent;
+	border-radius: 2px;
+	letter-spacing: normal;
+	cursor: pointer;
+	vertical-align: middle;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+#kboard-dalia-before-after-document .kboard-button-action span {
+	position: static;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+#kboard-dalia-before-after-document .kboard-button-like {
+	color: #ff5959;
+}
+
+#kboard-dalia-before-after-document .kboard-button-unlike {
+	color: #3d62aa;
+}
+
+#kboard-dalia-before-after-document .kboard-button-print {
+	color: gray;
+}
+
+#kboard-dalia-before-after-document .kboard-button-download {
+	color: gray;
+}
+
+#kboard-dalia-before-after-document .kboard-comments-area {
+	float: left;
+	width: 100%;
+}
+
+#kboard-dalia-before-after-document .kboard-document-navi {
+	float: left;
+	padding-top: 15px;
+	width: 100%;
+}
+
+#kboard-dalia-before-after-document .kboard-control {
+	padding: 15px 0;
+	width: 100%;
+}
+
+#kboard-dalia-before-after-document .kboard-control .left {
+	position: static;
+	float: left;
+}
+
+#kboard-dalia-before-after-document .kboard-control .right {
+	position: static;
+	float: right;
+	text-align: right;
+}
+.kboard-attr-row.side-before-image, .kboard-attr-row.side-after-image, .kboard-attr-row.half-side-before-plus, .kboard-attr-row.half-side-after-plus {
+	display: none;
+}
+.kboard-attr-row.front-before-image .description , .kboard-attr-row.front-after-image .description{
+    font-size: 14px;
+    color: #888;
+    padding-top: 4px;
+}
+@media screen and (max-width: 600px) {
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-search select {
+		float: left;
+		margin-right: 1%;
+		width: 29%;
+		min-width: 29%;
+		height: 28px;
+		line-height: 28px;
+		box-sizing: border-box;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-search input {
+		float: left;
+		margin-right: 1%;
+		width: 49%;
+		min-width: 49%;
+		height: 28px;
+		line-height: 28px;
+		box-sizing: border-box;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-search button {
+		float: left;
+		width: 20%;
+		min-width: 20%;
+		box-sizing: border-box;
+	}
+
+	#kboard-dalia-before-after-list .kboard-category.category-mobile {
+		display: block;
+	}
+
+	#kboard-dalia-before-after-list .kboard-category.category-pc {
+		display: none;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-login-message p {
+		text-align: center;
+		padding: 0 15px;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-login-message button {
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind {
+		padding: 5px;
+	}
+
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
+		margin-bottom: 30px;
+	}
+
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item {
+		justify-content: center;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail {
+		width: 70%;
+		margin-bottom: 0;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-sticker {
+		font-size: 11px;
+		padding: 2px 4px;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item .kboard-list-thumbnail .kboard-list-thumbnail-blind {
+		padding: 15px;
+	}
+
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-nav,
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .owl-dots {
+		display: none;
+	}
+
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-list-slide-toggle input {
+		font-size: 11px;
+		padding: 10px 5px;
+		text-align: center;
+	}
+
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-list-slide-toggle,
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-list-slide-toggle.position-up {
+		bottom: 51px;
+		left: 21px;
+		flex-direction: column;
+	}
+
+	#kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item a {
+		margin-top: 10px;
+	}
+
+	#kboard-dalia-before-after-list .kboard-tree-category-search .kboard-search-option-wrap.select {
+		width: 100%;
+	}
+
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li {
+		display: none;
+	}
+
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.first-page,
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.last-page,
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.prev-page,
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.next-page,
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.active {
+		display: inline-block;
+	}
+
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.prev-page a,
+	#kboard-dalia-before-after-list .kboard-pagination .kboard-pagination-pages li.next-page a {
+		padding: 0 18px;
+	}
+
+	#kboard-dalia-before-after-editor select,
+	#kboard-dalia-before-after-editor input[type=text],
+	#kboard-dalia-before-after-editor input[type=email],
+	#kboard-dalia-before-after-editor input[type=number],
+	#kboard-dalia-before-after-editor input[type=date],
+	#kboard-dalia-before-after-editor input[type=password],
+	#kboard-dalia-before-after-editor input[type=file] {
+		width: 100%;
+		box-sizing: border-box;
+	}
+
+	#kboard-dalia-before-after-editor .kboard-attr-row {
+		padding: 10px 0;
+	}
+
+	#kboard-dalia-before-after-editor .kboard-attr-row .attr-name {
+		padding: 0;
+		width: 100%;
+		font-size: 14px;
+	}
+
+	#kboard-dalia-before-after-editor .kboard-attr-row .attr-value {
+		margin: 0;
+	}
+
+	#kboard-dalia-before-after-editor .kboard-attr-row .attr-value .kboard-tree-category-wrap select {
+		margin-bottom: 10px;
+		width: 100%;
+	}
+
+	#kboard-dalia-before-after-document .kboard-title h1 {
+		padding: 11px 5px;
+		font-size: 18px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-detail .detail-attr {
+		width: 100%;
+		clear: both;
+		padding: 5px 5px;
+		line-height: normal;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail {
+		overflow: visible;
+		margin-bottom: 40px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-sticker {
+		font-size: 11px;
+		padding: 2px 4px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle {
+		bottom: -38px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-toggle input {
+		font-size: 12px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-thumbnail-blind {
+		padding: 15px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-login-message {
+		top: 0;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-login-message p {
+		padding: 0 15px;
+		text-align: center;
+	}
+
+	#kboard-dalia-before-after-document .kboard-thumbnail .kboard-login-message button {
+		padding: 5px 10px;
+		font-size: 12px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-content .content-view {
+		padding: 10px 5px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-document-action {
+		padding: 10px 5px 5px 5px;
+	}
+
+	#kboard-dalia-before-after-document .kboard-attach {
+		margin: 0 5px;
+		padding: 10px 0 5px 0;
+	}
+
+	#kboard-dalia-before-after-document .kboard-document-navi .kboard-prev-document {
+		width: 100%;
+	}
+
+	#kboard-dalia-before-after-document .kboard-document-navi .kboard-next-document {
+		margin-top: 10px;
+		float: left;
+		width: 100%;
+		text-align: left;
+	}
+
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}

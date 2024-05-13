@@ -1,0 +1,679 @@
+@charset "utf-8";
+/**
+ * @author https://www.cosmosfarm.com/
+ */
+
+.kboard-staff-compliment-button-search img {
+	display: inline;
+	width: 28px !important;
+	height: 28px !important;
+	vertical-align: middle;
+}
+
+#kboard-staff-compliment-list .kboard-list-header {
+	width: 100%;
+}
+
+#kboard-staff-compliment-list .kboard-list-header form {
+	display: inline;
+}
+
+#kboard-staff-compliment-list .kboard-list-header .kboard-left {
+	text-align: right;
+}
+
+#kboard-staff-compliment-list .kboard-list-header .kboard-right {
+	*float: right;
+	display: table-cell;
+	text-align: right;
+	vertical-align: middle;
+}
+
+#kboard-staff-compliment-list .kboard-list-header .kboard-right select {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	width: auto;
+	height: 26px;
+	line-height: 26px;
+	font-size: 13px;
+	border-radius: 0;
+	border: 1px solid #c2c2c2;
+	background: white;
+	vertical-align: middle;
+	box-shadow: none;
+	box-sizing: content-box;
+	text-indent: 0;
+}
+
+#kboard-staff-compliment-list .kboard-category.category-pc {
+	display: inline;
+}
+
+#kboard-staff-compliment-list .kboard-category.category-mobile {
+	display: none;
+	float: left;
+	padding-bottom: 15px;
+	width: 100%;
+}
+
+#kboard-staff-compliment-list .kboard-category.category-mobile select {
+	display: inline;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+	min-width: 100%;
+	height: 28px;
+	line-height: 28px;
+	font-size: 12px;
+	border-radius: 0;
+	border: 1px solid #c2c2c2;
+	background: white;
+	vertical-align: middle;
+	box-shadow: none;
+	box-sizing: border-box;
+	text-indent: 0;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category-wrap {
+	float: left;
+	width: 100%;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category-wrap select {
+	display: inline;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+	height: 28px;
+	line-height: 28px;
+	font-size: 12px;
+	color: #666666;
+	border-radius: 0;
+	border: 1px solid #e3e3e3;
+	background: white;
+	vertical-align: middle;
+	box-shadow: none;
+	box-sizing: border-box;
+	text-indent: 0;
+	-webkit-appearance: menulist;
+	-moz-appearance: menulist;
+	appearance: menulist;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category-search .kboard-search-option-wrap.type-select {
+	display: inline;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category-search .kboard-search-option-wrap.type-tab {
+	width: 100%;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category {
+	float: left;
+	margin: 0 0 5px 0;
+	padding: 0;
+	width: 100%;
+	list-style: none;
+	border: 0;
+	background-color: #f9f9f9;
+	overflow: hidden;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category li {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin: 0;
+	padding: 0 5px;
+	float: left;
+	border: 0;
+	list-style: none;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category li::before,
+#kboard-staff-compliment-list .kboard-tree-category li::after {
+	display: none;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category li a {
+	display: block;
+	padding: 10px 10px 8px 10px;
+	font-size: 13px;
+	border: 0;
+	border-bottom: 2px solid transparent;
+	text-decoration: none;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+#kboard-staff-compliment-list .kboard-tree-category li.kboard-category-selected a {
+	font-weight: bold;
+	border-bottom: 2px solid #545861;
+}
+.kboard-list-top {
+	margin-bottom: 10px;
+}
+.kboard-list-top .kboard-attr-row label {
+	margin-right: 8px;
+}
+#kboard-staff-compliment-list .kboard-tree-category-search {
+	float: left;
+	width: 100%;
+}
+
+#kboard-staff-compliment-list .kboard-list table td.kboard-list-uid {
+	width: 72px;
+}
+
+#kboard-staff-compliment-list .kboard-list table td.kboard-list-category {
+	width: 100px;
+}
+
+#kboard-staff-compliment-list .kboard-list table td.kboard-list-title {
+	width: auto;
+}
+
+
+#kboard-staff-compliment-list .kboard-list table td.kboard-list-vote {
+	display: none;
+
+}
+
+#kboard-staff-compliment-list .kboard-list table td.kboard-list-view {
+	display: none;
+
+}
+
+
+#kboard-staff-compliment-list .kboard-list tbody td.kboard-list-title img {
+	display: inline;
+	margin: 0;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-staff-compliment-list .kboard-list tbody td.kboard-list-title img.kboard-icon-reply {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+#kboard-staff-compliment-list .kboard-list tbody td.kboard-list-title img.kboard-icon-lock {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+
+#kboard-staff-compliment-list .kboard-list .kboard-mobile-category {
+	display: none;
+}
+
+#kboard-staff-compliment-list .kboard-list .kboard-mobile-status {
+	display: none;
+	margin-bottom: 10px;
+}
+
+#kboard-staff-compliment-list .kboard-list .kboard-mobile-contents {
+	display: none;
+	font-size: 12px;
+}
+
+#kboard-staff-compliment-list .kboard-list .kboard-mobile-contents .contents-item {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#kboard-staff-compliment-list .kboard-list .kboard-mobile-contents .contents-separator {
+	display: inline;
+	margin: 0;
+	padding: 0 2px;
+}
+#kboard-staff-compliment-document {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin: 0;
+	width: 100%;
+}
+
+#kboard-staff-compliment-document .kboard-document-wrap {
+	float: left;
+	width: 100%;
+	background-color: white;
+}
+#kboard-staff-compliment-document .kboard-detail .detail-attr .detail-value img {
+	vertical-align: middle;
+}
+
+#kboard-staff-compliment-document .kboard-detail .detail-title {
+	float: none;
+}
+
+.document-bottom .detail-attr .detail-name {
+	margin-right: 4px;
+}
+#kboard-staff-compliment-document .kboard-content {
+	clear: both;
+	float: left;
+	width: 100%;
+	min-height: 200px;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view img {
+	display: inline;
+	margin: 0;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view hr {
+	margin: 10px 0;
+	padding: 0;
+	height: 1px;
+	border: 0;
+	background-color: #f1f1f1;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view p {
+	margin: 0 0 0.75em;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view p:last-child {
+	margin: 0;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view .thumbnail-area {
+	text-align: center;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view .aligncenter {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view .alignright {
+	float: right;
+}
+
+#kboard-staff-compliment-document .kboard-content .content-view .alignleft {
+	float: left;
+}
+
+#kboard-staff-compliment-document .kboard-document-action {
+	padding: 0 22px 5px 22px;
+	overflow: hidden;
+	line-height: 1;
+}
+
+#kboard-staff-compliment-document .kboard-document-action .left {
+	position: static;
+	float: left;
+}
+
+#kboard-staff-compliment-document .kboard-document-action .right {
+	position: static;
+	float: right;
+	text-align: right;
+}
+
+#kboard-staff-compliment-document .kboard-attach {
+	clear: both;
+	margin: 0 22px;
+	padding: 5px 0 15px 0;
+	font-size: 12px;
+	overflow: hidden;
+	line-height: 1;
+	border-top: 1px dashed #ededed;
+}
+
+#kboard-staff-compliment-document .kboard-attach-title {
+	padding: 10px 0 15px 0;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#kboard-staff-compliment-document .kboard-button-action {
+	margin: 0 0 5px 0;
+	padding: 4px 5px;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 12px;
+	text-align: left;
+	border: 1px solid #ededed;
+	background: none;
+	background-color: transparent;
+	border-radius: 2px;
+	letter-spacing: normal;
+	cursor: pointer;
+	vertical-align: middle;
+	text-shadow: none;
+	box-shadow: none;
+}
+
+#kboard-staff-compliment-document .kboard-button-action span {
+	position: static;
+	display: inline;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+#kboard-staff-compliment-document .kboard-button-like {
+	color: #ff5959;
+}
+
+#kboard-staff-compliment-document .kboard-button-unlike {
+	color: #3d62aa;
+}
+
+#kboard-staff-compliment-document .kboard-button-print {
+	color: gray;
+}
+
+#kboard-staff-compliment-document .kboard-button-download {
+	color: gray;
+}
+
+#kboard-staff-compliment-document .kboard-comments-area {
+	float: left;
+	width: 100%;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi {
+	float: left;
+	padding-top: 15px;
+	width: 100%;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi a {
+	display: block;
+	text-decoration: none;
+	border: 0;
+	font-size: 13px;
+	line-height: 20px;
+	box-shadow: none;
+	transition-duration: .3s;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .navi-document-title {
+	display: block;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .navi-arrow {
+	position: absolute;
+	display: block;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .kboard-prev-document {
+	position: relative;
+	float: left;
+	width: 45%;
+}
+#kboard-staff-compliment-document .kboard-document-navi .kboard-prev-document .navi-arrow {
+	left: 0;
+	top: 0;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .kboard-prev-document:hover a {
+	color: black;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .kboard-next-document {
+	position: relative;
+	float: right;
+	width: 45%;
+	text-align: right;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .kboard-next-document .navi-arrow {
+	right: 0;
+	top: 0;
+}
+
+#kboard-staff-compliment-document .kboard-document-navi .kboard-next-document:hover a {
+	color: black;
+}
+
+#kboard-staff-compliment-document .kboard-control {
+	float: left;
+	padding: 15px 0;
+	width: 100%;
+}
+
+#kboard-staff-compliment-document .kboard-control .left {
+	position: static;
+	float: left;
+}
+
+#kboard-staff-compliment-document .kboard-control .right {
+	position: static;
+	float: right;
+	text-align: right;
+}
+#kboard-staff-compliment-document .kboard-staff-compliment-status {
+	margin-right: 8px;
+}
+#kboard-staff-compliment-latest table {
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+	border: 0;
+	border-bottom: 1px solid #f1f1f1;
+}
+
+#kboard-staff-compliment-latest table tr {
+	padding: 0;
+	border: 0;
+}
+
+#kboard-staff-compliment-latest table th {
+	padding: 5px 0;
+	height: auto;
+	border: 0;
+	text-align: center;
+}
+
+#kboard-staff-compliment-latest table td {
+	padding: 5px 0;
+	height: auto;
+	border: 0;
+	border-top: 1px solid #f1f1f1;
+}
+
+#kboard-staff-compliment-latest table .kboard-latest-status {
+	width: 70px;
+	text-align: center;
+}
+
+#kboard-staff-compliment-latest table .kboard-staff-compliment-status {
+	min-width: 60px;
+}
+
+#kboard-staff-compliment-latest table .kboard-latest-title {
+	padding-left: 5px;
+	font-size: 13px;
+}
+
+#kboard-staff-compliment-latest table .kboard-latest-title a {
+	text-decoration: none;
+	box-shadow: none;
+}
+
+#kboard-staff-compliment-latest table .kboard-latest-title img {
+	display: inline;
+	margin: 0;
+	width: auto;
+	height: auto;
+	vertical-align: middle;
+	max-width: 100%;
+}
+
+#kboard-staff-compliment-latest table .kboard-latest-title img.kboard-icon-lock {
+	width: 16px !important;
+	height: 16px !important;
+}
+
+#kboard-staff-compliment-latest table .kboard-latest-title .kboard-comments-count {}
+
+#kboard-staff-compliment-latest table .kboard-latest-date {
+	width: 80px;
+	text-align: center;
+	font-size: 13px;
+}
+
+@media screen and (max-width: 600px) {
+	#kboard-staff-compliment-list .kboard-category.category-mobile {
+		display: block;
+	}
+
+	#kboard-staff-compliment-list .kboard-category.category-pc {
+		display: none;
+	}
+
+	#kboard-staff-compliment-list .kboard-list-header .kboard-left {
+		display: block;
+		padding-bottom: 15px;
+	}
+
+	#kboard-staff-compliment-list .kboard-list-header .kboard-right {
+		display: block;
+	}
+
+	#kboard-staff-compliment-list .kboard-list-header .kboard-right select {
+		width: 100%;
+	}
+
+	#kboard-staff-compliment-list .kboard-tree-category-search .kboard-search-option-wrap.type-select {
+		display: block;
+		margin: 0 0 5px 0;
+	}
+	.kboard-list-top.flex-item.space-between {
+		justify-content: space-between;
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	#kboard-staff-compliment-list .kboard-list table {
+		border-top: 1px solid #f1f1f1;
+	}
+
+	#kboard-staff-compliment-list .kboard-list table thead {
+		display: none;
+	}
+
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-title {
+		padding: 10px 5px;
+	}
+
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-title .kboard-staff-compliment-cut-strings {
+		margin-bottom: 10px;
+		white-space: normal;
+		line-height: 23px;
+	}
+
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-uid,
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-category,
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-user,
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-date,
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-vote,
+	#kboard-staff-compliment-list .kboard-list table td.kboard-list-view {
+		display: none;
+	}
+
+	#kboard-staff-compliment-list .kboard-list .kboard-mobile-category {
+		display: inline;
+	}
+
+	#kboard-staff-compliment-list .kboard-list .kboard-mobile-status {
+		display: block;
+	}
+
+	#kboard-staff-compliment-list .kboard-list .kboard-mobile-status .kboard-staff-compliment-status {
+		padding: 2px;
+		min-width: 60px;
+		text-align: center;
+		font-size: 11px;
+	}
+
+	#kboard-staff-compliment-list .kboard-list .kboard-mobile-contents {
+		display: block;
+	}
+
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li {
+		display: none;
+	}
+
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.first-page,
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.last-page,
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.prev-page,
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.next-page,
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.active {
+		display: inline-block;
+	}
+
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.prev-page a,
+	#kboard-staff-compliment-list .kboard-pagination .kboard-pagination-pages li.next-page a {
+		padding: 0 18px;
+	}
+	#kboard-staff-compliment-editor .kboard-attr-wrap {
+		display: block;
+		width: auto;
+	}
+
+	#kboard-staff-compliment-editor .kboard-attr-row {
+		display: block;
+		padding: 10px 0;
+		background-color: white;
+	}
+
+	#kboard-staff-compliment-editor .kboard-attr-row .attr-name {
+		display: block;
+		padding: 0;
+		width: 100%;
+		font-size: 14px;
+		background-color: white;
+	}
+
+	#kboard-staff-compliment-editor .kboard-attr-row .attr-value {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+	#kboard-staff-compliment-document .kboard-detail > div {
+		padding: 8px 0;
+	}
+	#kboard-staff-compliment-document .kboard-detail .detail-attr .detail-name {
+		padding-bottom: 8px;
+	}
+	#kboard-staff-compliment-document .kboard-detail .detail-attr .detail-value {
+		padding-left: 0;
+	}
+	#kboard-staff-compliment-document .kboard-detail .detail-attr {
+		display: flex;
+    	flex-direction: column;
+	}
+
+	#kboard-staff-compliment-document .kboard-document-action {
+		padding: 10px 5px 5px 5px;
+	}
+
+	#kboard-staff-compliment-document .kboard-attach {
+		margin: 0 5px;
+	}
+
+	#kboard-staff-compliment-document .kboard-document-navi .kboard-prev-document {
+		width: 100%;
+	}
+
+	#kboard-staff-compliment-document .kboard-document-navi .kboard-next-document {
+		margin-top: 10px;
+		float: left;
+		width: 100%;
+		text-align: left;
+	}
+}
