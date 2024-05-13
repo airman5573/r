@@ -841,8 +841,16 @@ class KBoard {
 			if($get_list_status_query){
 				$where[] = $get_list_status_query;
 			}
+
+			// shoplic customization - 2024-05-13
+			$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE " . implode(' AND ', $where);
+			if (isset($_GET['branch_term_id'])) {
+				$branch_term_id = esc_sql($_GET['branch_term_id']);
+				$where[] = "(`option_branch`.`option_key`='branch' AND `option_branch`.`option_value` = '" . $branch_term_id . "')";
+				$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` INNER JOIN `wp_kboard_board_option` AS `option_branch` ON `wp_kboard_board_content`.`uid`=`option_branch`.`content_uid` WHERE " . implode(' AND ', $where);
+			}
 			
-			$count = $wpdb->get_var("SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE " . implode(' AND ', $where));
+			$count = $wpdb->get_var($sql);
 			$wpdb->flush();
 			
 			return intval($count);
