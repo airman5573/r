@@ -268,3 +268,34 @@ if(!function_exists('kboard_dalia_before_after_skin_field')){
 		return $fields;
 	}
 }
+
+if (!function_exists('kboard_dalia_get_img_tag')) {
+    function kboard_dalia_get_img_tag($content, $type, $position) {
+        global $skin_path;
+        $default_empty_img_src = "{$skin_path}/images/default-img.png";
+        $beforeImageKey = "{$position}_before_image";
+        $afterImageKey = "{$position}_after_image";
+        
+        // Check for 'before' or 'after' image based on the type
+        $imageKey = ($type === 'after') ? $afterImageKey : $beforeImageKey;
+        $imageExists = kboard_dalia_before_after_image_check($content, $imageKey);
+        
+        if (!$imageExists && !kboard_dalia_before_after_image_check($content, $beforeImageKey) && !kboard_dalia_before_after_image_check($content, $afterImageKey)) {
+            // If neither before nor after images exist, return nothing
+            return '';
+        } elseif (!$imageExists) {
+            // If image does not exist, show default empty image
+            return "<img class='{$position} empty_img content-image' src='{$default_empty_img_src}' alt=''>";
+        } else {
+            // If image exists, show the image
+            $imageUrl = kboard_dalia_before_after_image($content, $imageKey);
+            return "<img class='{$position} content-image' src='{$imageUrl}' alt=''>";
+        }
+    }
+}
+
+if (!function_exists('kboard_dalia_display_image_list')) {
+    function kboard_dalia_display_image_list($content, $type) {
+        echo kboard_dalia_get_img_tag($content, $type, 'front');
+    }
+}

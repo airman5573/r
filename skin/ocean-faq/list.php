@@ -14,14 +14,8 @@
     	}
     	?>
     	<!-- 카테고리 끝 -->
-	<div class="kboard-header">
-		<div class="kboard-total-count">
-			<!-- <span class="entry-title"><?php echo $board->board_name?></span> -->
-			전체
-			<?php if(!$board->isPrivate()):?>
-			<span class="count text-mint"><?php echo number_format($board->getListTotal())?></span>
-			<?php endif?>
-		</div>
+	<div class="kboard-header"> <?php
+		dalia_print_kbaord_current_category_article_count($board); ?>
 		<div class="kboard-sort">
 			<form id="kboard-sort-form-<?php echo $board->id?>" method="get" action="<?php echo $url->toString()?>">
 				<?php echo $url->set('pageid', '1')->set('category1', '')->set('category2', '')->set('target', '')->set('keyword', '')->set('mod', 'list')->set('kboard_list_sort_remember', $board->id)->toInput()?>
@@ -64,7 +58,7 @@
 		<li class="kboard-faq-item" data-index="<?php $faq_item_index=$list->index(); echo $faq_item_index;?>">
 			<div class="kboard-faq-question" onclick="kboard_faq_view_answer('<?php echo $faq_item_index?>')">
 			<!-- 카테고리 불릿 추가 -->
-			<span class="category-bullet">이용문의</span>
+			<?php dalia_print_category1_name($content); ?>
 			<!-- 카테고리 불릿 추가 -->
 			<?php echo $content->title?><?php if($content->isNew()):?><span class="kboard-hwaikeul-video-slider-new-notify new-mark">N</span><?php endif?></div>
 			

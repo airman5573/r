@@ -54,9 +54,14 @@
 	<!-- 슬라이드 시작 -->
 	<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
 		<div class="kboard-dalia-before-after-list owl-carousel owl-theme owl-loaded owl-drag">
-			<?php while($content = $list->hasNext()): ?>
-				<?php include 'list-slide.php'?>
-			<?php endwhile?>
+			<?php
+			while($content = $list->hasNext()):
+				$has_before_img = kboard_dalia_before_after_image_check($content, 'front_before_image');
+				$has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_image');
+				if (!$has_before_img || !$has_after_img) continue;
+				include 'list-slide.php';
+			endwhile;
+			?>
 		</div>
 	</div>
 	<!-- 슬라이드 끝 -->

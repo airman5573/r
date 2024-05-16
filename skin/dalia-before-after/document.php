@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="https://s3-us-west-2.amazonaws.com/s.cdpn.io/124874/twentytwenty.css">
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/124874/jquery.event.move.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/124874/jquery.twentytwenty.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<?php
+$has_before_img = kboard_dalia_before_after_image_check($content, 'front_before_image');
+$has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_image');
+?>
+
 <div id="kboard-document">
 	<div id="kboard-dalia-before-after-document">
 		<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
@@ -46,96 +47,23 @@
 			</div>
 			</div>
 			
-			<div class="kboard-thumbnail before-after-photo">
-				<img src="/wp-content/uploads/2024/04/test-02.jpg" alt="">
-				<img src="/wp-content/uploads/2024/04/test-01.jpg"" alt="">
-				<!-- <?php if(!is_user_logged_in() && $board->meta->dalia_before_after_filtering != 'off'):?>
-					<div class="kboard-thumbnail-child document before">
-						<div class="kboard-thumbnail-blind">
-							<div class="kboard-login-message">
-								<?php if($board->meta->dalia_before_after_login_message):?>
-									<?php echo wpautop($board->meta->dalia_before_after_login_message)?>
-								<?php else:?>
-									<p><?php echo dalia_before_after_default_login_message()?></p>
-								<?php endif?>
-								<button type="button" class="kboard-login-button" onclick="window.location.href='<?php echo esc_url(wp_login_url($_SERVER['REQUEST_URI']))?>';return false;">로그인</button>
-							</div>
+			<?php if ($has_before_img && $has_after_img): ?>
+			<div id="dalia-kboard-before-after-photo-in-document">
+				<div class="before-after-photo">
+					<div class="wrapper">
+						<div class="before-img-container">
+							<?php kboard_dalia_display_image_list($content, 'before'); ?>
 						</div>
-						<span class="kboard-thumbnail-sticker">BEFORE</span>
-						<?php if($board->meta->dalia_before_after_absoulte_filtering != 'off'):?>
-							<?php if(!kboard_dalia_before_after_image_check($content, 'front_before_image') && !kboard_dalia_before_after_image_check($content, 'front_after_image')):?>
-							<?php elseif(!kboard_dalia_before_after_image_check($content, 'front_after_image')):?><img class="front empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-							<?php else:?><img class="front" src="<?php echo kboard_dalia_before_after_image($content,'front_after_image')?>" alt="">
-							<?php endif?>
-							<?php if(!kboard_dalia_before_after_image_check($content, 'half_side_before_image') && !kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?>
-							<?php elseif(!kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?><img class="half-side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-							<?php else:?><img class="half-side" src="<?php echo kboard_dalia_before_after_image($content,'half_side_after_image')?>" alt="">
-							<?php endif?>
-							<?php if(!kboard_dalia_before_after_image_check($content, 'side_before_image') && !kboard_dalia_before_after_image_check($content, 'side_after_image')):?>
-							<?php elseif(!kboard_dalia_before_after_image_check($content, 'side_after_image')):?><img class="side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-							<?php else:?><img class="side" src="<?php echo kboard_dalia_before_after_image($content,'side_after_image')?>" alt="">
-							<?php endif?>
-
-						<?php else:?>
-
-							<?php if(!kboard_dalia_before_after_image_check($content, 'front_before_image') && !kboard_dalia_before_after_image_check($content, 'front_after_image')):?>
-							<?php elseif(!kboard_dalia_before_after_image_check($content, 'front_before_image')):?><img class="front empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-							<?php else:?><img class="front" src="<?php echo kboard_dalia_before_after_image($content,'front_before_image')?>" alt="">
-							<?php endif?>
-							<?php if(!kboard_dalia_before_after_image_check($content, 'half_side_before_image') && !kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?>
-							<?php elseif(!kboard_dalia_before_after_image_check($content, 'half_side_before_image')):?><img class="half-side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-							<?php else:?><img class="half-side" src="<?php echo kboard_dalia_before_after_image($content,'half_side_before_image')?>" alt="">
-							<?php endif?>
-							<?php if(!kboard_dalia_before_after_image_check($content, 'side_before_image') && !kboard_dalia_before_after_image_check($content, 'side_after_image')):?>
-							<?php elseif(!kboard_dalia_before_after_image_check($content, 'side_before_image')):?><img class="side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-							<?php else:?><img class="side" src="<?php echo kboard_dalia_before_after_image($content,'side_before_image')?>" alt="">
-							<?php endif?>
-						<?php endif?>
+						<div class="after-img-container">
+							<?php kboard_dalia_display_image_list($content, 'after'); ?>
+						</div>
+						<div class="scroller">
+							<svg class="scroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="0 50 37 68 37 32 0 50" style="fill:#fff"/><polygon points="100 50 64 32 64 68 100 50" style="fill:#fff"/></svg>
+						</div>
 					</div>
-				<?php else:?>
-					<div class="kboard-thumbnail-child document before">
-						<span class="kboard-thumbnail-sticker">BEFORE</span>
-						<?php if(!kboard_dalia_before_after_image_check($content, 'front_before_image') && !kboard_dalia_before_after_image_check($content, 'front_after_image')):?>
-						<?php elseif(!kboard_dalia_before_after_image_check($content, 'front_before_image')):?><img class="front empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-						<?php else:?><img class="front" src="<?php echo kboard_dalia_before_after_image($content,'front_before_image')?>" alt="">
-						<?php endif?>
-						<?php if(!kboard_dalia_before_after_image_check($content, 'half_side_before_image') && !kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?>
-						<?php elseif(!kboard_dalia_before_after_image_check($content, 'half_side_before_image')):?><img class="half-side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-						<?php else:?><img class="half-side" src="<?php echo kboard_dalia_before_after_image($content,'half_side_before_image')?>" alt="">
-						<?php endif?>
-						<?php if(!kboard_dalia_before_after_image_check($content, 'side_before_image') && !kboard_dalia_before_after_image_check($content, 'side_after_image')):?>			
-						<?php elseif(!kboard_dalia_before_after_image_check($content, 'side_before_image')):?><img class="side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-						<?php else:?><img class="side" src="<?php echo kboard_dalia_before_after_image($content,'side_before_image')?>" alt="">
-						<?php endif?>
-					</div>
-				<?php endif?>
-				<div class="kboard-thumbnail-child document after">
-					<span class="kboard-thumbnail-sticker">AFTER</span>
-					<?php if(!kboard_dalia_before_after_image_check($content, 'front_before_image') && !kboard_dalia_before_after_image_check($content, 'front_after_image')):?>
-					<?php elseif(!kboard_dalia_before_after_image_check($content, 'front_after_image')):?><img class="front empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-					<?php else:?><img class="front" src="<?php echo kboard_dalia_before_after_image($content,'front_after_image')?>" alt="">
-					<?php endif?>
-					<?php if(!kboard_dalia_before_after_image_check($content, 'half_side_before_image') && !kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?>
-					<?php elseif(!kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?><img class="half-side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-					<?php else:?><img class="half-side" src="<?php echo kboard_dalia_before_after_image($content,'half_side_after_image')?>" alt="">
-					<?php endif?>
-					<?php if(!kboard_dalia_before_after_image_check($content, 'side_before_image') && !kboard_dalia_before_after_image_check($content, 'side_after_image')):?>
-					<?php elseif(!kboard_dalia_before_after_image_check($content, 'side_after_image')):?><img class="side empty_img" src="<?php echo $skin_path?>/images/default-img.png" alt="">
-					<?php else:?><img class="side" src="<?php echo kboard_dalia_before_after_image($content,'side_after_image')?>" alt="">
-					<?php endif?>
 				</div>
-				<div class="kboard-thumbnail-toggle">
-					<?php if(!kboard_dalia_before_after_image_check($content, 'front_before_image') && !kboard_dalia_before_after_image_check($content, 'front_after_image')):?><input type="button" id="front-toggle" class="hide">
-					<?php else:?><input type="button" class="front-toggle <?php if(kboard_dalia_before_after_first_image($content) == 'front'):?>selected<?php endif?>" onclick="kboard_dalia_before_after_document_img_toggle('front')" value="정면">
-					<?php endif?>
-					<?php if(!kboard_dalia_before_after_image_check($content, 'half_side_before_image') && !kboard_dalia_before_after_image_check($content, 'half_side_after_image')):?><input type="button" id="half-side-toggle" class="hide">
-					<?php else:?><input type="button" class="half-side-toggle <?php if(kboard_dalia_before_after_first_image($content) == 'half-side'):?>selected<?php endif?>" onclick="kboard_dalia_before_after_document_img_toggle('half_side')" value="반측면">
-					<?php endif?>
-					<?php if(!kboard_dalia_before_after_image_check($content, 'side_before_image') && !kboard_dalia_before_after_image_check($content, 'side_after_image')):?><input type="button" id="side-toggle" class="hide">
-					<?php else:?><input type="button" class="side-toggle <?php if(kboard_dalia_before_after_first_image($content) == 'side'):?>selected<?php endif?>" onclick="kboard_dalia_before_after_document_img_toggle('side')" value="측면">
-					<?php endif?>
-				</div> -->
 			</div>
+			<?php endif; ?>
 			
 			<div class="kboard-content" itemprop="description">
 				<div class="content-view">

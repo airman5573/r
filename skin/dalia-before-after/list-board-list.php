@@ -1,8 +1,13 @@
 <li class="kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
 	<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>#kboard-document">
 		<div class="kboard-list-thumbnail">
+			
 			<!-- 글 등록시 썸네일로 선택한 이미지로 노출 -->
-			<img src="/wp-content/uploads/2024/04/b-a-thumb-1.jpg" alt="">
+			<?php if ($content->getThumbnail()): ?>
+				<img src="<?php echo $content->getThumbnail()?>" alt="<?php echo esc_attr($content->title)?>">
+			<?php else: ?>
+				<img src="<?php echo "{$skin_path}/images/default-img.png" ?>"; alt="default image" />
+			<?php endif ?>
 			<!-- 글 등록시 썸네일로 선택한 이미지로 노출 -->
 
 

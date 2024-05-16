@@ -4,70 +4,94 @@
  */
 
 
-#revew-latest-latest {
+#revew-latest {
 	overflow: hidden;
 }
 
-#revew-latest-latest a {
+#revew-latest a {
 	cursor: pointer;
 	text-decoration: none;
 }
 
-#revew-latest-latest .revew-latest-latest-item {
-	padding: 20px 0;
-	border-bottom: 1px solid #f0f0f0;
+#revew-latest .revew-latest-item {
 	overflow: hidden;
+	position: relative;
+}
+.review-grid-wrap .first-box .thumbnail-text-wrapper  {
+	position: absolute;
+	top: 20px;
+    left: 20px;
+}
+.revew-latest-container {
+	width: 100%;
+    height: auto;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.revew-latest-container::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
 }
 
-#revew-latest-latest.hwaikeul-video-row-2 .revew-latest-latest-item {
-	float: left;
-	width: 50%;
-}
-
-#revew-latest-latest.hwaikeul-video-row-3 .revew-latest-latest-item {
-	float: left;
-	width: 33.3333%;
-}
-
-#revew-latest-latest.hwaikeul-video-row-4 .revew-latest-latest-item {
-	float: left;
-	width: 25%;
-}
-
-#revew-latest-latest.hwaikeul-video-row-5 .revew-latest-latest-item {
-	float: left;
-	width: 20%;
-}
-
-#revew-latest-latest .revew-latest-latest-item .revew-latest-thumbnail {
-	float: left;
-	width: 30%;
-}
-
-#revew-latest-latest .revew-latest-latest-item .revew-latest-thumbnail .revew-latest-foreground {
+#revew-latest .revew-latest-item .revew-latest-thumbnail .revew-latest-foreground {
 	border-radius: 3px;
 }
 
-#revew-latest-latest .revew-latest-latest-title {
+.review-grid-wrap #revew-latest .revew-latest-title::before {
+    content: "YouTube 스타 후기";
+    padding: .5em 1em;
+    line-height: 1 !important;
+    background: #ddd;
+	display: inline-block;
+    border-radius: 8px;
+	
+}
+.review-grid-wrap .second-box #revew-latest .revew-latest-title::before {
+    content: "YouTube 일반 후기";
+}
+.review-grid-wrap .third-box #revew-latest .revew-latest-title::before {
+    content: "인스타그램 후기";
+}
+.review-grid-wrap .fourth-box #revew-latest .revew-latest-title::before {
+    content: "블로그 후기";
+}
+.review-grid-wrap .fifth-box #revew-latest .revew-latest-title::before {
+    content: "홈페이지 후기";
+}
+.review-grid-wrap .revew-latest-title {
+	padding-top: 25px;
+}
+.review-grid-wrap .first-box .revew-latest-title  {
+	padding-top: 0;
+}
+.review-grid-wrap  #revew-latest .revew-latest-title .text {
 	display: -webkit-box;
-	margin: 0 0 8px 35%;
 	overflow: hidden;
-	line-height: 16px;
-	height: 32px;
+	line-height: 1.2;
+	height: auto;
 	text-overflow: ellipsis;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
 	word-wrap: break-word;
-	white-space: normal
+	white-space: normal;
 	text-decoration: none;
 	color: #000000;
+	margin: 8px 0;
+
+}
+.review-grid-wrap .first-box #revew-latest .revew-latest-title .text  {
+	color: #fff;
+    font-size: 24px;
+
 }
 
-#revew-latest-latest .revew-latest-latest-title:hover {
-	color: #2575fc;
+#revew-latest:hover .revew-latest-title .text  {
+	color: #888;
 }
 
-#revew-latest-latest .revew-latest-latest-title img {
+#revew-latest .revew-latest-title img {
 	display: inline;
 	margin: 0;
 	width: 14px;
@@ -75,11 +99,13 @@
 	box-shadow: none;
 }
 
-#revew-latest-latest .revew-latest-latest-date {
-	margin: 0 0 0 35%;
+#revew-latest .revew-latest-date {
 	overflow: hidden;
 	text-decoration: none;
 	color: #000000;
+}
+.review-grid-wrap .first-box #revew-latest .revew-latest-date {
+	color: #fff;
 }
 .autoplay-description {
 	padding: 8px 0;
