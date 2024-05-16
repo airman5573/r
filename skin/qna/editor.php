@@ -106,76 +106,86 @@ jQuery(document).ready(function() {
 </script>
 
 <script>
+
 document.addEventListener('DOMContentLoaded', () => {
-  const toggleClass = (element, className, condition) => {
-    condition ? element.classList.add(className) : element.classList.remove(className);
+  const toggleVisibilityAndRequirement = (elementParent, isHidden, isRequired) => {
+    isHidden ? elementParent.classList.add('hidden') : elementParent.classList.remove('hidden');
+    isRequired ? elementParent.classList.add('required') : elementParent.classList.remove('required');
+  };
+
+  const clearInputValue = (inputElement) => {
+    if (inputElement.type === 'checkbox') {
+      inputElement.checked = false;
+    } else {
+      inputElement.value = '';
+    }
+  };
+
+  const clearInputs = () => {
+    const inputsToClear = ['input[name="kboard_option_qna_email"]', 'input[name="kboard_option_qna_tel"]', 'input[name="kboard_option_branch"]', 'select[name="kboard_option_notification_method"]', 'select[name="category1"]'];
+
+    inputsToClear.forEach((selector) => {
+      const input = document.querySelector(selector);
+      clearInputValue(input);
+    });
+  };
+
+  const setInitialState = (element, isHidden, isRequired) => {
+    clearInputValue(element);
+    const elementParent = element.closest('.kboard-attr-row');
+    toggleVisibilityAndRequirement(elementParent, isHidden, isRequired);
+  };
+
+  const processNoticeInputChange = (isNotice) => {
+    const emailInput = document.querySelector('input[name="kboard_option_qna_email"]');
+    const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox[]"]');
+    const telInput = document.querySelector('input[name="kboard_option_qna_tel"]');
+    const branchInput = document.querySelector('input[name="kboard_option_branch"]');
+    const notificationMethodSelect = document.querySelector('select[name="kboard_option_notification_method"]');
+    const category1Select = document.querySelector('select[name="category1"]');
+    const passwordInput = document.querySelector('input[name="password"]');
+
+    clearInputs();
+
+    setInitialState(emailInput, isNotice, !isNotice);
+    setInitialState(agreementInput, isNotice, !isNotice);
+    setInitialState(telInput, isNotice, !isNotice);
+    setInitialState(branchInput, isNotice, !isNotice);
+    setInitialState(notificationMethodSelect, isNotice, !isNotice);
+    setInitialState(category1Select, isNotice, !isNotice);
+
+    toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), isNotice, false);
+  };
+
+  const processSecretCheckboxChange = (isSecret) => {
+    const passwordInput = document.querySelector('input[name="password"]');
+    clearInputValue(passwordInput);
+    toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), !isSecret, false);
   };
 
   const noticeInput = document.querySelector('input[name="notice"]');
-
-  const emailInput = document.querySelector('input[name="kboard_option_qna_email"]');
-  const emailInputParent = emailInput.closest('.kboard-attr-row');
-
-  const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox[]"]');
-  const agreementInputParent = agreementInput.closest('.kboard-attr-row');
-
-  const telInput = document.querySelector('input[name="kboard_option_qna_tel"]');
-  const telInputParent = telInput.closest('.kboard-attr-row');
-
-  const branchInput = document.querySelector('input[name="kboard_option_branch"]');
-  const branchInputParent = branchInput.closest('.kboard-attr-row');
-
-  const notificationMethodSelect = document.querySelector('select[name="kboard_option_notification_method"]');
-  const notificationMethodSelectParent = notificationMethodSelect.closest('.kboard-attr-row');
-
-  const category1Select = document.querySelector('select[name="category1"]');
-  const category1SelectParent = category1Select.closest('.kboard-attr-row');
-
-  const handleToggle = (isNotice) => {
-	emailInput.value = '';
-	toggleClass(emailInputParent, 'required', !isNotice);
-	toggleClass(emailInputParent, 'hidden', isNotice);
-
-	agreementInput.checked = false;
-	toggleClass(agreementInputParent, 'required', !isNotice);
-	toggleClass(agreementInputParent, 'hidden', isNotice);
-
-	telInput.value = '';
-	toggleClass(telInput, 'required', !isNotice);
-	toggleClass(telInputParent, 'hidden', isNotice);
-
-	branchInput.value = '';
-	toggleClass(branchInputParent, 'required', !isNotice);
-	toggleClass(branchInputParent, 'hidden', isNotice);
-
-	notificationMethodSelect.value = '';
-	toggleClass(notificationMethodSelectParent, 'required', !isNotice);
-	toggleClass(notificationMethodSelectParent, 'hidden', isNotice);
-
-	category1Select.value = '';
-	toggleClass(category1SelectParent, 'required', !isNotice);
-	toggleClass(category1SelectParent, 'hidden', isNotice);
-  };
-
-  // if noticeINput is checked, then required,
   noticeInput.addEventListener('change', () => {
-	const isNotice = noticeInput.checked;
-	handleToggle(isNotice);
+    processNoticeInputChange(noticeInput.checked);
   });
 
-  // if noticeInput is checked, then required,
-  if (noticeInput.checked) {
-	handleToggle(true);
+  const secretInput = document.querySelector('input[name="secret"]');
+  secretInput.addEventListener('change', () => {
+    processSecretCheckboxChange(secretInput.checked);
+  });
+
+  if (secretInput.checked) {
+    processSecretCheckboxChange(true);
   }
 
-  const secretInput = document.querySelector('input[name="secret"]');
-<?php
-	// if this user is admin, then uncheck secret checkbox
-	if (dalia_is_admin()) {
-		echo 'secretInput.checked = false;';
-		echo 'handleToggle(true);';
-		echo 'noticeInput.checked = true;';
-	}
-?>
+  // Processing code exclusive to admin users
+  <?php
+    // if this user is admin, then uncheck secret checkbox
+    if (dalia_is_admin()) {
+      echo 'secretInput.checked = false;';
+      echo 'processNoticeInputChange(true);';
+      echo 'noticeInput.checked = true;';
+    }
+  ?>
 });
+
 </script>

@@ -1,4 +1,4 @@
-<div id="kboard-document">
+<div id="kboard-document" class="kboard-document--qna">
     <div id="kboard-qna-document">
         <div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
             <meta itemprop="name" content="<?php echo kboard_htmlclear(strip_tags($content->title))?>">

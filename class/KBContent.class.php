@@ -240,7 +240,7 @@ class KBContent {
 					
 					$this->deleteMailAttachments();
 				}
-				
+
 				// 게시글 입력 액션 훅 실행
 				do_action('kboard_document_insert', $this->uid, $this->board_id, $this, $board);
 				do_action("kboard_document_insert_{$this->board_id}", $this->uid, $this->board_id, $this, $board);

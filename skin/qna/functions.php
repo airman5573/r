@@ -71,3 +71,65 @@ function dalia_qna_kboard_get_email(&$content) {
 function dalia_qna_kboard_get_tel(&$content) {
 	return $content->option->{'qna_tel'} ?: '';
 }
+
+function dalia_qna_send_email_when_user_ask_question($content_uid, $board_id, $content, $board) {
+	if (dalia_is_admin()) {
+		return;
+	}
+
+	$branch_term_id = $content->option->{'branch'};
+	if (!$branch_term_id) {
+		error_log('Branch not found');
+		return;
+	}
+
+	$branch = dalia_get_branch_post_by_term_id($branch_term_id);
+	$branch_post_id = $branch->ID;
+	$branch_email = dalia_get_branch_email($branch_post_id);
+
+	if (!$branch_email) {
+		error_log('Branch email not found');
+		return;
+	}
+
+	$title = $content->title;
+
+	$url = new KBUrl();
+	$mail = kboard_mail();
+	$mail->to = $branch_email;
+	$mail->title = apply_filters('kboard_latest_alerts_subject', '['.__('KBoard new document', 'kboard').'] '.$board->board_name.' - '. $title , $content);
+	$mail->content = apply_filters('kboard_latest_alerts_message', $content->getDocumentOptionsHTML() . $content->content, $content);
+	$mail->url = $url->getDocumentRedirect($content->uid);
+	$mail->url_name = __('Go to Homepage', 'kboard');
+	$mail->send();
+}
+add_action( 'kboard_document_insert', 'dalia_qna_send_email_when_user_ask_question', 10, 4 );
+
+// Function to log all functions registered to 'kboard_document_insert'
+function log_registered_functions_for_kboard_document_insert() {
+    if (isset($GLOBALS['wp_filter']['kboard_document_insert'])) {
+        error_log('Functions registered to kboard_document_insert:');
+        $hook = $GLOBALS['wp_filter']['kboard_document_insert'];
+        if (is_a($hook, 'WP_Hook')) {
+            foreach ($hook->callbacks as $priority => $functions) {
+                foreach ($functions as $function) {
+                    if (is_array($function['function'])) {
+                        $func_name = $function['function'][1];
+                        $class_name = is_object($function['function'][0]) ? get_class($function['function'][0]) : $function['function'][0];
+                        error_log("Priority: $priority, Function: {$class_name}::{$func_name}");
+                    } elseif (is_string($function['function'])) {
+                        error_log("Priority: $priority, Function: {$function['function']}");
+                    } else {
+                        error_log("Priority: $priority, Function: Anonymous or Closure");
+                    }
+                }
+            }
+        } else {
+            error_log('No functions registered to kboard_document_insert.');
+        }
+    } else {
+        error_log('No functions registered to kboard_document_insert.');
+    }
+}
+
+

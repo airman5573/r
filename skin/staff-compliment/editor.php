@@ -107,54 +107,72 @@ jQuery(document).ready(function() {
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const toggleClass = (element, className, condition) => {
-    condition ? element.classList.add(className) : element.classList.remove(className);
+  const toggleVisibilityAndRequirement = (elementParent, isHidden, isRequired) => {
+    isHidden ? elementParent.classList.add('hidden') : elementParent.classList.remove('hidden');
+    isRequired ? elementParent.classList.add('required') : elementParent.classList.remove('required');
+  };
+
+  const clearInputValue = (inputElement) => {
+    if (inputElement.type === 'checkbox') {
+      inputElement.checked = false;
+    } else {
+      inputElement.value = '';
+    }
+  };
+
+  const setInitialState = (element, isHidden, isRequired) => {
+    clearInputValue(element);
+    const elementParent = element.closest('.kboard-attr-row');
+    toggleVisibilityAndRequirement(elementParent, isHidden, isRequired);
+  };
+
+  const processNoticeInputChange = (isNotice) => {
+    const branchInput = document.querySelector('input[name="kboard_option_branch"]');
+    const emailInput = document.getElementById('compliment_email');
+    const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox"]');
+    const passwordInput = document.querySelector('input[name="password"]');
+
+    setInitialState(branchInput, isNotice, !isNotice);
+    setInitialState(emailInput, isNotice, !isNotice);
+    setInitialState(agreementInput, isNotice, !isNotice);
+
+    const passwordInputParent = passwordInput.closest('.kboard-attr-row');
+    toggleVisibilityAndRequirement(passwordInputParent, isNotice, false);
+  };
+
+  const processSecretCheckboxChange = (isSecret) => {
+    const passwordInput = document.querySelector('input[name="password"]');
+    clearInputValue(passwordInput);
+    toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), !isSecret, false);
   };
 
   const noticeInput = document.querySelector('input[name="notice"]');
-
-  const branchInput = document.querySelector('input[name="kboard_option_branch"]');
-  const branchInputParent = branchInput.closest('.kboard-attr-row');
-
-  const emailInput = document.getElementById('compliment_email');
-  const emailInputParent = emailInput.closest('.kboard-attr-row');
-
-  const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox"]');
-  const agreementInputParent = agreementInput.closest('.kboard-attr-row');
-
-  const handleToggle = (isNotice) => {
-	branchInput.value = '';
-	toggleClass(branchInputParent, 'required', !isNotice);
-	toggleClass(branchInputParent, 'hidden', isNotice);
-
-	emailInput.value = '';
-	toggleClass(emailInputParent, 'required', !isNotice);
-	toggleClass(emailInputParent, 'hidden', isNotice);
-
-	agreementInput.checked = false;
-	toggleClass(agreementInputParent, 'required', !isNotice);
-	toggleClass(agreementInputParent, 'hidden', isNotice);
-  };
-
-  // if noticeINput is checked, then required,
   noticeInput.addEventListener('change', () => {
-	const isNotice = noticeInput.checked;
-	handleToggle(isNotice);
+    processNoticeInputChange(noticeInput.checked);
   });
 
-  // if noticeInput is checked, then required,
   if (noticeInput.checked) {
-	handleToggle(true);
+    processNoticeInputChange(true);
   }
 
   const secretInput = document.querySelector('input[name="secret"]');
-<?php
-	// if this user is admin, then uncheck secret checkbox
-	if (dalia_is_admin()) {
-		echo 'secretInput.checked = false;';
-		echo 'handleToggle(true);';
-		echo 'noticeInput.checked = true;';
-	}
-?>
+  secretInput.addEventListener('change', () => {
+    processSecretCheckboxChange(secretInput.checked);
+  });
+
+  if (secretInput.checked) {
+    processSecretCheckboxChange(true);
+  }
+
+  // Processing code exclusive to admin users
+  <?php
+    // if this user is admin, then uncheck secret checkbox
+    if (dalia_is_admin()) {
+      echo 'secretInput.checked = false;';
+      echo 'processNoticeInputChange(true);';
+      echo 'noticeInput.checked = true;';
+    }
+  ?>
 });
+
 </script>

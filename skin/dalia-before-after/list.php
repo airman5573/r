@@ -26,6 +26,7 @@
 	?>
 	<!-- 카테고리 끝 -->
 
+	<!-- 공지 글 시작 -->
 	<div class="kboard-list notice-list notice-list-02">
 		<ul>
 			<?php while($content = $list->hasNextNotice()):?>
@@ -48,15 +49,12 @@
 			<?php endwhile?>
 		</ul>
 	</div>
-	<!-- 공지 글 -->
+	<!-- 공지 글 끝 -->
 			
 	<!-- 슬라이드 시작 -->
 	<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
 		<div class="kboard-dalia-before-after-list owl-carousel owl-theme owl-loaded owl-drag">
-			<?php while($content = $list->hasNextNotice()):?>
-				<?php include 'list-slide.php'?>
-			<?php endwhile?>
-			<?php while($content = $list->hasNext()):?>
+			<?php while($content = $list->hasNext()): ?>
 				<?php include 'list-slide.php'?>
 			<?php endwhile?>
 		</div>
@@ -67,9 +65,6 @@
 	
 	<!-- 리스트 시작 -->
 	<ul class="kboard-dalia-before-after-list other">
-		<?php while($content = $list->hasNextNotice()):?>
-			<?php include 'list-board-list.php'?>
-		<?php endwhile?>
 		<?php while($content = $list->hasNext()):?>
 			<?php include 'list-board-list.php'?>
 		<?php endwhile?>
@@ -83,11 +78,11 @@
 		</ul>
 	</div>
 	<!-- 페이징 끝 -->
+
 	<!-- 검색폼 시작 -->
 	<div class="kboard-dalia-before-after-search kboard-search">
 		<form id="kboard-search-form-<?php echo $board->id?>" method="get" action="<?php echo esc_url($url->toString())?>">
 			<?php echo $url->set('pageid', '1')->set('target', '')->set('keyword', '')->set('mod', 'list')->toInput()?>
-			
 			<select name="target">
 				<option value=""><?php echo __('All', 'kboard')?></option>
 				<option value="title"<?php if(kboard_target() == 'title'):?> selected<?php endif?>><?php echo __('Title', 'kboard')?></option>
@@ -98,11 +93,13 @@
 		</form>
 	</div>
 	<!-- 검색폼 끝 -->
+
 	<?php if($board->isWriter()):?>
 		<div class="kboard-control-write kboard-control flex-end">
 			<a href="<?php echo esc_url($url->getContentEditor())?>" title="<?php echo __('New', 'kboard')?>" class="dalia-btn-01">글쓰기</a>
 		</div>
 	<?php endif?>
+
 	<?php if($board->contribution()):?>
 	<!-- <div class="kboard-dalia-before-after-poweredby">
 		<a href="https://www.cosmosfarm.com/products/kboard" onclick="window.open(this.href);return false;" title="<?php echo __('KBoard is the best community software available for WordPress', 'kboard')?>">Powered by KBoard</a>
