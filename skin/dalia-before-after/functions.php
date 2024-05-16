@@ -272,7 +272,7 @@ if(!function_exists('kboard_dalia_before_after_skin_field')){
 if (!function_exists('kboard_dalia_get_img_tag')) {
     function kboard_dalia_get_img_tag($content, $type, $position) {
         global $skin_path;
-        $default_empty_img_src = "{$skin_path}/images/default-img.png";
+        $default_empty_img_src = "{$skin_path}/images/logo-gray.svg";
         $beforeImageKey = "{$position}_before_image";
         $afterImageKey = "{$position}_after_image";
         
