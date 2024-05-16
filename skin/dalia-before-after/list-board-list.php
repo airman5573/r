@@ -6,7 +6,7 @@
 			<?php if ($content->getThumbnail()): ?>
 				<img src="<?php echo $content->getThumbnail()?>" alt="<?php echo esc_attr($content->title)?>">
 			<?php else: ?>
-				<img src="<?php echo "{$skin_path}/images/default-img.png" ?>"; alt="default image" />
+				<img src="<?php echo "{$skin_path}/images/logo-gray.svg" ?>"; alt="default image" />
 			<?php endif ?>
 			<!-- 글 등록시 썸네일로 선택한 이미지로 노출 -->
 
