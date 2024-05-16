@@ -18,10 +18,12 @@ else{
 		<tbody>
 			<?php while($content = $list->hasNext()):?>
 			<tr>
-				<td class="kboard-latest-status">
-					<?php if($content->category2):?>
-						<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
-					<?php endif?>
+				<td class="kboard-list-status">
+						<?php
+						$answer_status_index = $content->category2 ? array_search($content->category2, $status_list) : '0';
+						$answer_status = $status_list[$answer_status_index];
+						?>
+					<span class="kboard-qna-status status-<?php echo $answer_status_index; ?>"><?php echo $answer_status; ?></span>
 				</td>
 				<td class="kboard-latest-title">
 					<a href="<?php echo $url->set('uid', $content->uid)->set('mod', 'document')->toStringWithPath($board_url)?>">

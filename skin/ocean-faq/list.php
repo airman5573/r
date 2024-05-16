@@ -15,7 +15,7 @@
     	?>
     	<!-- 카테고리 끝 -->
 	<div class="kboard-header"> <?php
-		dalia_print_kbaord_current_category_article_count($board); ?>
+		kboard_category1() ? dalia_print_kboard_current_category_article_count($board) : dalia_print_kboard_count_of_all_article($board); ?>
 		<div class="kboard-sort">
 			<form id="kboard-sort-form-<?php echo $board->id?>" method="get" action="<?php echo $url->toString()?>">
 				<?php echo $url->set('pageid', '1')->set('category1', '')->set('category2', '')->set('target', '')->set('keyword', '')->set('mod', 'list')->set('kboard_list_sort_remember', $board->id)->toInput()?>

@@ -1,5 +1,3 @@
-<?php $all_category_count = dalia_kboard_get_all_category1_count($board); ?>
-
 <div class="kboard-category category-mobile">
     <form id="kboard-category-form-<?php echo $board->id?>" method="get" action="<?php echo $url->toString()?>">
         <?php echo $url->set('pageid', '1')->set('category1', '')->set('category2', '')->set('target', '')->set('keyword', '')->set('mod', 'list')->toInput()?>
@@ -30,11 +28,7 @@
             <li <?php if (!kboard_category1()): ?> class="kboard-category-selected" <?php endif ?>>
                 <a href="<?php echo $url->set('category1', '')->set('pageid', '1')->set('target', '')->set('keyword', '')->set('mod', 'list')->tostring()?>">
 					<?php echo __('All', 'kboard')?>
-					<?php
-						if ($all_category_count) { ?>
-							<span class="post-amount">(<?php echo $all_category_count; ?>)</span> <?php
-						}
-					?>
+					<span class="post-amount">(<?php echo dalia_get_count_of_all_article($board); ?>)</span>
 				</a>
             </li>
             <?php while ($board->hasNextCategory()): ?>

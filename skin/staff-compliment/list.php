@@ -27,7 +27,7 @@
 		</div>
 	</div>
 	<div class="kboard-list-top flex-item space-between">
-		<?php dalia_print_kbaord_current_category_article_count($board); ?>
+		<?php kboard_category1() ? dalia_print_kboard_current_category_article_count($board) : dalia_print_kboard_count_of_all_article($board); ?>
 		<?php dalia_print_branch_location_select_ui(); ?>
 	</div>
 	<!-- 게시판 정보 끝 -->

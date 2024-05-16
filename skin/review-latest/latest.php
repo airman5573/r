@@ -2,50 +2,52 @@
 	<?php while($content = $list->hasNext()):?>
 	<div class="revew-latest-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
 		<div class="revew-latest-thumbnail">
-			<?php if($content->option->youtube_id || $content->option->vimeo_id):?>
-				<div class="kboard-light-gallery">
-					<a href="<?php echo esc_url(revew_latest_url_with_uid($content->uid))?>" class="target-video">
-						<?php if($content->getThumbnail(176, 132)):?>
-							<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->getThumbnail(176, 132))?>)"></div>
-						<?php elseif($content->option->youtube_id):?>
-							<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->option->youtube_thumbnail_url)?>)"></div>
-						<?php elseif($content->option->vimeo_id):?>
-							<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->option->vimeo_thumbnail_url)?>)"></div>
+			<div class="item-padding">
+				<?php if($content->option->youtube_id || $content->option->vimeo_id):?>
+					<div class="kboard-light-gallery">
+						<a href="<?php echo esc_url(revew_latest_url_with_uid($content->uid))?>" class="target-video">
+							<?php if($content->getThumbnail(700, 700)):?>
+								<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->getThumbnail(700, 700))?>)"></div>
+							<?php elseif($content->option->youtube_id):?>
+								<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->option->youtube_thumbnail_url)?>)"></div>
+							<?php elseif($content->option->vimeo_id):?>
+								<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->option->vimeo_thumbnail_url)?>)"></div>
+							<?php endif?>
+						</a>
+					</div>
+					<div class="revew-latest-foreground"></div>
+					<div class="revew-latest-foreground-search"></div>
+				<?php elseif(count((array)$content->getAttachmentList()) > 0): $count = 0?>
+					<?php foreach($content->getAttachmentList() as $key=>$attach): $extension = strtolower(pathinfo($attach[0], PATHINFO_EXTENSION));?>
+						<?php if(in_array($extension, array('mp4')) && $count == 0): $count++?>
+							<div style="display:none;" id="video-<?php echo $content->uid?>-<?php echo $key?>">
+								<video class="lg-video-object lg-html5" controls preload="none">
+									<source src="<?php echo site_url($attach[0])?>" type="video/mp4">
+									Your browser does not support HTML5 video.
+								</video>
+							</div>
+							
+							<div class="kboard-light-gallery">
+								<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->getThumbnail(700, 700))?>)" data-poster="<?php echo esc_url($content->getThumbnail(700, 700))?>" data-html="#video-<?php echo $content->uid?>-<?php echo $key?>" ></div>
+							</div>
+							<div class="revew-latest-foreground"></div>
+							<div class="revew-latest-foreground-search"></div>
 						<?php endif?>
-					</a>
-				</div>
-				<div class="revew-latest-foreground"></div>
-				<div class="revew-latest-foreground-search"></div>
-			<?php elseif(count((array)$content->getAttachmentList()) > 0): $count = 0?>
-				<?php foreach($content->getAttachmentList() as $key=>$attach): $extension = strtolower(pathinfo($attach[0], PATHINFO_EXTENSION));?>
-					<?php if(in_array($extension, array('mp4')) && $count == 0): $count++?>
-						<div style="display:none;" id="video-<?php echo $content->uid?>-<?php echo $key?>">
-							<video class="lg-video-object lg-html5" controls preload="none">
-								<source src="<?php echo site_url($attach[0])?>" type="video/mp4">
-								Your browser does not support HTML5 video.
-							</video>
-						</div>
-						
-						<div class="kboard-light-gallery">
-							<div class="revew-latest-container latest target-video" style="background-image:url(<?php echo esc_url($content->getThumbnail(176, 132))?>)" data-poster="<?php echo esc_url($content->getThumbnail(176, 132))?>" data-html="#video-<?php echo $content->uid?>-<?php echo $key?>" ></div>
-						</div>
-						<div class="revew-latest-foreground"></div>
-						<div class="revew-latest-foreground-search"></div>
-					<?php endif?>
-				<?php endforeach?>
-			<?php else:?>
+					<?php endforeach?>
+				<?php else:?>
+				
+						<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
+							<?php if($content->getThumbnail(700, 700)):?>
+								<div class="revew-latest-container latest latest" style="background-image:url(<?php echo esc_url($content->getThumbnail(700, 700))?>)"></div>
+							<?php else:?>
+								<div class="revew-latest-container latest no-image"></div>
+							<?php endif?>
+							<div class="revew-latest-foreground"></div>
+							<div class="revew-latest-foreground-search"></div>
+						</a>
 			
-					<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
-						<?php if($content->getThumbnail(176, 132)):?>
-							<div class="revew-latest-container latest latest" style="background-image:url(<?php echo esc_url($content->getThumbnail(176, 132))?>)"></div>
-						<?php else:?>
-							<div class="revew-latest-container latest no-image"></div>
-						<?php endif?>
-						<div class="revew-latest-foreground"></div>
-						<div class="revew-latest-foreground-search"></div>
-					</a>
-		
-			<?php endif?>
+				<?php endif?>
+			</div>
 		</div>
 		<div class="thumbnail-text-wrapper">
 			<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>" title="<?php echo esc_attr($content->title)?>">
@@ -59,6 +61,7 @@
 				</div>
 			</a>
 		</div>
+		
 	</div>
 	<?php endwhile?>
 </div>
