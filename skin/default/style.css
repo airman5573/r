@@ -647,7 +647,9 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     padding-bottom: 7px;
     line-height: 1.2;
 }
-
+.document-header-top .notice-tag {
+    margin-right: 4px;
+}
 .document-header-middle .detail-value {
     margin: 0;
     padding: 0px 0 14px;
