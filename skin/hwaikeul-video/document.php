@@ -94,6 +94,7 @@
 			<div class="kboard-content" itemprop="description">
 				<div class="content-view">
 					<?php echo $content->getDocumentOptionsHTML()?>
+					<?php echo $content->option->{'html_field'}?>
 					<?php echo $content->content?>
 				</div>
 			</div>
