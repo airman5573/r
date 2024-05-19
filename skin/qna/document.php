@@ -1,4 +1,9 @@
-<div id="kboard-document" class="kboard-document--qna">
+<?php
+$isNoticeDocument = $content->notice;
+$additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
+?>
+
+<div id="kboard-document" class="<?php echo $additional_class; ?>">
     <div id="kboard-qna-document">
         <div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
             <meta itemprop="name" content="<?php echo kboard_htmlclear(strip_tags($content->title))?>">

@@ -119,27 +119,11 @@ form {
     text-align: right;
 }
 
-/* .kboard-list-header .kboard-sort select {
-    display: inline-block;
-    margin: 0;
-    padding: 0;
-    width: auto;
-    min-width: 0;
-    max-width: none;
-    height: 26px;
-    min-height: 0;
-    line-height: 26px;
-    border-radius: 0;
-    border: 1px solid #e1e1e1;
-    background: white;
-    vertical-align: middle;
-    box-shadow: none;
-    box-sizing: content-box;
-    text-indent: 0;
-    -webkit-appearance: menulist;
-    -moz-appearance: menulist;
-    appearance: menulist;
-} */
+.kboard-attr-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 body[data-fancy-form-rcs="1"] .kboard-list-header .select2-container {
     width: 100px!important;
 }
@@ -697,6 +681,9 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     justify-content: flex-start;
 	margin-right: 30px;
 }
+.kboard-notice-document .document-header-bottom {
+    display: none;
+}
 .kboard-document-wrap .kboard-detail .detail-attr .detail-value a {
     text-decoration: none;
     border: 0;
@@ -1180,10 +1167,10 @@ body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 ul > li {
     background: #f4f4f4;
 }
 body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 ul > li.kboard-list-notice {
-   margin-bottom: 8px;
+  border-bottom: #888;
 }
 body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 ul > li.kboard-list-notice:last-child {
-    margin-bottom: 0;
+    border-bottom: 0;
 }
 body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 ul > li.kboard-list-notice a {
     display: flex;
@@ -1269,8 +1256,8 @@ body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 .kboard-li
 }
 .kboard-hwaikeul-video-slider-list .kboard-list .kboard-list-item {
 	float: left;
-	margin-right: 29px;
-  margin-top: 30px;
+	margin-right: 30.4px;
+    margin-top: 30px;
     padding: 0;
     width: calc(33% - 16px);
     border: 0;
@@ -1294,6 +1281,10 @@ body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 ul > li.kb
     align-items: center;
     justify-content: space-between;
     padding: 16px;
+    border-bottom: 1px solid #ddd;
+}
+body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 ul > li.kboard-list-notice:last-child a {
+    border-bottom: 0;
 }
 body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 .kboard-list-uid {
     margin-right: 16px;

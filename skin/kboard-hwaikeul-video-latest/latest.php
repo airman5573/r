@@ -8,7 +8,7 @@
 						<div class="kboard-hwaikeul-video-slider-thumbnail">
 							<?php if($content->option->youtube_id || $content->option->vimeo_id):?>
 								<div class="kboard-light-gallery">
-									<!-- <a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>" class="target-video"> -->
+								
 										<?php if($content->getThumbnail(600, 338)):?>
 											<div class="kboard-hwaikeul-video-slider-container wide" style="background-image:url(<?php echo esc_url($content->getThumbnail(600, 338))?>)"></div>
 										<?php elseif($content->option->youtube_id):?>
@@ -16,7 +16,7 @@
 										<?php elseif($content->option->vimeo_id):?>
 											<div class="kboard-hwaikeul-video-slider-container wide" style="background-image:url(<?php echo esc_url($content->option->vimeo_thumbnail_url)?>)"></div>
 										<?php endif?>
-									<!-- </a> -->
+								
 								</div>
 								<!-- <div class="kboard-hwaikeul-video-slider-foreground"></div>
 								<div class="kboard-hwaikeul-video-slider-foreground-search"></div> -->

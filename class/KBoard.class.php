@@ -846,8 +846,15 @@ class KBoard {
 			$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE " . implode(' AND ', $where);
 			if (isset($_GET['branch_term_id'])) {
 				$branch_term_id = esc_sql($_GET['branch_term_id']);
-				$where[] = "(`option_branch`.`option_key`='branch' AND `option_branch`.`option_value` = '" . $branch_term_id . "')";
-				$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` INNER JOIN `wp_kboard_board_option` AS `option_branch` ON `wp_kboard_board_content`.`uid`=`option_branch`.`content_uid` WHERE " . implode(' AND ', $where);
+				$where[] = "(`board_option`.`option_key`='branch' AND `board_option`.`option_value` = '" . $branch_term_id . "')";
+				$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` INNER JOIN `wp_kboard_board_option` AS `board_option` ON `wp_kboard_board_content`.`uid`=`option_branch`.`content_uid` WHERE " . implode(' AND ', $where);
+			}
+
+			// shoplic customization - 2024-05-19
+			if (isset($_GET['phone_number_last_four'])) {
+				$phone_number_last_four = esc_sql($_GET['phone_number_last_four']);
+				$where[] = "(`board_option`.`option_key`='tel' AND `board_option`.`option_value` = '" . $phone_number_last_four . "')";
+				$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` INNER JOIN `wp_kboard_board_option` AS `board_option` ON `wp_kboard_board_content`.`uid`=`option_phone_number_last_four`.`content_uid` WHERE " . implode(' AND ', $where);
 			}
 			
 			$count = $wpdb->get_var($sql);
