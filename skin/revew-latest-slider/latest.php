@@ -1,7 +1,7 @@
 <div class="slider-wrap">
 	<div class="revew-latest-slider-list kboard-hwaikeul-video-slider-list kboard-swiper">
 		<ul class="swiper-wrapper kboard-list<?php if(revew_latest_list($board)):?> <?php echo esc_attr(revew_latest_list($board))?><?php endif?>">
-		<?php while($content = $list->hasNext()):?>
+		<?php while($content = $list->hasNext()): if ($content->notice){ continue; }?>
 			<li class="swiper-slide kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
 				<div class="item-padding">
 					<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
