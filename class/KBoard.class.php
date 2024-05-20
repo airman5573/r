@@ -818,22 +818,25 @@ class KBoard {
 		global $wpdb;
 		if($this->id && $category){
 			$where = array();
-			$where[] = "`board_id`='{$this->id}'";
+			$joins = array();  // JOIN 절을 추가할지 여부를 결정하는 배열
+			$option_conditions = array();
+
+			$where[] = "`kboard_board_content`.`board_id`='{$this->id}'";
 			
 			if(is_array($category)){
 				if(isset($category['category1']) && $category['category1']){
 					$category1 = esc_sql($category['category1']);
-					$where[] = "`category1`='{$category1}'";
+					$where[] = "`kboard_board_content`.`category1`='{$category1}'";
 				}
 				
 				if(isset($category['category2']) && $category['category2']){
 					$category2 = esc_sql($category['category2']);
-					$where[] = "`category2`='{$category2}'";
+					$where[] = "`kboard_board_content`.`category2`='{$category2}'";
 				}
 			}
 			else{
 				$category = esc_sql($category);
-				$where[] = "(`category1`='{$category}' OR `category2`='{$category}')";
+				$where[] = "(`kboard_board_content`.`category1`='{$category}' OR `kboard_board_content`.`category2`='{$category}')";
 			}
 			
 			// 휴지통에 없는 게시글만 불러온다.
@@ -843,19 +846,29 @@ class KBoard {
 			}
 
 			// shoplic customization - 2024-05-13
-			$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE " . implode(' AND ', $where);
 			if (isset($_GET['branch_term_id'])) {
 				$branch_term_id = esc_sql($_GET['branch_term_id']);
-				$where[] = "(`board_option`.`option_key`='branch' AND `board_option`.`option_value` = '" . $branch_term_id . "')";
-				$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` INNER JOIN `wp_kboard_board_option` AS `board_option` ON `wp_kboard_board_content`.`uid`=`option_branch`.`content_uid` WHERE " . implode(' AND ', $where);
+				$option_conditions[] = "(`board_option`.`option_key`='branch' AND `board_option`.`option_value` = '" . $branch_term_id . "')";
 			}
 
 			// shoplic customization - 2024-05-19
-			if (isset($_GET['phone_number_last_four'])) {
-				$phone_number_last_four = esc_sql($_GET['phone_number_last_four']);
-				$where[] = "(`board_option`.`option_key`='tel' AND `board_option`.`option_value` = '" . $phone_number_last_four . "')";
-				$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` INNER JOIN `wp_kboard_board_option` AS `board_option` ON `wp_kboard_board_content`.`uid`=`option_phone_number_last_four`.`content_uid` WHERE " . implode(' AND ', $where);
+			if (isset($_GET['target']) && $_GET['target'] === 'tel_last_four') {
+				$tel_last_four = esc_sql($_GET['tel_last_four']);
+				$option_conditions[] = "(`board_option`.`option_key`='tel_last_four' AND `board_option`.`option_value` = '" . $tel_last_four . "')";
 			}
+
+			$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` AS `kboard_board_content`";
+			
+			if (!empty($option_conditions)) {
+				$joins[] = "INNER JOIN `{$wpdb->prefix}kboard_board_option` AS `board_option` ON `kboard_board_content`.`uid` = `board_option`.`content_uid`";
+				$where[] = '(' . implode(' OR ', $option_conditions) . ')';
+			}
+			
+			if (!empty($joins)) {
+				$sql .= ' ' . implode(' ', $joins);
+			}
+			
+			$sql .= " WHERE " . implode(' AND ', $where);
 			
 			$count = $wpdb->get_var($sql);
 			$wpdb->flush();
@@ -864,6 +877,8 @@ class KBoard {
 		}
 		return 0;
 	}
+
+
 	
 	/**
 	 * 사용자가 작성한 개시글 숫자를 반환한다.

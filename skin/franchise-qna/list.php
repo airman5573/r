@@ -170,12 +170,12 @@
 	<div class="kboard-search">
 		<form id="kboard-search-form-<?php echo $board->id?>" method="get" action="<?php echo $url->toString()?>">
 			<?php echo $url->set('pageid', '1')->set('target', '')->set('keyword', '')->set('mod', 'list')->toInput()?>
-			
 			<select name="target">
 				<option value=""><?php echo __('All', 'kboard')?></option>
 				<option value="title"<?php if(kboard_target() == 'title'):?> selected="selected"<?php endif?>><?php echo __('Title', 'kboard')?></option>
 				<option value="content"<?php if(kboard_target() == 'content'):?> selected="selected"<?php endif?>><?php echo __('Content', 'kboard')?></option>
 				<option value="member_display"<?php if(kboard_target() == 'member_display'):?> selected="selected"<?php endif?>><?php echo __('Author', 'kboard')?></option>
+				<option value="kboard_option_tel_last_four"<?php if(kboard_target() == 'kboard_option_tel_last_four'):?> selected="selected"<?php endif?>><?php echo '전화번호 뒷 4자리'; ?></option>
 			</select>
 			<input type="text" name="keyword" value="<?php echo kboard_keyword()?>">
 			<button type="submit" class="kboard-qna-button-search dalia-btn-01" title="<?php echo __('Search', 'kboard')?>">검색</button>
@@ -197,3 +197,17 @@
 	</div> -->
 	<?php endif?>
 </div>
+
+<script>
+jQuery(($) => {
+	$('select[name="target"]').on('select2:select', function (e) {
+		console.log('select2:select', e);
+		const data = e.params.data;
+		const { id } = data;
+
+		const compareInputs = document.querySelectorAll('input[name="compare"]');
+		const compareInput = compareInputs[1];
+		compareInput.value = id === 'kboard_option_tel_last_four' ? '=' : 'LIKE';
+	});
+});
+</script>

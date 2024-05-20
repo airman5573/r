@@ -103,5 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ?>
 });
+</script>
 
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const telInput = document.querySelector('input[name="kboard_option_tel"]');
+    const lastFourTelInput = document.querySelector('input[name="kboard_option_tel_last_four"]');
+    if (!telInput || !lastFourTelInput) {
+      console.warn('Tel input or last four tel input not found');
+      return;
+    }
+    
+    // sync telInput to lastFourTelInput. Extract only last four digits and insert it into lastFourTelInput. Always sync.
+    telInput.addEventListener('input', () => {
+      const telValue = telInput.value;
+      const lastFourDigits = telValue.slice(-4);
+      lastFourTelInput.value = lastFourDigits;
+    });
+  });
 </script>
