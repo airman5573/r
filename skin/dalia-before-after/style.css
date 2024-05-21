@@ -271,10 +271,12 @@
     height: auto !important;
 	position: relative;
 	overflow: hidden;
+	
 }
 #kboard-dalia-before-after-list .kboard-dalia-before-after-list.other .kboard-list-item .kboard-list-thumbnail img {
 	margin-bottom: 0;
 	height: auto;
+	border: 1px solid #eee; 
 }
 #kboard-dalia-before-after-list .kboard-dalia-before-after-list.other .kboard-list-item .kboard-list-thumbnail::after {
     content: "";

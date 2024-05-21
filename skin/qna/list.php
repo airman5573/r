@@ -166,19 +166,45 @@
 	<!-- 검색폼 시작 -->
 	<div class="kboard-search">
 		<form id="kboard-search-form-<?php echo $board->id?>" method="get" action="<?php echo $url->toString()?>">
+			
+			<!-- Preset search parameters to initial values -->
 			<?php echo $url->set('pageid', '1')->set('target', '')->set('keyword', '')->set('mod', 'list')->toInput()?>
 			
+			<!-- Search target dropdown -->
 			<select name="target">
 				<option value=""><?php echo __('All', 'kboard')?></option>
-				<option value="title"<?php if(kboard_target() == 'title'):?> selected="selected"<?php endif?>><?php echo __('Title', 'kboard')?></option>
-				<option value="content"<?php if(kboard_target() == 'content'):?> selected="selected"<?php endif?>><?php echo __('Content', 'kboard')?></option>
-				<option value="member_display"<?php if(kboard_target() == 'member_display'):?> selected="selected"<?php endif?>><?php echo __('Author', 'kboard')?></option>
+				<option value="title" <?php if (kboard_target() == 'title'): ?> selected="selected"<?php endif; ?>>
+					<?php echo __('Title', 'kboard')?>
+				</option>
+				<option value="content" <?php if (kboard_target() == 'content'): ?> selected="selected"<?php endif; ?>>
+					<?php echo __('Content', 'kboard')?>
+				</option>
+				<option value="member_display" <?php if (kboard_target() == 'member_display'): ?> selected="selected"<?php endif; ?>>
+					<?php echo __('Author', 'kboard')?>
+				</option>
+				<option value="kboard_option_tel_last_four" <?php if (kboard_target() == 'kboard_option_tel_last_four'): ?> selected="selected"<?php endif; ?>>
+					<?php echo '전화번호 뒷 4자리'; ?>
+				</option>
 			</select>
+			
+			<!-- Keyword input field -->
 			<input type="text" name="keyword" value="<?php echo kboard_keyword()?>">
-			<button type="submit" class="kboard-qna-button-search dalia-btn-01" title="<?php echo __('Search', 'kboard')?>">검색</button>
+			
+			<!-- Search button -->
+			<button type="submit" class="kboard-qna-button-search dalia-btn-01" title="<?php echo __('Search', 'kboard')?>">
+				<?php echo __('Search', 'kboard')?> 검색
+			</button>
+			
+			<!-- Reset form button -->
+			<div class="reset-form-btn-container">
+				<a style="width: 200px; display: block;" href="<?php echo home_url('/franchise/franchise-qna/?mod=list&pageid=1'); ?>">
+					초기화
+				</a>
+			</div>
 		</form>
 	</div>
 	<!-- 검색폼 끝 -->
+
 	
 	<?php if($board->isWriter()):?>
 	<div class="kboard-control flex-end">

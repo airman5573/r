@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const clearInputs = () => {
-    const inputsToClear = ['input[name="kboard_option_qna_email"]', 'input[name="kboard_option_qna_tel"]', 'input[name="kboard_option_branch"]', 'select[name="kboard_option_notification_method"]', 'select[name="category1"]'];
+    const inputsToClear = ['input[name="kboard_option_qna_email"]', 'input[name="kboard_option_tel"]', 'input[name="kboard_option_branch"]', 'select[name="kboard_option_notification_method"]', 'select[name="category1"]'];
 
     inputsToClear.forEach((selector) => {
       const input = document.querySelector(selector);
@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const processNoticeInputChange = (isNotice) => {
     const emailInput = document.querySelector('input[name="kboard_option_qna_email"]');
     const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox[]"]');
-    const telInput = document.querySelector('input[name="kboard_option_qna_tel"]');
+    const telInput = document.querySelector('input[name="kboard_option_tel"]');
     const branchInput = document.querySelector('input[name="kboard_option_branch"]');
     const notificationMethodSelect = document.querySelector('select[name="kboard_option_notification_method"]');
     const category1Select = document.querySelector('select[name="category1"]');
@@ -188,4 +188,23 @@ document.addEventListener('DOMContentLoaded', () => {
   ?>
 });
 
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const telInput = document.querySelector('input[name="kboard_option_tel"]');
+    const lastFourTelInput = document.querySelector('input[name="kboard_option_tel_last_four"]');
+    if (!telInput || !lastFourTelInput) {
+      console.warn('Tel input or last four tel input not found');
+      return;
+    }
+    
+    // sync telInput to lastFourTelInput. Extract only last four digits and insert it into lastFourTelInput. Always sync.
+    telInput.addEventListener('input', () => {
+      const telValue = telInput.value;
+      const lastFourDigits = telValue.slice(-4);
+      lastFourTelInput.value = lastFourDigits;
+    });
+  });
 </script>

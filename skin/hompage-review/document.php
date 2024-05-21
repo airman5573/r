@@ -1,10 +1,38 @@
-<div id="kboard-document">
+<?php
+$isNoticeDocument = $content->notice;
+$additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
+?>
+
+<div id="kboard-document" class="<?php echo $additional_class; ?>">
     <div id="kboard-hompage-review-document">
     	<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
 			<div class="document-header">
 				<div class="document-header-top flex-item">
-					<div class="detail-value"><?php echo date('Y-m-d H:i', strtotime($content->date))?></div>
-					<?php if($content->isNew()):?><span class="kboard-hwaikeul-video-slider-new-notify new-mark">N</span><?php endif?>
+				<?php
+					$info_value = array();
+					if (wp_validate_boolean( $content->notice )) {
+						$info_value[] = dalia_get_notice_tag();
+					}
+					if($content->category1){
+						$info_value[] = sprintf('<span class="kboard-info-value category-bullet kboard-category1">%s</span>', $content->category1);
+					}
+					
+					if($content->category2){
+						$info_value[] = sprintf('<span class="kboard-info-value kboard-category2">%s</span>', $content->category2);
+					}
+					if($content->option->tree_category_1){
+						for($i=1; $i<=$content->getTreeCategoryDepth(); $i++){
+							$info_value[] = sprintf('<span class="kboard-info-value kboard-tree-category-'.$i.'">%s</span>', $content->option->{'tree_category_'.$i});
+						}
+					}
+					$info_value[] = sprintf('<span class="kboard-info-value kboard-date">%s</span>', $content->getDate());
+					?>
+					<?php if($info_value):?>
+					<div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">
+						<?php echo implode($info_value);?>
+						<?php if($content->isNew()):?><span class="kboard-image-gallery-new-notify new-mark">N</span><?php endif?>
+					</div>
+					<?php endif?>
 				</div>
 				<div class="detail-attr detail-title document-header-middle">
 					<div class="kboard-title">

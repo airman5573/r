@@ -1,4 +1,9 @@
-<div id="kboard-document">
+<?php
+$isNoticeDocument = $content->notice;
+$additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
+?>
+
+<div id="kboard-document" class="<?php echo $additional_class; ?>">
 	<div id="kboard-franchise-qna-document">
 		<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
 			<meta itemprop="name" content="<?php echo kboard_htmlclear(strip_tags($content->title))?>">
@@ -42,15 +47,13 @@
 						<div class="detail-value"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></div>
 					</div>
 					<div class="detail-attr">
-						<div class="detail-name">이메일 :</div>
-						<div class="detail-value">
-							<?php echo $content->option->{'66262b502c90b'}?>
-						</div>
-					</div>
-					<div class="detail-attr">
-						<div class="detail-name">휴대폰번호 :</div>
-						<div class="detail-value"><?php echo $content->option->{'66262b612c90c'}?></div>
-					</div>
+                        <div class="detail-name">이메일 :</div>
+                        <div class="detail-value"><?php echo dalia_franchise_qna_kboard_get_email($content); ?></div>
+                    </div>
+                    <div class="detail-attr">
+                        <div class="detail-name">휴대폰번호 :</div>
+                        <div class="detail-value"><?php echo dalia_franchise_qna_kboard_get_tel($content); ?></div>
+                    </div>
 					
 					
 					<div class="detail-attr detail-view">

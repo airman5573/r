@@ -309,7 +309,13 @@ class KBContent {
 		$data['member_uid'] = isset($data['member_uid'])?intval($data['member_uid']):0;
 		$data['member_display'] = isset($data['member_display'])?sanitize_text_field($data['member_display']):'';
 		$data['title'] = isset($data['title'])?kboard_safeiframe(kboard_xssfilter($data['title'])):'';
-		$data['content'] = isset($data['content'])?kboard_safeiframe(kboard_xssfilter($data['content'])):'';
+
+
+		$data['content'] = isset($data['content']) ? kboard_safeiframe(kboard_xssfilter($data['content'])) : '';
+
+
+
+
 		$data['date'] = isset($data['date'])?sanitize_key($data['date']):date('YmdHis', current_time('timestamp'));
 		$data['update'] = isset($data['update'])?sanitize_key($data['update']):$data['date'];
 		$data['view'] = isset($data['view'])?intval($data['view']):0;

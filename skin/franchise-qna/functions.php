@@ -42,3 +42,11 @@ if(!function_exists('kboard_franchise_qna_get_template_field_html')){
 		return $html;
 	}
 }
+
+function dalia_franchise_qna_kboard_get_email(&$content) {
+	return $content->option->{'email'} ?: '';
+}
+
+function dalia_franchise_qna_kboard_get_tel(&$content) {
+	return $content->option->{'tel'} ?: '';
+}

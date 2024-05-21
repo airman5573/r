@@ -69,7 +69,7 @@ function dalia_qna_kboard_get_email(&$content) {
 }
 
 function dalia_qna_kboard_get_tel(&$content) {
-	return $content->option->{'qna_tel'} ?: '';
+	return $content->option->{'tel'} ?: '';
 }
 
 function dalia_qna_send_email_when_user_ask_question($content_uid, $board_id, $content, $board) {
