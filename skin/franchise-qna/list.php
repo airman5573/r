@@ -1,6 +1,4 @@
 <div id="kboard-qna-list">
-	
-	
 	<!-- 게시판 정보 시작 -->
 	<div class="kboard-list-header flex-item space-between">
 		<div class="kboard-total-count">
@@ -215,7 +213,6 @@
 	</div>
 	<!-- 검색폼 끝 -->
 
-	
 	<?php if($board->isWriter()):?>
 	<div class="kboard-control flex-end">
 		<?php if($board->isWriter()):?>

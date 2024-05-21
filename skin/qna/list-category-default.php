@@ -1,6 +1,3 @@
-<?php
-$all_category_count = dalia_kboard_get_all_category1_count($board);
-?>
 
 <div class="kboard-category">
     <?php if ($board->initCategory1()): ?>
@@ -13,7 +10,7 @@ $all_category_count = dalia_kboard_get_all_category1_count($board);
                                         ->set('mod', 'list')
                                         ->tostring(); ?>">
                     <?php echo __('All', 'kboard'); ?>
-                    <span class="post-amount">(<?php echo dalia_get_count_of_all_article($board); ?>)</span>
+                    <span class="post-amount">(<?php echo dalia_get_count_of_all_article_with_search($board); ?>)</span>
                 </a>
             </li>
             <?php while ($board->hasNextCategory()): ?>

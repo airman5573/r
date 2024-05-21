@@ -10,7 +10,7 @@
                     ->set('mod', 'list')
                     ->tostring() ?>">
                     <?php echo __('All', 'kboard') ?>
-					<span class="post-amount">(<?php echo dalia_get_count_of_all_article($board); ?>)</span>
+					<span class="post-amount">(<?php echo dalia_get_count_of_all_article_with_search($board); ?>)</span>
                 </a>
             </li>
             <?php while($board->hasNextCategory()): ?>

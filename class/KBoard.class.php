@@ -852,9 +852,19 @@ class KBoard {
 			}
 
 			// shoplic customization - 2024-05-19
-			if (isset($_GET['target']) && $_GET['target'] === 'tel_last_four') {
-				$tel_last_four = esc_sql($_GET['tel_last_four']);
-				$option_conditions[] = "(`board_option`.`option_key`='tel_last_four' AND `board_option`.`option_value` = '" . $tel_last_four . "')";
+			// 딱 전화번호 뒷 4자리만 검색
+			if (isset($_GET['target']) && $_GET['target'] === 'kboard_option_tel_last_four') {
+				if (isset($_GET['keyword']) && dali_is_four_digit_number($_GET['keyword'])) {
+					$keyword = esc_sql($_GET['keyword']);
+					$option_conditions[] = "(`board_option`.`option_key`='tel_last_four' AND `board_option`.`option_value` = '" . $keyword . "')";
+				}
+			}
+			// 전체 검색 대응
+			else if (isset($_GET['target']) && empty($_GET['target'])) {
+				if (isset($_GET['keyword']) && dali_is_four_digit_number($_GET['keyword'])) {
+					$keyword = esc_sql($_GET['keyword']);
+					$option_conditions[] = "(`board_option`.`option_key`='tel_last_four' AND `board_option`.`option_value` = '" . $keyword . "')";
+				}
 			}
 
 			$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` AS `kboard_board_content`";
@@ -877,8 +887,6 @@ class KBoard {
 		}
 		return 0;
 	}
-
-
 	
 	/**
 	 * 사용자가 작성한 개시글 숫자를 반환한다.

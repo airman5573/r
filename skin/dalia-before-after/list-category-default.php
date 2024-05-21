@@ -28,7 +28,7 @@
             <li <?php if (!kboard_category1()): ?> class="kboard-category-selected" <?php endif ?>>
                 <a href="<?php echo $url->set('category1', '')->set('pageid', '1')->set('target', '')->set('keyword', '')->set('mod', 'list')->tostring()?>">
 					<?php echo __('All', 'kboard')?>
-					<span class="post-amount">(<?php echo dalia_get_count_of_all_article($board); ?>)</span>
+					<span class="post-amount">(<?php echo dalia_get_count_of_all_article_with_search($board); ?>)</span>
 				</a>
             </li>
             <?php while ($board->hasNextCategory()): ?>
