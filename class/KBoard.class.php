@@ -814,78 +814,102 @@ class KBoard {
 	 * @param array|string $category
 	 * @return int
 	 */
-	public function getCategoryCount($category){
+	public function getCategoryCount($category) {
+		// shoplic - customization 2024-05-21
 		global $wpdb;
-		if($this->id && $category){
-			$where = array();
-			$joins = array();  // JOIN 절을 추가할지 여부를 결정하는 배열
-			$option_conditions = array();
-
-			$where[] = "`kboard_board_content`.`board_id`='{$this->id}'";
-			
-			if(is_array($category)){
-				if(isset($category['category1']) && $category['category1']){
-					$category1 = esc_sql($category['category1']);
-					$where[] = "`kboard_board_content`.`category1`='{$category1}'";
-				}
-				
-				if(isset($category['category2']) && $category['category2']){
-					$category2 = esc_sql($category['category2']);
-					$where[] = "`kboard_board_content`.`category2`='{$category2}'";
-				}
-			}
-			else{
-				$category = esc_sql($category);
-				$where[] = "(`kboard_board_content`.`category1`='{$category}' OR `kboard_board_content`.`category2`='{$category}')";
-			}
-			
-			// 휴지통에 없는 게시글만 불러온다.
-			$get_list_status_query = kboard_get_list_status_query($this->id);
-			if($get_list_status_query){
-				$where[] = $get_list_status_query;
-			}
-
-			// shoplic customization - 2024-05-13
-			if (isset($_GET['branch_term_id'])) {
-				$branch_term_id = esc_sql($_GET['branch_term_id']);
-				$option_conditions[] = "(`board_option`.`option_key`='branch' AND `board_option`.`option_value` = '" . $branch_term_id . "')";
-			}
-
-			// shoplic customization - 2024-05-19
-			// 딱 전화번호 뒷 4자리만 검색
-			if (isset($_GET['target']) && $_GET['target'] === 'kboard_option_tel_last_four') {
-				if (isset($_GET['keyword']) && dali_is_four_digit_number($_GET['keyword'])) {
-					$keyword = esc_sql($_GET['keyword']);
-					$option_conditions[] = "(`board_option`.`option_key`='tel_last_four' AND `board_option`.`option_value` = '" . $keyword . "')";
-				}
-			}
-			// 전체 검색 대응
-			else if (isset($_GET['target']) && empty($_GET['target'])) {
-				if (isset($_GET['keyword']) && dali_is_four_digit_number($_GET['keyword'])) {
-					$keyword = esc_sql($_GET['keyword']);
-					$option_conditions[] = "(`board_option`.`option_key`='tel_last_four' AND `board_option`.`option_value` = '" . $keyword . "')";
-				}
-			}
-
-			$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` AS `kboard_board_content`";
-			
-			if (!empty($option_conditions)) {
-				$joins[] = "INNER JOIN `{$wpdb->prefix}kboard_board_option` AS `board_option` ON `kboard_board_content`.`uid` = `board_option`.`content_uid`";
-				$where[] = '(' . implode(' OR ', $option_conditions) . ')';
-			}
-			
-			if (!empty($joins)) {
-				$sql .= ' ' . implode(' ', $joins);
-			}
-			
-			$sql .= " WHERE " . implode(' AND ', $where);
-			
-			$count = $wpdb->get_var($sql);
-			$wpdb->flush();
-			
-			return intval($count);
+		if (!$this->id || !$category) {
+			return 0;
 		}
-		return 0;
+	
+		$where = [];
+		$joins = [];
+		$option_conditions = [];
+	
+		// 기본 쿼리 조건 설정
+		$where[] = "`kboard_board_content`.`board_id` = '{$this->id}'";
+	
+		// 카테고리 필터 처리
+		if (is_array($category)) {
+			if (!empty($category['category1'])) {
+				$category1 = esc_sql($category['category1']);
+				$where[] = "`kboard_board_content`.`category1` = '{$category1}'";
+			}
+	
+			if (!empty($category['category2'])) {
+				$category2 = esc_sql($category['category2']);
+				$where[] = "`kboard_board_content`.`category2` = '{$category2}'";
+			}
+		} else {
+			$category = esc_sql($category);
+			$where[] = "(`kboard_board_content`.`category1` = '{$category}' OR `kboard_board_content`.`category2` = '{$category}')";
+		}
+	
+		// 휴지통에 없는 게시글 필터
+		$get_list_status_query = kboard_get_list_status_query($this->id);
+		if ($get_list_status_query) {
+			$where[] = $get_list_status_query;
+		}
+	
+		// 검색 대상 및 키워드 처리
+		if (isset($_GET['target'])) {
+			$target = $_GET['target'];
+			$keyword = isset($_GET['keyword']) ? esc_sql($_GET['keyword']) : '';
+	
+			if (!empty($keyword)) {
+				// 전체 검색일 경우
+				if ($target === '') {
+					if (dali_is_four_digit_number($keyword)) {
+						$joins[] = "INNER JOIN `{$wpdb->prefix}kboard_board_option` AS `tel_last_four_table` ON `kboard_board_content`.`uid` = `tel_last_four_table`.`content_uid`";
+						$where[] = "(`tel_last_four_table`.`option_key` = 'tel_last_four' AND `tel_last_four_table`.`option_value` = '$keyword')";
+					} else {
+						$where[] = "(`kboard_board_content`.`title` LIKE '%$keyword%' OR `kboard_board_content`.`content` LIKE '%$keyword%' OR `kboard_board_content`.`member_display` LIKE '%$keyword%')";
+					}
+				}
+				// 내용 검색
+				else if ($target === 'content') {
+					$where[] = "`kboard_board_content`.`content` LIKE '%$keyword%'";
+				}
+				// 제목 검색
+				else if ($target === 'title') {
+					$where[] = "`kboard_board_content`.`title` LIKE '%$keyword%'";
+				}
+				// 작성자 검색
+				else if ($target === 'author') {
+					$where[] = "`kboard_board_content`.`member_display` LIKE '%$keyword%'";
+				}
+				// 휴대폰 번호 검색
+				else if ($target === 'kboard_option_tel_last_four') {
+					if (dali_is_four_digit_number($keyword)) {
+						$joins[] = "INNER JOIN `{$wpdb->prefix}kboard_board_option` AS `tel_last_four_table` ON `kboard_board_content`.`uid` = `tel_last_four_table`.`content_uid`";
+						$where[] = "(`tel_last_four_table`.`option_key` = 'tel_last_four' AND `tel_last_four_table`.`option_value` = '$keyword')";
+					}
+				}
+			}
+		}
+	
+		// 지점 ID 필터 처리
+		if (!empty($_GET['branch_term_id'])) {
+			$branch_term_id = esc_sql($_GET['branch_term_id']);
+			$joins[] = "INNER JOIN `{$wpdb->prefix}kboard_board_option` AS `branch_option_table` ON `kboard_board_content`.`uid` = `branch_option_table`.`content_uid`";
+			$where[] = "(`branch_option_table`.`option_key` = 'branch' AND `branch_option_table`.`option_value` = '$branch_term_id')";
+		}
+	
+		// SQL 쿼리 구성
+		$sql = "SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` AS `kboard_board_content`";
+	
+		if (!empty($joins)) {
+			$sql .= ' ' . implode(' ', $joins);
+		}
+	
+		if (!empty($where)) {
+			$sql .= " WHERE " . implode(' AND ', $where);
+		}
+	
+		// 쿼리 실행 및 결과 반환
+		$count = $wpdb->get_var($sql);
+		$wpdb->flush();
+	
+		return intval($count);
 	}
 	
 	/**
