@@ -59,10 +59,6 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
 					</div>
 				</div>			
 			</div>
-			
-    		
-			
-			
     		
     		<div class="kboard-document-thumbnail">
 				<?php if($content->option->youtube_id):?>

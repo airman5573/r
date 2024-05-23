@@ -197,7 +197,7 @@
 			
 			<!-- Reset form button -->
 			<div class="reset-form-btn-container">
-				<a style="width: 200px; display: block;" href="<?php echo home_url('/franchise/franchise-qna/?mod=list&pageid=1'); ?>">
+				<a style="width: 200px; display: block;" href="<?php echo home_url('/community/customer-service/qna/?mod=list&pageid=1'); ?>">
 					초기화
 				</a>
 			</div>

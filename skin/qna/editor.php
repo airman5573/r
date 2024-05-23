@@ -106,7 +106,6 @@ jQuery(document).ready(function() {
 </script>
 
 <script>
-
 document.addEventListener('DOMContentLoaded', () => {
   const toggleVisibilityAndRequirement = (elementParent, isHidden, isRequired) => {
     isHidden ? elementParent.classList.add('hidden') : elementParent.classList.remove('hidden');
@@ -187,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   ?>
 });
-
 </script>
 
 
