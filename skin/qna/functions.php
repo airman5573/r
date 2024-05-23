@@ -85,25 +85,68 @@ function dalia_qna_send_email_when_user_ask_question($content_uid, $board_id, $c
 
 	$branch = dalia_get_branch_post_by_term_id($branch_term_id);
 	$branch_post_id = $branch->ID;
-	$branch_email = dalia_get_branch_email($branch_post_id);
+	$branch_emails = dalia_get_branch_emails($branch_post_id);
 
-	if (!$branch_email) {
+	if (empty($branch_emails)) {
 		error_log('Branch email not found');
 		return;
 	}
 
 	$title = $content->title;
+    $url = new KBUrl();
 
-	$url = new KBUrl();
-	$mail = kboard_mail();
-	$mail->to = $branch_email;
-	$mail->title = apply_filters('kboard_latest_alerts_subject', '['.__('KBoard new document', 'kboard').'] '.$board->board_name.' - '. $title , $content);
-	$mail->content = apply_filters('kboard_latest_alerts_message', $content->getDocumentOptionsHTML() . $content->content, $content);
-	$mail->url = $url->getDocumentRedirect($content->uid);
-	$mail->url_name = __('Go to Homepage', 'kboard');
-	$mail->send();
+    // Create the mail instance and set common properties
+    $mail = kboard_mail();
+    $mail->to = $branch_emails;
+	// $mail->to = "rpf5573@gmail.com";
+    $mail->title = '[' . __('KBoard new document', 'kboard') . '] ' . $board->board_name . ' - ' . $title;
+    $mail->content = $content->getDocumentOptionsHTML() . $content->content;
+    $mail->url = $url->getDocumentRedirect($content->uid);
+    $mail->url_name = '게시물 보기';
+    $mail->send();
 }
-add_action( 'kboard_document_insert', 'dalia_qna_send_email_when_user_ask_question', 10, 4 );
+add_action( 'kboard_document_insert_9', 'dalia_qna_send_email_when_user_ask_question', 10, 4 );
+
+function dalia_qna_send_email_when_user_add_comment_to_the_question_article($comment_id, $content_uid, $board) {
+	if (dalia_is_admin()) {
+		return;
+	}
+
+	$content = new KBContent($board->board_id);
+	$content->initWithUID($content_uid);
+	
+	$branch_term_id = $content->option->{'branch'};
+	if (!$branch_term_id) {
+		error_log('Branch not found');
+		return;
+	}
+
+	$branch = dalia_get_branch_post_by_term_id($branch_term_id);
+	$branch_post_id = $branch->ID;
+	$branch_emails = dalia_get_branch_emails($branch_post_id);
+
+	if (empty($branch_emails)) {
+		error_log('Branch email not found');
+		return;
+	}
+
+	$title = $content->title;
+    $url = new KBUrl();
+
+	$comment = new KBComment();
+	$comment->initWithUID($comment_id);
+	$comment_content = $comment->getContent();
+
+    // Create the mail instance and set common properties
+    $mail = kboard_mail();
+    $mail->to = $branch_emails;
+    $mail->title = '[신규댓글] ' . $board->board_name . ' - ' . $title;
+    $mail->content = '[댓글내용] ' . "\n" . $comment_content;
+    $mail->url = $url->getDocumentRedirect($content->uid);
+    $mail->url_name = '게시물 보기';
+    $mail->send();
+}
+add_action( 'kboard_comments_insert_9', 'dalia_qna_send_email_when_user_add_comment_to_the_question_article', 10, 3 );
 
 // Function to log all functions registered to 'kboard_document_insert'
 function log_registered_functions_for_kboard_document_insert() {
