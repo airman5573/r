@@ -55,9 +55,7 @@ function kboard_before_after_plus_document_img_toggle(position){
 	}
 }
 
-
-// before-after related script
-jQuery(window).on('DOMContentLoaded', function() {
+jQuery(($) => {
     const beforeAfterPhotos = [...(document.querySelectorAll('.before-after-photo') ?? [])];
 
     beforeAfterPhotos.forEach(function(beforeAfterPhoto) {
@@ -96,7 +94,7 @@ jQuery(window).on('DOMContentLoaded', function() {
             scroller.style.left = transform - 25 + "px";
         }
 
-        scrollIt(150);
+        scrollIt(wrapper.offsetWidth/2);
 
         scroller.addEventListener('touchstart', function() {
             active = true;

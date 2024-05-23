@@ -159,7 +159,8 @@ wp_enqueue_script('kboard-dalia-before-after-list', "{$skin_path}/list.js", arra
 				scroller.style.left = transform-25+"px";
 			}
 
-			scrollIt(150);
+			// get width of '.before-after-photo' element
+			scrollIt(wrapper.offsetWidth/2);
 
 			scroller.addEventListener('touchstart',function(){
 				active = true;
