@@ -1,9 +1,7 @@
 <div id="kboard-qna-list">
 	<!-- 게시판 정보 시작 -->
 	<div class="kboard-list-header flex-item space-between">
-		<div class="kboard-total-count">
-			<?php echo __('전체', 'kboard')?> <span class="text-mint"><?php echo number_format($board->getListTotal())?></span>
-		</div>
+		<?php dalia_print_kboard_count_of_all_article($board); ?>
 		
 		<div class="kboard-sort">
 			<form id="kboard-sort-form-<?php echo $board->id?>" method="get" action="<?php echo esc_url($url->toString())?>">
