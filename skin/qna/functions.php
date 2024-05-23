@@ -3,7 +3,7 @@ if(!defined('ABSPATH')) exit;
 
 if(!function_exists('kboard_ask_status')){
 	function kboard_ask_status(){
-		$status = array('답변대기', '답변완료');
+		$status = array('답변대기', '답변완료', '재질문');
 		return $status;
 	}
 }
@@ -147,6 +147,21 @@ function dalia_qna_send_email_when_user_add_comment_to_the_question_article($com
     $mail->send();
 }
 add_action( 'kboard_comments_insert_9', 'dalia_qna_send_email_when_user_add_comment_to_the_question_article', 10, 3 );
+
+function dalia_qna_change_ask_status_to_reask_when_comment_inserted($comment_id, $content_uid, $board) {
+	if (dalia_is_admin()) {
+		return;
+	}
+
+	$content = new KBContent($board->board_id);
+	$content->initWithUID($content_uid);
+
+	$data = [
+		'category2' => '재질문'
+	];
+	$content->updateContent($data);
+}
+add_action( 'kboard_comments_insert_9', 'dalia_qna_change_ask_status_to_reask_when_comment_inserted', 10, 3 );
 
 // Function to log all functions registered to 'kboard_document_insert'
 function log_registered_functions_for_kboard_document_insert() {
