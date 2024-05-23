@@ -462,6 +462,7 @@
 	width: 100%;
 	border: 0;
 	border-bottom: 1px solid #f1f1f1;
+	border-top: 2px solid;
 }
 
 #kboard-qna-latest table tr {
@@ -469,26 +470,29 @@
 	border: 0;
 }
 #kboard-qna-latest table th {
-	padding: 5px 4px;
+	padding: 16px 12px;
 	height: auto;
 	border: 0;
 	text-align: center;
 }
 
 #kboard-qna-latest table td {
-	padding: 5px 4px;
+	padding: 16px 12px;
 	height: auto;
 	border: 0;
 	border-top: 1px solid #f1f1f1;
 }
 
 #kboard-qna-latest table .kboard-latest-status {
-	width: 80px;
+	width: 100px;
 	text-align: center;
 }
 
 #kboard-qna-latest table .kboard-qna-status {
-	min-width: 60px;
+	width: 66px;
+}
+#kboard-qna-latest table .kboard-list-user {
+	width: 100px;
 }
 #kboard-qna-latest table .kboard-latest-title a {
 	text-decoration: none;
@@ -512,7 +516,7 @@
 #kboard-qna-latest table .kboard-latest-title .kboard-comments-count {}
 
 #kboard-qna-latest table .kboard-latest-date {
-	width: 90px;
+	width: 100px;
 	text-align: center;
 }
 
