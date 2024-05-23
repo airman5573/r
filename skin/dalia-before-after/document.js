@@ -56,72 +56,53 @@ function kboard_before_after_plus_document_img_toggle(position){
 }
 
 jQuery(($) => {
-    const beforeAfterPhotos = [...(document.querySelectorAll('.before-after-photo') ?? [])];
+	const beforeAfterPhotos = $('.before-after-photo');
 
-    beforeAfterPhotos.forEach(function(beforeAfterPhoto) {
-        let active = false;
-        const wrapper = beforeAfterPhoto.querySelector('.wrapper');
-        if (!wrapper) return;
-        const scroller = wrapper.querySelector('.scroller');
-        const before = wrapper.querySelector('.before-img-container');
-        const after = wrapper.querySelector('.after-img-container');
-        if (!scroller) return;
+	beforeAfterPhotos.each(function() {
+		let active = false;
+		const wrapper = $(this).find('.wrapper');
+		if (!wrapper.length) return;
 
-        scroller.addEventListener('mousedown', function() {
-            active = true;
-            scroller.classList.add('scrolling');
-        });
+		const scroller = wrapper.find('.scroller');
+		const before = wrapper.find('.before-img-container');
+		const after = wrapper.find('.after-img-container');
+		if (!scroller.length) return;
 
-        document.body.addEventListener('mouseup', function() {
-            active = false;
-            scroller.classList.remove('scrolling');
-        });
-        document.body.addEventListener('mouseleave', function() {
-            active = false;
-            scroller.classList.remove('scrolling');
-        });
+		scroller.on('mousedown touchstart', function() {
+			active = true;
+			scroller.addClass('scrolling');
+		});
 
-        document.body.addEventListener('mousemove', function(e) {
-            if (!active) return;
-            let x = e.pageX;
-            x -= wrapper.getBoundingClientRect().left;
-            scrollIt(x);
-        });
+		$(document.body).on('mouseup touchend touchcancel', function() {
+			active = false;
+			scroller.removeClass('scrolling');
+		});
 
-        function scrollIt(x) {
-            let transform = Math.max(0, (Math.min(x, wrapper.offsetWidth)));
-            after.style.width = transform + "px";
-            scroller.style.left = transform - 25 + "px";
-        }
+		$(document.body).on('mouseleave mousemove touchmove', function(e) {
+			if (!active) return;
+			let x;
+			if (e.type === 'mousemove') {
+				x = e.pageX;
+			} else if (e.type.match(/touch/)) {
+				x = e.originalEvent.touches[0].pageX;
+			}
+			x -= wrapper.offset().left;
+			scrollIt(x);
+		});
 
-        scrollIt(wrapper.offsetWidth/2);
+		function scrollIt(x) {
+			let transform = Math.max(0, Math.min(x, wrapper.width()));
+			after.width(transform);
+			scroller.css('left', transform - 25 + 'px');
+		}
 
-        scroller.addEventListener('touchstart', function() {
-            active = true;
-            scroller.classList.add('scrolling');
-        });
-        document.body.addEventListener('touchend', function() {
-            active = false;
-            scroller.classList.remove('scrolling');
-        });
-        document.body.addEventListener('touchcancel', function() {
-            active = false;
-            scroller.classList.remove('scrolling');
-        });
+		// Set initial position
+		scrollIt(wrapper.width() / 2);
 
-        // Set width of content-image to width of .wrapper
-        const contentImages = [...(beforeAfterPhoto.querySelectorAll('.content-image') ?? [])];
-        contentImages.forEach(function(contentImage) {
-            contentImage.style.width = wrapper.offsetWidth + 'px';
-        });
-
-        // Add click event listener to all `.before-after-photo > .wrapper a` and when click, go to the href of the link
-        const links = [...(beforeAfterPhoto.querySelectorAll('.wrapper a') ?? [])];
-        links.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location ? window.location.assign(link.href) : window.location.replace(link.href);
-            });
-        });
-    });
+		// Set width of content-image to width of .wrapper
+		const contentImages = $(this).find('.content-image');
+		contentImages.each(function() {
+			$(this).width(wrapper.width());
+		});
+	});
 });

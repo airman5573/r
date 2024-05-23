@@ -149,3 +149,56 @@ function kboard_dalia_before_after_slide_img_toggle(position, uid){
 		jQuery('.kboard-dalia-before-after-list-slide .kboard-list-item.' + uid + ' .side-toggle').addClass('selected');
 	}
 }
+
+
+jQuery(($) => {
+	const beforeAfterPhotos = $('.before-after-photo');
+
+	beforeAfterPhotos.each(function() {
+		let active = false;
+		const wrapper = $(this).find('.wrapper');
+		if (!wrapper.length) return;
+
+		const scroller = wrapper.find('.scroller');
+		const before = wrapper.find('.before-img-container');
+		const after = wrapper.find('.after-img-container');
+		if (!scroller.length) return;
+
+		scroller.on('mousedown touchstart', function() {
+			active = true;
+			scroller.addClass('scrolling');
+		});
+
+		$(document.body).on('mouseup touchend touchcancel', function() {
+			active = false;
+			scroller.removeClass('scrolling');
+		});
+
+		$(document.body).on('mouseleave mousemove touchmove', function(e) {
+			if (!active) return;
+			let x;
+			if (e.type === 'mousemove') {
+				x = e.pageX;
+			} else if (e.type.match(/touch/)) {
+				x = e.originalEvent.touches[0].pageX;
+			}
+			x -= wrapper.offset().left;
+			scrollIt(x);
+		});
+
+		function scrollIt(x) {
+			let transform = Math.max(0, Math.min(x, wrapper.width()));
+			after.width(transform);
+			scroller.css('left', transform - 25 + 'px');
+		}
+
+		// Set initial position
+		scrollIt(wrapper.width() / 2);
+
+		// Set width of content-image to width of .wrapper
+		const contentImages = $(this).find('.content-image');
+		contentImages.each(function() {
+			$(this).width(wrapper.width());
+		});
+	});
+});
