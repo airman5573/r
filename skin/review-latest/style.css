@@ -8,6 +8,8 @@
 #revew-latest a {
 	cursor: pointer;
 	text-decoration: none;
+	position: relative;
+	z-index: 10;
 }
 
 #revew-latest .revew-latest-item {
@@ -30,7 +32,14 @@
 .revew-latest-thumbnail {
     position: relative;
 }
-.revew-latest-thumbnail::before {
+
+
+.revew-latest-thumbnail .item-padding {
+    overflow: hidden;
+    border-radius: 8px;
+	height: 100%;
+}
+.revew-latest-thumbnail .item-padding::before {
     content: "";
     width: 100%;
     height: 100%;
@@ -40,12 +49,6 @@
 	top: -1px;
     left: -1px;
     border-radius: 8px;
-}
-
-.revew-latest-thumbnail .item-padding {
-    overflow: hidden;
-    border-radius: 8px;
-	height: 100%;
 }
 .revew-latest-container.no-image {
 	background: url(/wp-content/themes/salient-child/assets/images/logo-gray.svg) no-repeat;
@@ -95,7 +98,7 @@
 	padding-top: 0;
     height: 100%;
 }
-.revew-latest:hover .revew-latest-container {
+.revew-latest .revew-latest-item:hover .revew-latest-container {
     transform: scale(1.09);
 }
 #revew-latest .revew-latest-item .revew-latest-thumbnail .revew-latest-foreground {
@@ -158,10 +161,12 @@
     font-weight: 700;
 }
 
-#revew-latest:hover .revew-latest-title .text  {
+#revew-latest .revew-latest-item:hover .revew-latest-title .text  {
 	color: #888;
 }
-
+.review-grid-wrap .first-box #revew-latest .revew-latest-item:hover .revew-latest-title  .text  {
+	color: #fff;
+}
 #revew-latest .revew-latest-title img {
 	display: inline;
 	margin: 0;

@@ -963,6 +963,7 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     width: 100%;
     border: 0;
     border-bottom: 1px solid #e1e1e1;
+    border-top: 2px solid #000;
 }
 
 #kboard-default-latest table tr {
@@ -976,7 +977,9 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     border: 0;
     text-align: center;
 }
-
+#kboard-default-latest table th.kboard-latest-date {
+    width: 25%;
+}
 #kboard-default-latest table td {
     padding: 16px 0;
     height: auto;
@@ -987,10 +990,7 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
 
 #kboard-default-latest table td.kboard-latest-title {
     text-align: left;
-}
-
-#kboard-default-latest table .kboard-latest-title {
-    padding-left: 5px;
+    padding-left: 12px;
 }
 
 #kboard-default-latest table .kboard-latest-title a {

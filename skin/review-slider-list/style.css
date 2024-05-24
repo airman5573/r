@@ -1,0 +1,383 @@
+@charset "utf-8";
+/**
+ * @author https://www.cosmosfarm.com
+ */
+.review-slider-list.kboard-swiper {}
+
+.review-slider-list.kboard-swiper .swiper-pagination {
+    bottom: -34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.review-slider-list .kboard-list .kboard-list-item {
+    margin-top: 0;
+}
+.review-slider-list.kboard-swiper .swiper-pagination .swiper-pagination-bullet {
+    background: #000000;
+    width: 8px;
+    height: 8px;
+}
+
+.review-slider-list.kboard-swiper .swiper-pagination .swiper-pagination-bullet-active {
+    background: #6edbd5;
+    width: 8px;
+    height: 8px;
+}
+.kboard-swiper .swiper-button-next, .kboard-swiper .swiper-button-prev {
+    display: inline-block;
+    margin: 12px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    top: 50%;
+    transform: translateY(-96%);
+    right: -1px;
+}
+.kboard-swiper .swiper-button-prev {
+    right: unset;
+    left: -1px;
+}
+.kboard-swiper .swiper-button-next svg {
+    left: 18px;
+    top: 0;
+    position: relative;
+    width: 12px;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(.15,.75,.5,1);
+    transform: translateX(5px);
+}
+.kboard-swiper .swiper-button-next:hover svg {
+    transform: translateX(7px);
+}
+.kboard-swiper .swiper-button-next::before {
+    position: absolute;
+    display: block;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    transition: transform 0.45s cubic-bezier(.15,.75,.5,1), opacity 0.45s cubic-bezier(.15,.75,.5,1);
+}
+.kboard-swiper .swiper-button-next:hover::before {
+    transform: scale(1.15);
+}
+
+.kboard-swiper .swiper-button-next::after {
+    height: 2px;
+    width: 18px;
+    background-color: #000;
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 50%;
+    margin-top: -1px;
+    display: block;
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(.15,.75,.5,1);
+    transform: scaleX(0.9) translateX(8px);
+    
+}
+.kboard-swiper .swiper-button-next:hover::after {
+    transform: scaleX(1.1) translateX(8px);
+}
+.kboard-swiper .swiper-button-prev::before {
+    position: absolute;
+    display: block;
+    content: "";
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 100px;
+    transition: transform 0.45s cubic-bezier(.15,.75,.5,1), opacity 0.45s cubic-bezier(.15,.75,.5,1);
+}
+.kboard-swiper .swiper-button-prev:hover::before {
+    transform: scale(1.15);
+}
+.kboard-swiper .swiper-button-prev::after {
+    height: 2px;
+    width: 18px;
+    background-color: #000;
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    margin-top: -1px;
+    display: block;
+    transform-origin: right;
+    transform-origin: left;
+    transition: transform 0.45s cubic-bezier(.15,.75,.5,1);
+    transform: scaleX(0.9) translateX(0px);
+    
+}
+.kboard-swiper .swiper-button-prev:hover::after {
+    transform: scaleX(1.1) translateX(-1px);
+}
+.kboard-swiper .swiper-button-prev svg {
+    left: 14px;
+    top: 0;
+    position: relative;
+    width: 12px;
+    height: 100%;
+    transition: transform 0.45s cubic-bezier(.15,.75,.5,1);
+}
+.kboard-swiper .swiper-button-prev:hover svg  {
+    transform: translateX(-1px);
+}
+.review-slider-cut-strings {
+    width: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+}
+
+.kboard-sort-ui-menu .ui-menu-item,
+.kboard-search-ui-menu .ui-menu-item {
+}
+
+.review-slider-thumbnail {
+    position: relative;
+    text-align: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.review-slider-thumbnail img {
+    position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	max-width: 100%;
+	height: 100% !important;
+	object-fit: cover;
+	vertical-align: middle;
+	border-radius: 8px;
+	box-shadow: none;
+	cursor: pointer;
+	-webkit-transition: opacity .6s ease .12s;
+    transition: opacity .6s ease .12s;
+    opacity: 1;
+}
+
+.review-slider-thumbnail .target-image {
+    display: none;
+}
+
+.review-slider-thumbnail .target-image:first-child {
+    display: block;
+}
+
+.review-slider-thumbnail .review-slider-foreground {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(./images/foreground.png);
+    border-radius: 8px;
+}
+
+.review-slider-thumbnail .review-slider-foreground-search {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(./images/search-30.png) no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.review-slider-thumbnail:hover .review-slider-foreground,
+.review-slider-thumbnail:hover .review-slider-foreground-search {
+    display: block;
+}
+
+.review-slider-container {
+    transition: opacity .45s cubic-bezier(.15,.75,.5,1) 0s, transform .45s cubic-bezier(.15,.75,.5,1) 0s;
+	position: relative;
+	padding-bottom: 100%;
+	height: 0;
+	overflow: hidden;
+	border-radius: 8px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.review-slider-container.latest {
+    border-radius: 3px;
+}
+.kboard-list-item:hover .review-slider-container {
+	transform: scale(1.1);
+}
+.review-slider-container video,
+.review-slider-container iframe,
+.review-slider-container object,
+.review-slider-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.review-slider-container .wp-video,
+video.wp-video-shortcode,
+.mejs-container,
+.mejs-overlay.load {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.review-slider-container .mejs-container {
+    padding-top: 56.25%;
+    min-width: 0 !important;
+}
+
+.review-slider-container .wp-video,
+.review-slider-container video.wp-video-shortcode {
+    max-width: 100% !important;
+}
+
+.review-slider-container video.wp-video-shortcode {
+    position: relative;
+}
+
+.review-slider-container .mejs-mediaelement {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.review-slider-container .mejs-controls {
+    display: block;
+}
+
+.review-slider-container .mejs-button,
+.review-slider-container .mejs-time,
+.review-slider-container .mejs-time-rail {
+    float: left;
+}
+
+.review-slider-container .mejs-overlay-play {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: auto !important;
+    height: auto !important;
+}
+
+.review-slider-container .arve-wrapper,
+.review-slider-container .arve-embed-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+}
+
+.review-slider-list {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin: 0 0 30px 0;
+    width: 100%;
+}
+
+.review-slider-list .kboard-list {
+    float: left;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    list-style: none;
+    border: 0;
+}
+
+.review-slider-list .kboard-list.notice-list {
+    margin: -5px 0 10px 0 !important;
+    padding: 0 0 10px 0 !important;
+    border-bottom: 2px dashed #f6f6f6;
+}
+
+
+.review-slider-list .kboard-list.hwaikeul-video-slider-row-1 .kboard-list-item {
+    margin: 5px 0;
+    width: 100%;
+}
+
+.review-slider-list .kboard-list.hwaikeul-video-slider-row-2 .kboard-list-item {
+    width: 49%;
+}
+
+.review-slider-list .kboard-list.hwaikeul-video-slider-row-4 .kboard-list-item {
+    width: 24%;
+}
+
+.review-slider-list .kboard-list.hwaikeul-video-slider-row-5 .kboard-list-item {
+    width: 19%;
+}
+
+.review-slider-list .kboard-list .kboard-list-item a {
+    text-decoration: none;
+}
+
+
+.review-slider-list .kboard-list .kboard-list-item .review-slider-wrap .review-slider-title {
+    display: -webkit-box;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+.review-slider-list .kboard-list .kboard-list-item .review-slider-wrap {
+    position: absolute;
+    bottom: 0;
+	width: 100%;
+	padding: 20px;
+	z-index: 99;
+}
+
+.review-slider-list .kboard-list .kboard-list-item .review-slider-wrap .review-slider-title img {
+    display: inline;
+    margin: 0;
+    width: auto;
+    height: auto;
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.review-slider-list .kboard-list .review-slider-wrap .review-slider-info {
+    color: #fff;
+    text-align: left;
+}
+.review-slider-list .kboard-list .review-slider-wrap .review-slider-info .kboard-info-separator {
+    color: #d2d2d2;
+}
+
+.review-slider-list .kboard-list .kboard-list-selected .review-slider-wrap .review-slider-title {
+    color: #4a90e2;
+}

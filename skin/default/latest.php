@@ -1,11 +1,11 @@
 <div id="kboard-default-latest">
 	<table>
-		<!-- <thead>
+		<thead>
 			<tr>
 				<th class="kboard-latest-title"><?php echo __('Title', 'kboard')?></th>
 				<th class="kboard-latest-date"><?php echo __('Date', 'kboard')?></th>
 			</tr>
-		</thead> -->
+		</thead>
 		<tbody>
 			<?php while($content = $list->hasNext()):?>
 			<tr>
@@ -19,7 +19,7 @@
 						</div>
 					</a>
 				</td>
-				<!-- <td class="kboard-latest-date"><?php echo $content->getDate()?></td> -->
+				<td class="kboard-latest-date text-center"><?php echo $content->getDate()?></td>
 			</tr>
 			<?php endwhile?>
 		</tbody>
