@@ -183,7 +183,7 @@
 					<?php echo __('Author', 'kboard')?>
 				</option>
 				<option value="kboard_option_tel_last_four" <?php if (kboard_target() == 'kboard_option_tel_last_four'): ?> selected="selected"<?php endif; ?>>
-					<?php echo '전화번호 뒷 4자리'; ?>
+					<?php echo '전화번호'; ?>
 				</option>
 			</select>
 			
@@ -192,15 +192,15 @@
 			
 			<!-- Search button -->
 			<button type="submit" class="kboard-qna-button-search dalia-btn-01" title="<?php echo __('Search', 'kboard')?>">
-				<?php echo __('Search', 'kboard')?> 검색
+				<?php echo __('Search', 'kboard')?> 
 			</button>
 			
 			<!-- Reset form button -->
-			<div class="reset-form-btn-container">
-				<a style="width: 200px; display: block;" href="<?php echo home_url('/community/customer-service/qna/?mod=list&pageid=1'); ?>">
-					초기화
-				</a>
-			</div>
+		
+			<a class="reset-form-btn-container" href="<?php echo home_url('/community/customer-service/qna/?mod=list&pageid=1'); ?>">
+				<i class="xi-renew"></i>
+			</a>
+		
 		</form>
 	</div>
 	<!-- 검색폼 끝 -->

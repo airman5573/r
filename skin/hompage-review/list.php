@@ -63,7 +63,7 @@
 							
 							<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 							<?php echo $content->title?>
-							<?php if($content->isNew()):?><span class="kboard-hwaikeul-video-new-notify">New</span><?php endif?>
+							<?php if($content->isNew()):?><span class="kboard-hwaikeul-video-new-notify new-mark">N</span><?php endif?>
 						</p>
 					</div>		
 					<?php

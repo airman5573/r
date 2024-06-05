@@ -10,8 +10,8 @@ jQuery(document).ready(function(){
 			margin: 0,
 			nav: true,
 			navText: [
-				'<span aria-label="' + 'Previous' + '"><i class="fas fa-angle-left"></i></span>',
-				'<span aria-label="' + 'Next' + '"><i class="fas fa-angle-right"></i></span>'
+				'<span aria-label="' + 'Previous' + '"><i class="xi-angle-left-thin"></i></span>',
+				'<span aria-label="' + 'Next' + '"><i class="xi-angle-right-thin"></i></span>'
 			],
 			items: 1,
 			itemClass: 'kboard-list-item',

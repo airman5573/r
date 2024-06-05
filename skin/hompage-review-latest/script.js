@@ -3,7 +3,7 @@
  */
 
 jQuery(document).ready(function(){
-	var swiper = new Swiper(".kboard-swiper", {
+	var hompageswiper = new Swiper(".hompage-review-latest", {
 		slidesPerView: 3,
 		spaceBetween: 15,
 		pagination: {

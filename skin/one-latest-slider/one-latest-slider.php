@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: KBoard 화이클 비디오 최신글 슬라이더
-Plugin URI: https://www.cosmosfarm.com/wpstore/product/kboard-hwaikeul-video-latest
+Plugin URI: https://www.cosmosfarm.com/wpstore/product/one-latest-latest
 Description: KBoard 화이클 비디오 최신글 슬라이더입니다.
 Version: 1.1
 Author: 코스모스팜 - Cosmosfarm
@@ -21,8 +21,8 @@ add_filter('kboard_skin_latestview_list', function($list){
 	return $list;
 }, 10, 1);
 
-if(!function_exists('revew_sldier_list')){
-	function revew_sldier_list($board, $is_latest=false){
+if(!function_exists('revew_latest_list')){
+	function revew_latest_list($board, $is_latest=false){
 		$classes = array();
 		
 		if($is_latest){

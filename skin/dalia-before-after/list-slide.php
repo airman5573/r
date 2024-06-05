@@ -12,7 +12,7 @@ $article_url = esc_url($url->getDocumentURLWithUID($content->uid)) . '#kboard-do
 				<?php kboard_dalia_display_image_list($content, 'after'); ?>
 			</div>
 			<div class="scroller">
-				<svg class="scroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="0 50 37 68 37 32 0 50" style="fill:#fff"/><polygon points="100 50 64 32 64 68 100 50" style="fill:#fff"/></svg>
+				<svg class="scroller__thumb" xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><polygon points="0 50 37 68 37 32 0 50" style="fill:#6edbd5"/><polygon points="100 50 64 32 64 68 100 50" style="fill:#6edbd5"/></svg>
 			</div>
 		</div>
 	</div>

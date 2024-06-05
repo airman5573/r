@@ -107,7 +107,7 @@ $has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_im
 				$bottom_content->initWithUID($bottom_content_uid);
 				?>
 				<a href="<?php echo esc_url($url->getDocumentURLWithUID($bottom_content_uid))?>" title="<?php echo esc_attr(wp_strip_all_tags($bottom_content->title))?>">
-					<span class="navi-arrow"><i class="fa fa-angle-left"></i></span>
+					<span class="navi-arrow"><i class="xi-angle-left-thin"></i></span>
 					<span class="navi-document-title kboard-default-cut-strings"><?php echo wp_strip_all_tags($bottom_content->title)?></span>
 				</a>
 				<?php endif?>
@@ -122,7 +122,7 @@ $has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_im
 				?>
 				<a href="<?php echo esc_url($url->getDocumentURLWithUID($top_content_uid))?>" title="<?php echo esc_attr(wp_strip_all_tags($top_content->title))?>">
 					<span class="navi-document-title kboard-default-cut-strings"><?php echo wp_strip_all_tags($top_content->title)?></span>
-					<span class="navi-arrow"><i class="fa fa-angle-right"></i></span>
+					<span class="navi-arrow"><i class="xi-angle-right-thin"></i></span>
 				</a>
 				<?php endif?>
 			</div>

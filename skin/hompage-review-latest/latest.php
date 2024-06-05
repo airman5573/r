@@ -1,6 +1,6 @@
 <div class="slider-wrap">
 	<div class="kboard-hwaikeul-video-slider-list kboard-swiper">
-		<ul class="swiper-wrapper kboard-list<?php if(kboard_hwaikeul_video_list($board)):?> <?php echo esc_attr(kboard_hwaikeul_video_list($board))?><?php endif?>">
+		<ul class="swiper-wrapper hompage-review-latest kboard-list<?php if(kboard_hwaikeul_video_list($board)):?> <?php echo esc_attr(kboard_hwaikeul_video_list($board))?><?php endif?>">
 		<?php while($content = $list->hasNext()):?>
 			<li class="swiper-slide kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
 				<div class="item-padding">

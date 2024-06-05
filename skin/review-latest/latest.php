@@ -48,9 +48,9 @@
 		<div class="thumbnail-text-wrapper">
 			<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>" title="<?php echo esc_attr($content->title)?>">
 				<div class="revew-latest-title revew-latest-cut-strings">
-					<?php if($content->isNew()):?><span class="revew-latest-new-notify">N</span><?php endif?>
-					<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
-					<p class="text"><?php echo $content->title?></p>
+					
+					<p class="text"><?php if($content->isNew()):?><span class="revew-latest-new-notify">N</span><?php endif?>
+					<?php if($content->secret):?><i class="xi-lock"></i><?php endif?><?php echo $content->title?></p>
 				</div>
 				<div class="revew-latest-date revew-cut-strings">
 					<?php echo $content->getDate()?>
