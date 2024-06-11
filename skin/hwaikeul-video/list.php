@@ -84,12 +84,8 @@
 	<ul class="kboard-list<?php if(kboard_hwaikeul_video_list($board)):?> <?php echo esc_attr(kboard_hwaikeul_video_list($board))?><?php endif?>">
 	<?php while($content = $list->hasNext()):?>
 		<li class="kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
-			
 				<div class="item-padding">
-					<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
-
-							
-							
+					<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">		
 						<div class="kboard-hwaikeul-video-thumbnail">
 							<?php if($content->option->youtube_id || $content->option->vimeo_id):?>
 								<div class="kboard-light-gallery">

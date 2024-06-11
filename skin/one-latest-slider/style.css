@@ -5,11 +5,8 @@
  .one-slider-section {
     overflow: hidden;
  }
- .vc_row-fluid>.span_12 .wpb_column.one-slider-section {
-    padding: 0!important;
- }
 .one-latest-slider-list.kboard-swiper .swiper-pagination {
-    bottom: -34px;
+    bottom: -29px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,7 +35,7 @@
 }
 .one-slider-section .kboard-swiper .swiper-button-prev {
     right: unset;
-    left: -1px;
+    left: 3px;
 }
 .one-slider-section .kboard-swiper .swiper-button-next svg {
     left: 15px;

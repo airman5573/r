@@ -518,8 +518,12 @@
 #kboard-qna-latest table .kboard-latest-date {
 	width: 100px;
 	text-align: center;
+	
 }
-
+#kboard-qna-latest table td.kboard-latest-date {
+	font-size: 14px;
+	color: #666;
+}
 @media screen and (max-width: 600px) {
 	#kboard-qna-list .kboard-category.category-mobile {
 		display: block;

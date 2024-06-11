@@ -102,7 +102,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 10px 0 8px;
+    margin: 10px 0 12px;
 }
 .kboard-list-header {
     display: flex;
@@ -190,6 +190,9 @@ body[data-fancy-form-rcs="1"] .kboard-list-header .select2-container {
     overflow-y: hidden;
     transition: all .3s cubic-bezier(.12,.75,.4,1);
     display: inline-block;
+}
+.kboard-category-list > li a:hover {
+	color: #888;
 }
 .kboard-category-list > li a::after {
     height: 4px;
@@ -335,7 +338,7 @@ body:not(.woocommerce-cart) .main-content .kboard-list table td.kboard-list-titl
 }
 
 body:not(.woocommerce-cart) .main-content .kboard-list table td.kboard-list-user {
-    width: 100px;
+    width: 120px;
 }
 body:not(.woocommerce-cart) .kboard-list table td.kboard-list-status {
 	width: 100px;
@@ -343,7 +346,10 @@ body:not(.woocommerce-cart) .kboard-list table td.kboard-list-status {
 body:not(.woocommerce-cart) .main-content .kboard-list table td.kboard-list-date {
     width: 120px;
 }
-
+body .main-content .kboard-list table tbody td.kboard-list-date {
+	color: #666;
+	font-size: 14px;
+}
 body:not(.woocommerce-cart) .main-content .kboard-list table td.kboard-list-view {
     width: 55px;
 }
@@ -645,6 +651,14 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     line-height: 1.2;
     text-align: left;
     font-weight: 600;
+}
+.document-header-top {
+	color: #666;
+	font-size: 14px;
+}
+.document-header-top .detail-value {
+	color: #666;
+	font-size: 14px;
 }
 .detail-attr.detail-date {
     display: inline-block;
@@ -986,21 +1000,25 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     width: 25%;
 }
 #kboard-default-latest table td {
-    padding: 16px 0;
     height: auto;
     border: 0;
     border-top: 1px solid #e1e1e1;
     vertical-align: middle;
+	padding: 0;
 }
-
+#kboard-default-latest table td:hover {
+	background-color: #f7f7f7;
+}
 #kboard-default-latest table td.kboard-latest-title {
     text-align: left;
-    padding-left: 12px;
+    padding: 0 12px;
 }
 
 #kboard-default-latest table .kboard-latest-title a {
     text-decoration: none;
     box-shadow: none;
+	padding: 16px 0;
+	display: block;
 }
 
 #kboard-default-latest table .kboard-latest-title img {
@@ -1031,9 +1049,9 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
 .nectar-cta[data-style=basic][data-using-bg=true] .text, .nectar-cta[data-style=text-reveal-wave][data-using-bg=true] .text  {
     color: #fff;
 }
+
 body[data-fancy-form-rcs="1"] .fancy-select-wrap {
     padding-top: 0;
-    margin-bottom: 4px;
 }
 .kboard-header .fancy-select-wrap {
     margin-bottom: 0;

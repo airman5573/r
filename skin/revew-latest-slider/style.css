@@ -27,8 +27,8 @@
 .kboard-swiper .swiper-button-next, .kboard-swiper .swiper-button-prev {
     display: inline-block;
     margin: 12px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding: 0;
     top: 50%;
     transform: translateY(-80%);
@@ -36,10 +36,10 @@
 }
 .kboard-swiper .swiper-button-prev {
     right: unset;
-    left: -1px;
+    left: 3px;
 }
 .kboard-swiper .swiper-button-next svg {
-    left: 18px;
+    left: 13px;
     top: 0;
     position: relative;
     width: 12px;
@@ -68,11 +68,11 @@
 
 .kboard-swiper .swiper-button-next::after {
     height: 2px;
-    width: 18px;
+    width: 16px;
     background-color: #000;
     content: "";
     position: absolute;
-    left: 7px;
+    left: 3px;
     top: 50%;
     margin-top: -1px;
     display: block;
@@ -101,11 +101,11 @@
 }
 .kboard-swiper .swiper-button-prev::after {
     height: 2px;
-    width: 18px;
+    width: 16px;
     background-color: #000;
     content: "";
     position: absolute;
-    left: 18px;
+    left: 14px;
     top: 50%;
     margin-top: -1px;
     display: block;
@@ -116,13 +116,13 @@
     
 }
 .kboard-swiper .swiper-button-prev:hover::after {
-    transform: scaleX(1.1) translateX(-1px);
+        transform: translateX(-1px);
 }
 .kboard-swiper .swiper-button-prev svg {
-    left: 14px;
+    left: 11px;
     top: 0;
     position: relative;
-    width: 12px;
+    width: 10px;
     height: 100%;
     transition: transform 0.45s cubic-bezier(.15,.75,.5,1);
 }

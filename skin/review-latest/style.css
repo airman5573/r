@@ -92,8 +92,9 @@
 #revew-latest .revew-latest-date {
 	overflow: hidden;
 	text-decoration: none;
-	color: #000000;
+	color: #666;
 	line-height: 1.2;
+	font-size: 14px;
 }
 
 .autoplay-description {

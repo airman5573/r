@@ -9,6 +9,27 @@
 	</div> -->
 	<!-- 버튼 끝 -->
 	
+	<?php
+	$cat1 = kboard_category1();
+	// show this slide when $_GET['category1'] is not set
+	if (!$cat1) { ?>
+		<!-- 슬라이드 시작 -->
+		<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
+			<div class="kboard-dalia-before-after-list owl-carousel owl-theme owl-loaded owl-drag">
+				<?php
+				while($content = $list->hasNext()):
+					$has_before_img = kboard_dalia_before_after_image_check($content, 'front_before_image');
+					$has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_image');
+					if (!$has_before_img || !$has_after_img) continue;
+					include 'list-slide.php';
+				endwhile;
+				?>
+			</div>
+		</div>
+		<!-- 슬라이드 끝 -->
+		<?php
+	}
+	?>
 	
 	
 	<!-- 카테고리 시작 -->
@@ -50,21 +71,6 @@
 		</ul>
 	</div>
 	<!-- 공지 글 끝 -->
-			
-	<!-- 슬라이드 시작 -->
-	<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
-		<div class="kboard-dalia-before-after-list owl-carousel owl-theme owl-loaded owl-drag">
-			<?php
-			while($content = $list->hasNext()):
-				$has_before_img = kboard_dalia_before_after_image_check($content, 'front_before_image');
-				$has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_image');
-				if (!$has_before_img || !$has_after_img) continue;
-				include 'list-slide.php';
-			endwhile;
-			?>
-		</div>
-	</div>
-	<!-- 슬라이드 끝 -->
 	
 	<?php $list = $boardBuilder->getList()?>
 	

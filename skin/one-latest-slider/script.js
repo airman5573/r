@@ -5,7 +5,7 @@
 jQuery(document).ready(function(){
 	var oneswiper = new Swiper(".kboard-swiper", {
 		slidesPerView: 1,
-		spaceBetween: 8,
+		spaceBetween: 13,
 		pagination: {
 			el: ".swiper-pagination",
 			clickable: true

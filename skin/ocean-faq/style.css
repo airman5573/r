@@ -152,6 +152,9 @@ img {
 	cursor: pointer;
 	
 }
+#kboard-ocean-faq-list .kboard-list .kboard-faq-question:hover {
+	background-color: #f7f7f7;
+}
 #kboard-ocean-faq-list .kboard-list .kboard-faq-question::before {
 	content: "Q";
     display: inline-block;
