@@ -52,7 +52,9 @@
 					<?php endif?> -->
 					
 					<td class="kboard-list-title"><?php echo __('Title', 'kboard')?></td>
-					<td class="kboard-list-status"><?php echo __('Status', 'kboard')?></td>
+					<td class="kboard-list-status">
+						<button class="sort-by-status-toggle-btn"><?php echo __('Status', 'kboard')?></button>
+					</td>
 					<td class="kboard-list-user"><?php echo __('Author', 'kboard')?></td>
 					<td class="kboard-list-date"><?php echo __('Date', 'kboard')?></td>
 					<td class="kboard-list-vote"><?php echo __('Votes', 'kboard')?></td>

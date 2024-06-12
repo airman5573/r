@@ -72,28 +72,26 @@
 					<?php endif?> -->
 					
 					<td class="kboard-list-title">
-					
-							<?php if($content->category2):?>
-								<div class="kboard-mobile-status">
-									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
-								</div>
+						<?php if($content->category2):?>
+							<div class="kboard-mobile-status">
+								<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
+							</div>
+						<?php endif?>
+						<div class="kboard-qna-cut-strings">
+							<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
+							<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
+								<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>
 							<?php endif?>
-							<div class="kboard-qna-cut-strings">
-								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
-								<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
-									<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>
-								<?php endif?>
-								
-								<?php echo $content->title?>
-								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
-								<?php if($content->isNew()):?><span class="new-mark">N</span><?php endif?></div>
-							</div>
-							<div class="kboard-mobile-contents">
-								<span class="contents-item kboard-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></span>
-								<span class="contents-separator kboard-date">|</span>
-								<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
-							</div>
-				
+							
+							<?php echo $content->title?>
+							<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
+							<?php if($content->isNew()):?><span class="new-mark">N</span><?php endif?></div>
+						</div>
+						<div class="kboard-mobile-contents">
+							<span class="contents-item kboard-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></span>
+							<span class="contents-separator kboard-date">|</span>
+							<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
+						</div>
 					</td>
 					<td class="kboard-list-status">
 						<?php if($content->category2):?>
