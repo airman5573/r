@@ -13,6 +13,30 @@
 	$cat1 = kboard_category1();
 	// show this slide when $_GET['category1'] is not set
 	if (!$cat1) { ?>
+		<!-- 공지 글 시작 -->
+		<div class="kboard-list notice-list notice-list-02">
+			<ul>
+				<?php while($content = $list->hasNextNotice()):?>
+				<li class="kboard-list-notice <?php echo esc_attr($content->getClass())?>">
+					<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
+						<div class="kboard-list-title">
+							<div class="kboard-list-uid">
+								<?php dalia_print_notice_tag($content); ?>
+							</div>
+							<p class="kboard-default-cut-strings">
+								<?php echo $content->title?>
+							</p>
+							<div class="kboard-mobile-contents">
+								<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
+							</div>
+						</div>
+						<span class="kboard-list-date"><?php echo $content->getDate()?></span>
+					</a>
+				</li>
+				<?php endwhile?>
+			</ul>
+		</div>
+		<!-- 공지 글 끝 -->
 		<!-- 슬라이드 시작 -->
 		<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
 			<div class="kboard-dalia-before-after-list owl-carousel owl-theme owl-loaded owl-drag">
@@ -47,30 +71,7 @@
 	?>
 	<!-- 카테고리 끝 -->
 
-	<!-- 공지 글 시작 -->
-	<div class="kboard-list notice-list notice-list-02">
-		<ul>
-			<?php while($content = $list->hasNextNotice()):?>
-			<li class="kboard-list-notice <?php echo esc_attr($content->getClass())?>">
-				<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
-					<div class="kboard-list-title">
-						<div class="kboard-list-uid">
-							<?php dalia_print_notice_tag($content); ?>
-						</div>
-						<p class="kboard-default-cut-strings">
-							<?php echo $content->title?>
-						</p>
-						<div class="kboard-mobile-contents">
-							<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
-						</div>
-					</div>
-					<span class="kboard-list-date"><?php echo $content->getDate()?></span>
-				</a>
-			</li>
-			<?php endwhile?>
-		</ul>
-	</div>
-	<!-- 공지 글 끝 -->
+	
 	
 	<?php $list = $boardBuilder->getList()?>
 	

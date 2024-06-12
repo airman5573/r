@@ -3,7 +3,6 @@
  * @author https://www.cosmosfarm.com/
  */
 
-
 #kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
 	position: relative;
 	margin-bottom: 25px;
@@ -833,14 +832,29 @@
 	opacity: 0.9;
 	pointer-events: auto;
 	cursor: pointer;
-	border: 5px solid #6edbd5;
+	background: #6edbd5;
+    padding: 8px;
 	z-index: 2;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .before-after-photo > .wrapper .scroller:hover {
 	opacity: 1;
 }
-
+.before-after-photo > .wrapper .scroller i {
+    font-size: 13px;
+    margin-right: 6px;
+    color: #fff;
+}
+.before-after-photo > .wrapper .scroller i:first-child {
+    transform: rotate(-90deg);
+}
+.before-after-photo > .wrapper .scroller i:last-child {
+    transform: rotate(90deg);
+    margin-right: 0;
+}
 .before-after-photo > .wrapper .scrolling {
 	pointer-events: none;
 	opacity: 1;

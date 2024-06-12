@@ -3,7 +3,7 @@ if(!defined('ABSPATH')) exit;
 
 if(!function_exists('kboard_ask_status')){
 	function kboard_ask_status(){
-		$status = array('답변대기', '답변완료', '재질문');
+		$status = array('답변대기', '재질문', '답변완료');
 		return $status;
 	}
 }
@@ -190,4 +190,23 @@ function log_registered_functions_for_kboard_document_insert() {
     }
 }
 
+// sort by status
+function dalia_qna_sort_board_by_status($orderby, $board_id, $kboard) {
+    if (isset($_GET['sort_by_status']) && $_GET['sort_by_status']) {
+        global $wpdb;
+        // Define the custom order.
+        $custom_order = "
+            CASE `{$wpdb->prefix}kboard_board_content`.`category2`
+				WHEN '재질문' THEN 1
+				WHEN '답변대기' THEN 2
+				WHEN '' THEN 3
+                WHEN '답변완료' THEN 4
+                ELSE 5
+            END
+        ";
+        $orderby = "{$custom_order}, `{$wpdb->prefix}kboard_board_content`.`category2` ASC";
+    }
+    return $orderby;
+}
+add_filter('kboard_list_orderby', 'dalia_qna_sort_board_by_status', 10, 3);
 

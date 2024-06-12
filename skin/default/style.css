@@ -108,7 +108,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+	margin-bottom: 16px;
 }
 
 .kboard-list-header .kboard-total-count {
@@ -346,9 +346,21 @@ body:not(.woocommerce-cart) .kboard-list table td.kboard-list-status {
 body:not(.woocommerce-cart) .main-content .kboard-list table td.kboard-list-date {
     width: 120px;
 }
+.kboard-list-date {
+	font-size: 14px;
+	color: #666;
+}
 body .main-content .kboard-list table tbody td.kboard-list-date {
 	color: #666;
 	font-size: 14px;
+}
+body .main-content .kboard-list table thead td.kboard-list-date {
+	color: #000;
+	font-size: 16px;
+}
+body .main-content .kboard-list table th.kboard-list-date {
+	color: #000;
+	font-size: 16px;
 }
 body:not(.woocommerce-cart) .main-content .kboard-list table td.kboard-list-view {
     width: 55px;
@@ -669,7 +681,7 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
     font-size: 30px;
     line-height: 1.3;
     text-align: left;
-    font-weight: 600;
+    font-weight: 700;
 }
 .document-header-middle .kboard-title h1 {
     border-bottom: 0;
@@ -903,7 +915,7 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
 
 .kboard-document-navi .kboard-prev-document .navi-arrow {
     left: 0;
-    top: -1px ;
+    top: 0 ;
 }
 .navi-arrow i {
     line-height: 42px;
@@ -970,7 +982,7 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
 
 .kboard-document-navi .kboard-next-document .navi-arrow {
     right: 0;
-    top: -2px;
+    top: 0;
 }
 
 .kboard-document-navi .kboard-next-document:hover a {
