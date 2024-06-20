@@ -2,7 +2,36 @@
 /**
  * @author https://www.cosmosfarm.com/
  */
-
+ .before-after-photo > .wrapper::before {
+	content: "Before";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border: 1px solid #fff;
+	padding: 4px 8px;
+    line-height: 1;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    background: rgb(0 0 0 / .2);
+}
+.before-after-photo > .wrapper::after {
+	content: "After";
+    z-index: 1;
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    border: 1px solid #fff;
+	padding: 4px 8px;
+    line-height: 1;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 14px;
+    background: rgb(0 0 0 / .2);
+}
 #kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
 	position: relative;
 	margin-bottom: 25px;
@@ -839,7 +868,9 @@
     align-items: center;
     justify-content: center;
 }
-
+ul.kboard-dalia-before-after-list.other {
+    margin-top: 25px;
+}
 .before-after-photo > .wrapper .scroller:hover {
 	opacity: 1;
 }

@@ -3,12 +3,12 @@
 	<td class="kboard-list-uid"></td>
 	<td class="kboard-list-title" style="padding-left:<?php echo ($depth+1)*5?>px">
 		<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
-			<div class="kboard-default-cut-strings">
+			<div class="kboard-default-reply-list-cut-strings">
 				<i class="xi-subdirectory-arrow"></i>
 				<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 				<?php echo $content->title?>
 				<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
-				<?php if($content->isNew()):?><span class="kboard-default-new-notify new-mark">N</span><?php endif?>
+				<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify new-mark">N</span><?php endif?>
 			</div>
 		</a>
 		<div class="kboard-mobile-contents">
@@ -21,7 +21,7 @@
 			<span class="contents-item kboard-view"><?php echo __('Views', 'kboard')?> <?php echo $content->view?></span> -->
 		</div>
 	</td>
-	<!-- <td class="kboard-list-user"><?php echo $content->getUserDisplay()?></td> -->
+	<td class="kboard-list-user"><?php echo $content->getUserDisplay()?></td>
 	<td class="kboard-list-date"><?php echo $content->getDate()?></td>
 	<!-- <td class="kboard-list-vote"><?php echo $content->vote?></td>
 	<td class="kboard-list-view"><?php echo $content->view?></td> -->

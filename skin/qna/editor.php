@@ -30,6 +30,7 @@ $fields = $board->fields();
 </div>
 
 <script type="text/javascript" src="<?php echo $skin_path?>/script.js?<?php echo KBOARD_VERSION?>"></script>
+
 <script>
 jQuery(document).ready(function(){
 	var auto_secret_check = false;
@@ -41,7 +42,7 @@ jQuery(document).ready(function(){
 });
 </script>
 
-
+<!-- 지역/지점 선택 -->
 <script type="text/javascript">
 jQuery(document).ready(function() {
     const locations = <?php echo json_encode($locations); ?>;

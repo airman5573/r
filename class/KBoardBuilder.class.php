@@ -750,7 +750,8 @@ class KBoardBuilder {
 				$content->parent_uid = $parent->uid;
 				
 				// 부모의 제목을 가져온다.
-				$content->title = 'Re:' . $parent->title;
+				// $content->title = 'Re:' . $parent->title;
+				$content->title = $parent->title;
 				
 				// 답글 기본 내용을 설정한다.
 				if($this->meta->reply_copy_content=='1'){

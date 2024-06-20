@@ -258,7 +258,6 @@
 }
 #kboard-qna-document .kboard-content {
 	clear: both;
-	float: left;
 	width: 100%;
 	min-height: 200px;
 }
@@ -490,6 +489,7 @@
 
 #kboard-qna-latest table .kboard-qna-status {
 	width: 66px;
+	text-align: center;
 }
 #kboard-qna-latest table .kboard-list-user {
 	width: 100px;
@@ -523,6 +523,20 @@
 #kboard-qna-latest table td.kboard-latest-date {
 	font-size: 14px;
 	color: #666;
+}
+@media (max-width: 999px) {
+	#kboard-qna-latest table .kboard-latest-title a {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+	#kboard-qna-latest table .kboard-latest-date {
+		text-align: left;
+	}
+	.kboard-qna-cut-strings {
+		padding: 6px 0 2px;
+	}
 }
 @media screen and (max-width: 600px) {
 	#kboard-qna-list .kboard-category.category-mobile {

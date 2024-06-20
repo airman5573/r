@@ -69,7 +69,62 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
 					<?php echo $content->content?>
 				</div>
 			</div>
-			
+			<div class="reply-content-wrap">
+				<div class="reply-content-left">
+                    <i class="xi-subdirectory-arrow"></i>
+                </div>
+				<div class="reply-content-right">
+					<div class="document-header">
+						<div class="detail-attr detail-title document-header-middle">
+							<div class="kboard-title">
+								<h1><?php echo $content->title?></h1>
+							</div>
+						</div>
+						<div class="kboard-detail document-header-bottom">
+							
+							<?php
+								if(!$board->initCategory2()){
+									$board->category = kboard_ask_status();
+								}
+								?>
+							<?php if($board->isAdmin()):?>
+							<div class="detail-attr detail-category2">
+								<div class="detail-name">
+									<select id="kboard-select-category2" name="category2" onchange="kboard_franchise_qna_category_update('<?php echo $content->uid?>', this.value)">
+										<?php while($board->hasNextCategory()):?>
+										<option value="<?php echo $board->currentCategory()?>"<?php if($content->category2 == $board->currentCategory()):?> selected<?php endif?>><?php echo $board->currentCategory()?></option>
+										<?php endwhile?>
+										<option value="">상태없음</option>
+									</select>
+								</div>
+							</div>
+							<?php elseif($content->category2):?>
+								<span class="kboard-franchise-qna-status status-<?php echo array_search($content->category2, $board->category)?>"><?php echo $content->category2?></span>
+							<?php endif?>
+							<div class="detail-attr">
+								<div class="detail-name">답변자 :</div>
+								<div class="detail-value"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></div>
+							</div>
+							<div class="detail-attr">
+								<div class="detail-value"><?php echo date('Y-m-d H:i', strtotime($content->date))?></div>
+							</div>
+							
+							<div class="detail-attr detail-view">
+								<div class="detail-name"><?php echo __('Views', 'kboard')?></div>
+								<div class="detail-value"><?php echo $content->view?></div>
+							</div>
+							
+						</div>
+					</div>
+					<div class="kboard-content" itemprop="description">
+						<div class="content-view">
+							<?php echo $content->getDocumentOptionsHTML()?>
+							<?php echo $content->content?>
+						</div>
+					</div>
+				</div>
+
+			</div>
 			<div class="kboard-document-action">
 				<div class="left">
 					<button type="button" class="kboard-button-action kboard-button-like" onclick="kboard_document_like(this)" data-uid="<?php echo $content->uid?>" title="<?php echo __('Like', 'kboard')?>"><?php echo __('Like', 'kboard')?> <span class="kboard-document-like-count"><?php echo intval($content->like)?></span></button>
@@ -127,7 +182,7 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
 		<div class="kboard-control">
 			<div class="left">
 				<a href="<?php echo $url->getBoardList()?>" class="kboard-franchise-qna-button-gray dalia-btn-01"><?php echo __('List', 'kboard')?></a>
-				<!-- <?php if($board->isReply() && !$content->notice):?><a href="<?php echo $url->set('parent_uid', $content->uid)->set('mod', 'editor')->toString()?>" class="kboard-franchise-qna-button-gray dalia-btn-01"><?php echo __('Reply', 'kboard')?></a><?php endif?> -->
+				<?php if($board->isReply() && !$content->notice):?><a href="<?php echo $url->set('parent_uid', $content->uid)->set('mod', 'editor')->toString()?>" class="kboard-franchise-qna-button-gray dalia-btn-01"><?php echo __('Reply', 'kboard')?></a><?php endif?>
 			</div>
 			<?php if($content->isEditor() || $board->permission_write=='all'):?>
 			<div class="right">

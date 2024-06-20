@@ -1,4 +1,4 @@
-<div id="kboard-default-list" class="kboard-list-wrap">
+<div id="kboard-default-reply-list-list" class="kboard-list-wrap">
 	
 	<!-- 게시판 정보 시작 -->
 	<div class="kboard-list-header">
@@ -8,7 +8,10 @@
 			</div>
 		<?php endif?>
 		
+		<div class="kboard-list-header-right flex-item">
+		
 		<div class="kboard-sort">
+			
 			<form id="kboard-sort-form-<?php echo $board->id?>" method="get" action="<?php echo esc_url($url->toString())?>">
 				<?php echo $url->set('pageid', '1')->set('category1', '')->set('category2', '')->set('target', '')->set('keyword', '')->set('mod', 'list')->set('kboard_list_sort_remember', $board->id)->toInput()?>
 				
@@ -20,6 +23,9 @@
 				</select>
 			</form>
 		</div>
+		<?php dalia_print_branch_location_select_ui(); ?>
+		</div>
+		
 	</div>
 	<!-- 게시판 정보 끝 -->
 	
@@ -45,22 +51,23 @@
 				<tr>
 					<td class="kboard-list-uid"><?php echo __('Number', 'kboard')?></td>
 					<td class="kboard-list-title"><?php echo __('Title', 'kboard')?></td>
-					<!-- <td class="kboard-list-user"><?php echo __('Author', 'kboard')?></td> -->
+					<td class="kboard-list-user"><?php echo __('Author', 'kboard')?></td>
 					<td class="kboard-list-date"><?php echo __('Date', 'kboard')?></td>
 					<!-- <td class="kboard-list-vote"><?php echo __('Votes', 'kboard')?></td>
 					<td class="kboard-list-view"><?php echo __('Views', 'kboard')?></td> -->
 				</tr>
 			</thead>
 			<tbody>
+			<!-- 공지사항 -->
 				<?php while($content = $list->hasNextNotice()):?>
 				<tr class="<?php echo esc_attr($content->getClass())?>" onClick="location.href='<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>'">
 					<td class="kboard-list-uid"> <span class="notice-tag">공지</span> </td>
 					<td class="kboard-list-title">
-							<div class="kboard-default-cut-strings">
+							<div class="kboard-default-reply-list-cut-strings">
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
-								<?php if($content->isNew()):?><span class="kboard-default-new-notify new-mark">N</span><?php endif?>
+								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify new-mark">N</span><?php endif?>
 							</div>
 						<div class="kboard-mobile-contents">
 							<!-- <span class="contents-item kboard-user"><?php echo $content->getUserDisplay()?></span> -->
@@ -72,7 +79,9 @@
 							<span class="contents-item kboard-view"><?php echo __('Views', 'kboard')?> <?php echo $content->view?></span> -->
 						</div>
 					</td>
-					<!-- <td class="kboard-list-user"><?php echo $content->getUserDisplay()?></td> -->
+					<td class="kboard-list-user">
+						<!-- <?php echo $content->getUserDisplay()?> -->
+					</td>
 					<td class="kboard-list-date"><?php echo $content->getDate()?></td>
 					<!-- <td class="kboard-list-vote"><?php echo $content->vote?></td> -->
 					<!-- <td class="kboard-list-view"><?php echo $content->view?></td> -->
@@ -83,11 +92,11 @@
 					<td class="kboard-list-uid"><?php echo esc_html($board->getPopularName())?></td>
 					<td class="kboard-list-title">
 		
-							<div class="kboard-default-cut-strings">
+							<div class="kboard-default-reply-list-cut-strings">
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
-								<?php if($content->isNew()):?><span class="kboard-default-new-notify">N</span><?php endif?>
+								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify">N</span><?php endif?>
 							</div>
 		
 						<div class="kboard-mobile-contents">
@@ -106,20 +115,29 @@
 					<!-- <td class="kboard-list-view"><?php echo $content->view?></td> -->
 				</tr>
 				<?php endwhile?>
+			<!-- 공지사항 -->
 				<?php while($content = $list->hasNext()):?>
 				<tr class="<?php echo esc_attr($content->getClass())?>" onClick="location.href='<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>'">
 					<td class="kboard-list-uid"><?php echo $list->index()?></td>
 					<td class="kboard-list-title">
-							<div class="kboard-default-cut-strings">
+							<div class="kboard-default-reply-list-cut-strings">
+								<?php if($content->getThumbnail(500, 375)):?>
+									<div class="image-wrapper">
+										<img src="<?php echo $content->getThumbnail(500, 375)?>" alt="<?php echo esc_attr($content->title)?>">
+									</div>
+								<?php endif?>
+
+								<?php dalia_print_branch_term_name($content); ?>
 								
+								<span class="category-bullet">보습탄탄 관리</span>
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
-								<?php if($content->isNew()):?><span class="kboard-default-new-notify new-mark">N</span><?php endif?>
+								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify new-mark">N</span><?php endif?>
 							</div>
 						<div class="kboard-mobile-contents">
-							<!-- <span class="contents-item kboard-user"><?php echo $content->getUserDisplay()?></span> -->
-							<!-- <span class="contents-separator kboard-date">|</span> -->
+							<span class="contents-item kboard-user"><?php echo $content->getUserDisplay()?></span>
+							<span class="contents-separator kboard-date">|</span>
 							<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 							<!-- <span class="contents-separator kboard-vote">|</span> -->
 							<!-- <span class="contents-item kboard-vote"><?php echo __('Votes', 'kboard')?> <?php echo $content->vote?></span> -->
@@ -127,7 +145,7 @@
 							<span class="contents-item kboard-view"><?php echo __('Views', 'kboard')?> <?php echo $content->view?></span> -->
 						</div>
 					</td>
-					<!-- <td class="kboard-list-user"><?php echo $content->getUserDisplay()?></td> -->
+					<td class="kboard-list-user"><?php echo $content->getUserDisplay()?></td>
 					<td class="kboard-list-date"><?php echo $content->getDate()?></td>
 					<!-- <td class="kboard-list-vote"><?php echo $content->vote?></td> -->
 					<!-- <td class="kboard-list-view"><?php echo $content->view?></td> -->
@@ -159,7 +177,7 @@
 				<option value="member_display"<?php if(kboard_target() == 'member_display'):?> selected<?php endif?>><?php echo __('Author', 'kboard')?></option>
 			</select>
 			<input type="text" name="keyword" value="<?php echo esc_attr(kboard_keyword())?>">
-			<button type="submit" class="kboard-default-button-small dalia-btn-01"><?php echo __('Search', 'kboard')?></button>
+			<button type="submit" class="kboard-default-reply-list-button-small dalia-btn-01"><?php echo __('Search', 'kboard')?></button>
 		</form>
 	</div>
 	<!-- 검색폼 끝 -->
@@ -167,7 +185,7 @@
 	<?php if($board->isWriter()):?>
 	<!-- 버튼 시작 -->
 	<div class="kboard-control flex-end">
-		<a href="<?php echo esc_url($url->getContentEditor())?>" class="kboard-default-button-small  dalia-btn-01"><?php echo __('New', 'kboard')?></a>
+		<a href="<?php echo esc_url($url->getContentEditor())?>" class="kboard-default-reply-list-button-small  dalia-btn-01"><?php echo __('New', 'kboard')?></a>
 	</div>
 	<!-- 버튼 끝 -->
 	<?php endif?>

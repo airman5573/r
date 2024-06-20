@@ -1,7 +1,7 @@
 <div id="kboard-qna-list">
 	
 	<!-- 카테고리 시작 -->
-	<?php
+	<!-- <?php
 		if($board->use_category == 'yes'){
 			if($board->isTreeCategoryActive()){
 				$category_type = 'default';
@@ -12,7 +12,7 @@
 			$category_type = apply_filters('kboard_skin_category_type', $category_type, $board, $boardBuilder);
 			echo $skin->load($board->skin, "list-category-{$category_type}.php", $vars);
 		}
-		?>
+		?> -->
 	<!-- 카테고리 끝 -->
 	<!-- 게시판 정보 시작 -->
 	<div class="kboard-list-header">
@@ -41,6 +41,7 @@
 		$status_list = kboard_ask_status();
 	}
 	?>
+	
 	<div class="kboard-list">
 		<table>
 			<thead>
@@ -62,6 +63,7 @@
 				</tr>
 			</thead>
 			<tbody>
+				<!-- 공지 -->
 				<?php while($content = $list->hasNextNotice()):?>
 				<tr class="kboard-list-notice<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>" onClick="location.href='<?php echo $url->getDocumentURLWithUID($content->uid)?>'">
 					<td class="kboard-list-uid"><span class="notice-tag">공지</span></td>
@@ -74,16 +76,16 @@
 					
 							<?php if($content->category2):?>
 								<div class="kboard-mobile-status">
-									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
+									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>">
+										<!-- <?php echo $content->category2?> -->
+									</span>
 								</div>
 							<?php endif?>
 							<div class="kboard-qna-cut-strings">
-								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
-								
 								<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
-									<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>
+									<!-- <span class="category-bullet"><?php if($content->category1):?><?php echo $content->category1?><?php endif?></span> -->
 								<?php endif?>
-								
+								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 								<?php if($content->isNew()):?><span class="kboard-hwaikeul-video-slider-new-notify new-mark">N</span><?php endif?>
@@ -108,6 +110,7 @@
 					<td class="kboard-list-view"><?php echo $content->view?></td>
 				</tr>
 				<?php endwhile?>
+				<!-- 공지 -->
 				<?php while($content = $list->hasNext()):?>
 				<tr class="<?php if($content->uid == kboard_uid()):?>kboard-list-selected<?php endif?>" onClick="location.href='<?php echo $url->getDocumentURLWithUID($content->uid)?>'">
 					<td class="kboard-list-uid"><?php echo $list->index()?></td>
@@ -122,12 +125,12 @@
 						<?php endif?>
 						<div class="kboard-qna-cut-strings">
 							<?php dalia_print_branch_term_name($content); ?>
+							
+							
+							<!-- <?php if($board->use_category == 'yes' && $board->initCategory1()):?>
+								<span class="category-bullet"><?php if($content->category1):?><?php echo $content->category1?><?php endif?></span>
+							<?php endif?> -->
 							<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
-							
-							<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
-								<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>
-							<?php endif?>
-							
 							<?php echo $content->title?>
 							<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 							<?php if($content->isNew()):?><span class="kboard-default-new-notify new-mark">N</span><?php endif?>
@@ -150,11 +153,12 @@
 					<td class="kboard-list-vote"><?php echo $content->vote?></td>
 					<td class="kboard-list-view"><?php echo $content->view?></td>
 				</tr>
-				<!-- <?php $boardBuilder->builderReply($content->uid)?> -->
+				<?php $boardBuilder->builderReply($content->uid)?>
 				<?php endwhile?>
 			</tbody>
 		</table>
 	</div>
+
 	<!-- 리스트 끝 -->
 	
 	<!-- 페이징 시작 -->

@@ -52,10 +52,10 @@ $has_after_img = kboard_dalia_before_after_image_check($content, 'front_after_im
 				<div class="before-after-photo">
 					<div class="wrapper">
 						<div class="before-img-container">
-							<?php kboard_dalia_display_image_list($content, 'before'); ?>
+							<?php kboard_dalia_display_image_list($content, 'after'); ?>
 						</div>
 						<div class="after-img-container">
-							<?php kboard_dalia_display_image_list($content, 'after'); ?>
+							<?php kboard_dalia_display_image_list($content, 'before'); ?>
 						</div>
 						<div class="scroller">
 							<i class="xi-caret-up"></i>

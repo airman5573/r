@@ -6,10 +6,10 @@ $article_url = esc_url($url->getDocumentURLWithUID($content->uid)) . '#kboard-do
 	<div class="before-after-photo">
 		<div class="wrapper">
 			<div class="before-img-container">
-				<?php kboard_dalia_display_image_list($content, 'before'); ?>
+				<?php kboard_dalia_display_image_list($content, 'after'); ?>
 			</div>
 			<div class="after-img-container">
-				<?php kboard_dalia_display_image_list($content, 'after'); ?>
+				<?php kboard_dalia_display_image_list($content, 'before'); ?>
 			</div>
 			<div class="scroller">
                 <i class="xi-caret-up"></i>

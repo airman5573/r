@@ -9,8 +9,8 @@
 	<td class="kboard-list-title" style="padding-left:<?php echo ($depth+1)*5?>px">
 		<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
 			<div class="kboard-franchise-qna-cut-strings">
-				<img src="<?php echo $skin_path?>/images/icon-reply.png" class="kboard-icon-reply" alt="">
-				<?php if($content->isNew()):?><span class="kboard-franchise-qna-new-notify">New</span><?php endif?>
+			<i class="xi-subdirectory-arrow kboard-icon-reply"></i>
+				
 				<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" class="kboard-icon-lock" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 				
 				<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
@@ -19,6 +19,7 @@
 				
 				<?php echo $content->title?>
 				<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
+				<?php if($content->isNew()):?><span class="kboard-franchise-qna-new-notify new-mark">N</span><?php endif?>
 			</div>
 			<div class="kboard-mobile-status">
 				<span class="kboard-franchise-qna-status status-answer"><?php echo __('Answer', 'kboard')?></span>

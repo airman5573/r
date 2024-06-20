@@ -3,6 +3,16 @@
  * @author https://www.cosmosfarm.com
  */
 
+ /* 어드민에서만 보이게  */
+ .document-header-bottom .detail-attr.admin-view  {
+	display: none;
+ }
+.admin-bar .document-header-bottom .detail-attr.admin-view {
+	 display: flex;
+}
+#kboard-hwaikeul-video-editor, #kboard-default-reply-list-editor, #kboard-qna-editor, #kboard-staff-compliment-editor {
+	margin-top: 16px;
+}
 
 .kboard-list-status span {
 	display: inline-block;
@@ -35,7 +45,9 @@ span.kboard-qna-status {
 	padding: 2px 7px;
 	color: #6edbd5;
 }
-
+span.kboard-qna-status.status-answer {
+	display: none;
+}
 span.kboard-qna-status.status-0 {
 	color: #6edbd5;
 }
@@ -61,6 +73,9 @@ span.kboard-staff-compliment-status.status-0 {
 span.kboard-staff-compliment-status.status-1 {
     background-color: #6edbd5;
 	color: #fff;
+}
+span.kboard-franchise-qna-status.status-answer {
+	display: none;
 }
 span.kboard-franchise-qna-status {
     display: inline-block;
@@ -3485,125 +3500,7 @@ video.wp-video-shortcode,
     margin-left: 120px;
 	display: none;
 }
-/* @media screen and (max-width: 600px) {
 
-	.kboard-hompage-review-thumbnail:hover .kboard-hompage-review-foreground,
-	.kboard-hompage-review-thumbnail:hover .kboard-hompage-review-foreground-search {
-		display: none;
-	}
-
-	#kboard-hompage-review-list .kboard-category .kboard-category-list li a {
-		font-size: 20px;
-	}
-
-	#kboard-hompage-review-list .kboard-list {
-		float: left;
-		margin: 0 !important;
-		width: 100%;
-	}
-
-	#kboard-hompage-review-list .kboard-list .kboard-list-item {
-		float: left;
-		margin: 5px 0 5px 0;
-		width: 100%;
-	}
-
-	#kboard-hompage-review-list .kboard-list.hompage-review-row-2 .kboard-list-item {
-		margin: 5px 0.5%;
-	}
-
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li {
-		display: none;
-	}
-
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.first-page,
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.last-page {
-		display: inline-block;
-		*display: inline;
-		zoom: 1;
-	}
-
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.prev-page,
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.next-page {
-		display: inline-block;
-		*display: inline;
-		zoom: 1;
-	}
-
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.prev-page a,
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.next-page a {
-		padding: 6px 18px;
-	}
-
-	#kboard-hompage-review-list .kboard-pagination .kboard-pagination-pages li.active {
-		display: inline-block;
-		*display: inline;
-		zoom: 1;
-	}
-
-	#kboard-hompage-review-editor select,
-	#kboard-hompage-review-editor input[type=text],
-	#kboard-hompage-review-editor input[type=email],
-	#kboard-hompage-review-editor input[type=number],
-	#kboard-hompage-review-editor input[type=date],
-	#kboard-hompage-review-editor input[type=password],
-	#kboard-hompage-review-editor input[type=file] {
-		width: 100%;
-		box-sizing: border-box;
-	}
-
-	#kboard-hompage-review-editor .kboard-attr-row {
-		padding: 10px 0;
-		align-items: flex-start;
-	}
-
-	#kboard-hompage-review-editor .kboard-attr-row .attr-name {
-		padding: 0;
-		width: 100%;
-	}
-
-	#kboard-hompage-review-editor .kboard-attr-row .attr-value {
-		margin: 0;
-		padding: 0;
-	}
-
-	#kboard-hompage-review-editor .kboard-attr-row .attr-value .kboard-tree-category-wrap select {
-		margin-bottom: 10px;
-		width: 100%;
-	}
-
-	#kboard-hompage-review-document .kboard-title {
-		margin-bottom: 0;
-		font-size: 24px;
-	}
-
-	#kboard-hompage-review-document .kboard-document-thumbnail {
-		margin: 20px 0;
-	}
-
-	#kboard-hompage-review-document .kboard-attach-group {
-		margin: 20px 0;
-	}
-
-	#kboard-hompage-review-document .kboard-category {
-		padding: 0 5px;
-	}
-
-	#kboard-hompage-review-document .kboard-content .content-view {
-		padding: 10px 5px;
-	}
-
-	#kboard-hompage-review-document .kboard-detail {
-		padding: 10px 5px;
-	}
-
-	#kboard-hompage-review-document .kboard-document-action {
-		padding: 10px 5px 5px 5px;
-	}
-	.description.youtube-id-decription  {
-		margin-left: 0;
-	}
-} */
 .kboard-list .kboard-list-item .item-padding > .kboard-hwaikeul-gallery-wrap {
 	position: absolute;
     bottom: 0;
@@ -3755,6 +3652,49 @@ body:not(.woocommerce-cart) .main-content #kboard-image-gallery-list .kboard-lis
     padding: 0;
     border: 0;
     background: none;
+}
+
+/* default reply*/
+#kboard-default-reply-list-list .kboard-list-header {
+	margin-top: 12px;
+}
+#kboard-default-reply-list-list .kboard-sort {
+	margin-right: 8px;
+}
+.kboard-list-title .image-wrapper {
+	width: 60px;
+    height: 45px;
+    overflow: hidden;
+	margin-right: 8px;
+}
+
+.kboard-default-reply-list-cut-strings {
+    display: flex;
+    align-items: center;
+}
+.kboard-default-reply-list-cut-strings i {
+	margin-right: 4px;
+}
+
+/* qna reply */
+.reply-content-wrap {
+    display: flex;
+    align-items: flex-start;
+    border-top: 1px solid #838383;
+	padding-top: 24px;
+}
+.reply-content-wrap .document-header {
+	margin-top: 0;
+}
+.reply-content-left {
+    padding-right: 24px;
+}
+.reply-content-left i {
+    font-size: 24px;
+    margin-top: 10px;
+}
+.reply-content-wrap .reply-content-right {
+    width: 100%;
 }
 @media (max-width: 1200px) {
 	.kboard-list .kboard-list-item  {

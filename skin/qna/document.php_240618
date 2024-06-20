@@ -48,21 +48,17 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                         <div class="detail-name">작성자 :</div>
                         <div class="detail-value"><?php echo dalia_qna_kboard_get_username($content, $boardBuilder); ?></div>
                     </div>
-                    <div class="detail-attr admin-view">
+                    <div class="detail-attr">
                         <div class="detail-name">이메일 :</div>
                         <div class="detail-value"><?php echo dalia_qna_kboard_get_email($content); ?></div>
                     </div>
-                    <div class="detail-attr admin-view">
+                    <div class="detail-attr">
                         <div class="detail-name">휴대폰번호 :</div>
                         <div class="detail-value"><?php echo dalia_qna_kboard_get_tel($content); ?></div>
                     </div>
                     <div class="detail-attr">
                         <div class="detail-name">통보방법 :</div>
                         <div class="detail-value"><?php echo dalia_qna_kboard_get_notify_method($content); ?></div>
-                    </div>
-                    <div class="detail-attr">
-                        <div class="detail-name">IP :</div>
-                        <div class="detail-value"><?php echo $content->option->ip?></div>
                     </div>
                     <div class="detail-attr detail-view">
                         <div class="detail-name"><?php echo __('Views', 'kboard')?></div>
@@ -74,47 +70,6 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                 <div class="content-view">
                     <?php echo $content->getDocumentOptionsHTML()?>
                     <?php echo $content->content?>
-                </div>
-                
-            </div>
-            <div class="reply-content-wrap">
-                <div class="reply-content-left">
-                    <i class="xi-subdirectory-arrow"></i>
-                </div>
-                
-                <div class="reply-content-right">
-                    <div class="document-header">
-                    
-                        <div class="detail-attr detail-title document-header-middle">
-                            <div class="kboard-title">
-                                <h1><?php echo $content->title?></h1>
-                            </div>
-                        </div>
-                        <div class="kboard-detail document-header-bottom">
-                            <?php if($content->category1):?>
-                                <span class="category-bullet"><?php echo $content->category1?></span>
-                            <?php endif?>
-                            <div class="detail-attr">
-                                <div class="detail-name">답변자 :</div>
-                                <div class="detail-value"><?php echo dalia_qna_kboard_get_username($content, $boardBuilder); ?></div>
-                            </div>
-                            <div class="detail-attr">
-                                <div class="detail-value"><?php echo date('Y-m-d H:i', strtotime($content->date))?></div>
-                            </div>
-                           
-                            <div class="detail-attr detail-view">
-                                <div class="detail-name"><?php echo __('Views', 'kboard')?></div>
-                                <div class="detail-value"><?php echo $content->view?></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="kboard-content" itemprop="description">
-                        <div class="content-view">
-                            <?php echo $content->getDocumentOptionsHTML()?>
-                            <?php echo $content->content?>
-                        </div>
-                        
-                    </div>
                 </div>
             </div>
             <div class="kboard-document-action">
@@ -169,7 +124,6 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
         <div class="kboard-control">
             <div class="left">
                 <a href="<?php echo $url->getBoardList()?>" class="kboard-qna-button-gray dalia-btn-01"><?php echo __('List', 'kboard')?></a>
-                <?php if($board->isReply() && !$content->notice):?><a href="<?php echo $url->set('parent_uid', $content->uid)->set('mod', 'editor')->toString()?>" class="kboard-qna-button-gray dalia-btn-01"><?php echo __('Reply', 'kboard')?></a><?php endif?>
             </div>
             <?php if($content->isEditor() || $board->permission_write=='all'):?>
                 <div class="right">
@@ -178,11 +132,11 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                 </div>
             <?php endif?>
         </div>
-        <!-- <?php if($board->contribution() && !$board->meta->always_view_list):?>
+        <?php if($board->contribution() && !$board->meta->always_view_list):?>
             <div class="kboard-qna-poweredby">
                 <a href="https://www.cosmosfarm.com/products/kboard" onclick="window.open(this.href);return false;" title="<?php echo __('KBoard is the best community software available for WordPress', 'kboard')?>"></a>
             </div>
-        <?php endif?> -->
+        <?php endif?>
     </div>
 </div>
 <?php wp_enqueue_script('qna-document', "{$skin_path}/document.js", array(), KBOARD_VERSION, true)?>
