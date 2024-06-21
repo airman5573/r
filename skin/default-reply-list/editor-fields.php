@@ -258,6 +258,35 @@
 					placeholder="" />
 			</div>
 		</div>
+	<?php elseif($meta_key === 'care_program'):?>
+		<!-- 관리프로그램 선택 -->
+		<div class="kboard-attr-row <?php echo esc_attr($required)?>">
+			<label class="attr-name" for="select-care_program-1">
+				<span class="field-name">관리프로그램선택</span> <span class="attr-required-text">*</span>
+			</label>
+			<div class="attr-value flex-item flex-start">
+				<div class="one-three select-box-container-1">
+					<select id="select-care_program-1" name="care_program_1" class="" tabindex="-1" aria-hidden="true">
+						<option value="">프로그램</option>
+					</select>
+				</div>
+				<div class="one-three select-box-container-2">
+					<select id="select-care_program-2" name="care_program_2" class="" tabindex="-1" aria-hidden="true" disabled>
+						<option value="">프로그램</option>
+					</select>
+				</div>
+				<div class="one-three select-box-container-3 d-none">
+					<select id="select-care_program-3" name="care_program_3" class="" tabindex="-1" aria-hidden="true" disabled>
+						<option value="">프로그램</option>
+					</select>
+				</div>
+				<input type="hidden" id="care_program"
+					class="required"
+					name="<?php echo esc_attr($fields->getOptionFieldName($meta_key))?>" 
+					value="<?php echo $content->option->{$meta_key} ? esc_attr($content->option->{$meta_key}) : esc_attr($default_value)?>"
+					placeholder="" />
+			</div>
+		</div>
 	<?php else: ?>
         <div class="kboard-attr-row <?php echo esc_attr($field['class'])?> meta-key-<?php echo esc_attr($meta_key)?> <?php echo esc_attr($required)?>">
             <label class="attr-name" for="<?php echo esc_attr($meta_key)?>">
