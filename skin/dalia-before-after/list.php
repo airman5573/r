@@ -13,7 +13,6 @@
 	$cat1 = kboard_category1();
 	// show this slide when $_GET['category1'] is not set
 	if (!$cat1) { ?>
-		
 		<!-- 슬라이드 시작 -->
 		<div id="kboard-dalia-before-after-list-slide" class="kboard-dalia-before-after-list-slide">
 			<div class="kboard-dalia-before-after-list owl-carousel owl-theme owl-loaded owl-drag">
@@ -31,7 +30,6 @@
 		<?php
 	}
 	?>
-	
 	
 	<!-- 카테고리 시작 -->
 	<?php

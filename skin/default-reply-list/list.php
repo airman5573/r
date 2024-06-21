@@ -87,6 +87,8 @@
 					<!-- <td class="kboard-list-view"><?php echo $content->view?></td> -->
 				</tr>
 				<?php endwhile?>
+
+
 				<?php while($content = $list->hasNextPopular()):?>
 				<tr class="<?php echo esc_attr($content->getClass())?>" onClick="location.href='<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>'">
 					<td class="kboard-list-uid"><?php echo esc_html($board->getPopularName())?></td>
@@ -116,6 +118,8 @@
 				</tr>
 				<?php endwhile?>
 			<!-- 공지사항 -->
+
+
 				<?php while($content = $list->hasNext()):?>
 				<tr class="<?php echo esc_attr($content->getClass())?>" onClick="location.href='<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>'">
 					<td class="kboard-list-uid"><?php echo $list->index()?></td>
@@ -128,8 +132,9 @@
 								<?php endif?>
 
 								<?php dalia_print_branch_term_name($content); ?>
+
+								<?php dalia_print_care_program_term_name($content); ?>
 								
-								<span class="category-bullet">보습탄탄 관리</span>
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>

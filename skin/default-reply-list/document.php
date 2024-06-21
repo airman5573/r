@@ -5,7 +5,9 @@
 			<div class="document-header-top">
 				<div class="kboard-detail">
 					<?php dalia_print_branch_term_name($content); ?>
-					<span class="category-bullet">보습탄탄 관리</span>
+
+					<?php dalia_print_care_program_term_name($content); ?>
+
 					<?php if($content->category1):?>
 					<div class="detail-attr detail-category1">
 						<div class="detail-name"><?php echo esc_html($content->category1)?></div>
