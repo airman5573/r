@@ -189,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const telInput = document.querySelector('input[name="kboard_option_tel"]');

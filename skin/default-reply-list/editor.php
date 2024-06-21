@@ -169,30 +169,8 @@ jQuery(document).ready(function() {
 
 // 관리자인 경우에 자동으로 필수 필드 삭제 및 공지사항 자동 체크
 jQuery(($) => {
-	const toggleVisibilityAndRequirement = (elementParent, isHidden, isRequired) => {
-		if (isHidden) {
-			$(elementParent).addClass('hidden');
-		} else {
-			$(elementParent).removeClass('hidden');
-		}
-
-		if (isRequired) {
-			$(elementParent).addClass('required');
-		} else {
-			$(elementParent).removeClass('required');
-		}
-	};
-
-	const clearInputValue = (inputElement) => {
-		if ($(inputElement).attr('type') === 'checkbox') {
-			$(inputElement).prop('checked', false);
-		} else {
-			$(inputElement).val('');
-		}
-	};
-
-	const clearInputs = () => {
-		const inputsToClear = [
+	const removeFieldsForAdmin = () => {
+		const fieldsToRemove = [
 			'input[name="kboard_option_email"]',
 			'input[name="kboard_option_agree_checkbox[]"]',
 			'input[name="kboard_option_tel"]',
@@ -205,72 +183,16 @@ jQuery(($) => {
 			'input[name="password"]',
 		];
 
-		inputsToClear.forEach((selector) => {
-				const input = $(selector);
-				input.length > 0 && clearInputValue(input);
+		fieldsToRemove.forEach(selector => {
+			$(selector).closest('.kboard-attr-row').remove();
 		});
 	};
 
-	const setInitialState = (element, isHidden, isRequired) => {
-		clearInputValue(element);
-		const elementParent = $(element).closest('.kboard-attr-row');
-		toggleVisibilityAndRequirement(elementParent, isHidden, isRequired);
-	};
-
-	const processNoticeInputChange = (isNotice) => {
-		const emailInput = $('input[name="kboard_option_email"]');
-		const agreementInput = $('input[name="kboard_option_agree_checkbox[]"]');
-		const telInput = $('input[name="kboard_option_tel"]');
-		const branchInput = $('input[name="kboard_option_branch"]');
-		const careProgramSelect = $('select[name="care_program_1"]');
-		const notificationMethodSelect = $('select[name="kboard_option_notification_method"]');
-		const category1Select = $('select[name="category1"]');
-		const passwordInput = $('input[name="password"]');
-
-		clearInputs();
-
-		setInitialState(emailInput, isNotice, !isNotice);
-		setInitialState(agreementInput, isNotice, !isNotice);
-		setInitialState(telInput, isNotice, !isNotice);
-		setInitialState(branchInput, isNotice, !isNotice);
-		setInitialState(careProgramSelect, isNotice, !isNotice);
-		setInitialState(notificationMethodSelect, isNotice, !isNotice);
-		setInitialState(category1Select, isNotice, !isNotice);
-
-		toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), isNotice, false);
-	};
-
-	const processSecretCheckboxChange = (isSecret) => {
-		const passwordInput = $('input[name="password"]');
-		clearInputValue(passwordInput);
-		toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), !isSecret, false);
-	};
-
-	const noticeInput = $('input[name="notice"]');
-		noticeInput.on('change', () => {
-		processNoticeInputChange(noticeInput.is(':checked'));
-	});
-
-	const secretInput = $('input[name="secret"]');
-		secretInput.on('change', () => {
-		processSecretCheckboxChange(secretInput.is(':checked'));
-	});
-
-	if (secretInput.is(':checked')) {
-		processSecretCheckboxChange(true);
-	}
-
 	// Admin-specific processing
-	<?php
-	if (dalia_is_admin()) {
-		echo 'secretInput.prop("checked", false);';
-		echo 'processNoticeInputChange(true);';
-		echo 'noticeInput.prop("checked", true);';
+	const isAdmin = <?= json_encode(dalia_is_admin()) ?>;
+	if (isAdmin) {
+		removeFieldsForAdmin();
 	}
-	?>
-
-	// Initial state setup
-	// hideFieldsAndCheckNotice();
 });
 
 </script>

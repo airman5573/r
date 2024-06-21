@@ -6,7 +6,9 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
 <div id="kboard-document" class="<?php echo $additional_class; ?>">
     <div id="kboard-qna-document">
         <div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
+
             <meta itemprop="name" content="<?php echo kboard_htmlclear(strip_tags($content->title))?>">
+
             <div class="document-header">
                 <div class="document-header-top flex-item">
                     <?php dalia_print_notice_tag($content); ?>
@@ -70,6 +72,7 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                     </div>
                 </div>
             </div>
+            
             <div class="kboard-content" itemprop="description">
                 <div class="content-view">
                     <?php echo $content->getDocumentOptionsHTML()?>
@@ -77,6 +80,8 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                 </div>
                 
             </div>
+
+            <!-- 답변 - 시작 -->
             <div class="reply-content-wrap">
                 <div class="reply-content-left">
                     <i class="xi-subdirectory-arrow"></i>
@@ -117,6 +122,8 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                     </div>
                 </div>
             </div>
+            <!-- 답변 - 끝 -->
+
             <div class="kboard-document-action">
                 <div class="left">
                     <button type="button" class="kboard-button-action kboard-button-like" onclick="kboard_document_like(this)" data-uid="<?php echo $content->uid?>" title="<?php echo __('Like', 'kboard')?>"><?php echo __('Like', 'kboard')?> <span class="kboard-document-like-count"><?php echo intval($content->like)?></span></button>
@@ -126,6 +133,7 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                     <button type="button" class="kboard-button-action kboard-button-print" onclick="kboard_document_print('<?php echo $url->getDocumentPrint($content->uid)?>')" title="<?php echo __('Print', 'kboard')?>"><?php echo __('Print', 'kboard')?></button>
                 </div>
             </div>
+
             <?php if($content->isAttached()):?>
                 <div class="kboard-attach">
                     <div class="kboard-attach-title"><?php echo __('Attachment', 'kboard')?> <?php echo intval(count((array)$content->getAttachmentList()))?>개</div>
@@ -134,6 +142,7 @@ $additional_class = $isNoticeDocument ? 'kboard-notice-document' : '';
                     <?php endforeach?>
                 </div>
             <?php endif?>
+
         </div>
         <?php if($content->visibleComments()):?>
             <div class="kboard-comments-area"><?php echo $board->buildComment($content->uid)?></div>

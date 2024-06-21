@@ -730,6 +730,9 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
 .kboard-notice-document .document-header-bottom {
     display: none;
 }
+.kboard-reply-document .document-header-bottom {
+    display: none;
+}
 .kboard-document-wrap .kboard-detail .detail-attr .detail-value a {
     text-decoration: none;
     border: 0;

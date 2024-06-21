@@ -1,5 +1,4 @@
 <div id="kboard-default-reply-list-list" class="kboard-list-wrap">
-	
 	<!-- 게시판 정보 시작 -->
 	<div class="kboard-list-header">
 		<?php if(!$board->isPrivate()):?>
@@ -11,7 +10,6 @@
 		<div class="kboard-list-header-right flex-item">
 		
 		<div class="kboard-sort">
-			
 			<form id="kboard-sort-form-<?php echo $board->id?>" method="get" action="<?php echo esc_url($url->toString())?>">
 				<?php echo $url->set('pageid', '1')->set('category1', '')->set('category2', '')->set('target', '')->set('keyword', '')->set('mod', 'list')->set('kboard_list_sort_remember', $board->id)->toInput()?>
 				
@@ -118,7 +116,6 @@
 				</tr>
 				<?php endwhile?>
 			<!-- 공지사항 -->
-
 
 				<?php while($content = $list->hasNext()):?>
 				<tr class="<?php echo esc_attr($content->getClass())?>" onClick="location.href='<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>'">
