@@ -1,5 +1,10 @@
+<?php
+$is_notice = $content->notice;
+$additional_class = $is_notice ? 'kboard-notice-document' : '';
+?>
+
 <div id="kboard-document">
-	<div id="kboard-default-reply-list-document">
+	<div id="kboard-default-reply-list-document" class="<?php echo $additional_class; ?>">
 		<div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
 		<div class="document-header">
 			<div class="document-header-top">

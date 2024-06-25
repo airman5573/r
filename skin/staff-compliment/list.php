@@ -93,7 +93,7 @@
 							</div>
 				
 					</td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc">
 						<?php if($content->category2):?>
 							<!-- <span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span> -->
 						<?php endif?>
@@ -116,10 +116,11 @@
 							<?php if($content->category2):?>
 								<div class="kboard-mobile-status">
 									<span class="kboard-staff-compliment-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
+									<?php dalia_print_branch_term_name($content); ?>
 								</div>
 							<?php endif?>
 							<div class="kboard-staff-compliment-cut-strings">
-								<?php dalia_print_branch_term_name($content); ?>
+								<span class="table-pc"><?php dalia_print_branch_term_name($content); ?></span>
 								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
 								
 								<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
@@ -136,7 +137,7 @@
 								<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 							</div>
 					</td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc">
 						<?php if($content->category2):?>
 							<span class="kboard-staff-compliment-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
 						<?php endif?>

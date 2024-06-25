@@ -4,7 +4,7 @@
 
 jQuery(document).ready(function(){
 	var reviewSwiper = new Swiper(".revew-latest-slider-list", {
-		slidesPerView: 3,
+		slidesPerView: 1,
 		spaceBetween: 15,
 		pagination: {
 			el: ".swiper-pagination",

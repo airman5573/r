@@ -655,7 +655,8 @@
 	}
 	#kboard-staff-compliment-document .kboard-detail .detail-attr {
 		display: flex;
-    	flex-direction: column;
+		flex-direction: row;
+		align-items: flex-start;
 	}
 
 	#kboard-staff-compliment-document .kboard-document-action {
@@ -666,14 +667,8 @@
 		margin: 0 5px;
 	}
 
-	#kboard-staff-compliment-document .kboard-document-navi .kboard-prev-document {
-		width: 100%;
-	}
-
 	#kboard-staff-compliment-document .kboard-document-navi .kboard-next-document {
-		margin-top: 10px;
-		float: left;
-		width: 100%;
-		text-align: left;
+		float: right;
+		text-align: right;
 	}
 }

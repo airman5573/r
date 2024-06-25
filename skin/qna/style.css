@@ -578,13 +578,13 @@
 	}
 
 	#kboard-qna-list .kboard-list table td.kboard-list-title {
-		padding: 10px 5px;
+		padding: 14px 16px;
 	}
 
 	#kboard-qna-list .kboard-list table td.kboard-list-title .kboard-qna-cut-strings {
-		margin-bottom: 10px;
 		white-space: normal;
-		line-height: 23px;
+		line-height: 1.2;
+		padding: 0 0 2px;
 	}
 
 	#kboard-qna-list .kboard-list table td.kboard-list-uid,
@@ -602,13 +602,6 @@
 
 	#kboard-qna-list .kboard-list .kboard-mobile-status {
 		display: block;
-	}
-
-	#kboard-qna-list .kboard-list .kboard-mobile-status .kboard-qna-status {
-		padding: 2px;
-		min-width: 60px;
-		text-align: center;
-		font-size: 11px;
 	}
 
 	#kboard-qna-list .kboard-list .kboard-mobile-contents {

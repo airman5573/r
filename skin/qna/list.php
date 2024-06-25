@@ -53,7 +53,7 @@
 					<?php endif?> -->
 					
 					<td class="kboard-list-title"><?php echo __('Title', 'kboard')?></td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc-02">
 						<button class="sort-by-status-toggle-btn"><?php echo __('Status', 'kboard')?></button>
 					</td>
 					<td class="kboard-list-user"><?php echo __('Author', 'kboard')?></td>
@@ -92,12 +92,12 @@
 							</div>
 							<div class="kboard-mobile-contents">
 								<span class="contents-item kboard-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></span>
-								<span class="contents-separator kboard-date">|</span>
+								<span class="contents-separator kboard-date"> • </span>
 								<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 							</div>
 				
 					</td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc-02">
 						<?php if($content->category2):?>
 							<!-- <span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span> -->
 						<?php endif?>
@@ -120,11 +120,17 @@
 					<td class="kboard-list-title">
 						<?php if($content->category2):?>
 							<div class="kboard-mobile-status">
-								<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
+								<?php
+									$answer_status_index = $content->category2 ? array_search($content->category2, $status_list) : '0';
+									$answer_status = $status_list[$answer_status_index];
+									?>
+								<span class="kboard-qna-status status-<?php echo $answer_status_index; ?>"><?php echo $answer_status; ?></span>
+								<?php dalia_print_branch_term_name($content); ?>
 							</div>
 						<?php endif?>
 						<div class="kboard-qna-cut-strings">
-							<?php dalia_print_branch_term_name($content); ?>
+							<span class="table-pc"><?php dalia_print_branch_term_name($content); ?></span>
+							
 							
 							
 							<!-- <?php if($board->use_category == 'yes' && $board->initCategory1()):?>
@@ -137,11 +143,11 @@
 						</div>
 						<div class="kboard-mobile-contents">
 							<span class="contents-item kboard-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></span>
-							<span class="contents-separator kboard-date">|</span>
+							<span class="contents-separator kboard-date"> • </span>
 							<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 						</div>
 					</td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc-02">
 						<?php
 						$answer_status_index = $content->category2 ? array_search($content->category2, $status_list) : '0';
 						$answer_status = $status_list[$answer_status_index];

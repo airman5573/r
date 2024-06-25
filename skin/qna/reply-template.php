@@ -6,7 +6,7 @@
 		<td class="kboard-list-category"><?php echo $content->category1?></td>
 	<?php endif?> -->
 	
-	<td class="kboard-list-title" style="padding-left:<?php echo ($depth+1)*5?>px">
+	<td class="kboard-list-title">
 		<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
 			<div class="kboard-qna-cut-strings">
 				<i class="xi-subdirectory-arrow kboard-icon-reply"></i>
@@ -20,7 +20,7 @@
 				<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 				<?php if($content->isNew()):?><span class="kboard-qna-new-notify new-mark">N</span><?php endif?>
 			</div>
-			<div class="kboard-mobile-status">
+			<div class="kboard-mobile-status table-pc-02">
 				<span class="kboard-qna-status status-answer"><?php echo __('Answer', 'kboard')?></span>
 			</div>
 			<div class="kboard-mobile-contents">
@@ -30,7 +30,7 @@
 			</div>
 		</a>
 	</td>
-	<td class="kboard-list-status">
+	<td class="kboard-list-status table-pc-02">
 		<span class="kboard-qna-status status-answer"><?php echo __('Answer', 'kboard')?></span>
 	</td>
 	<td class="kboard-list-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></td>
