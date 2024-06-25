@@ -55,7 +55,7 @@
 					<?php endif?> -->
 					
 					<td class="kboard-list-title"><?php echo __('Title', 'kboard')?></td>
-					<td class="kboard-list-status"><?php echo __('Status', 'kboard')?></td>
+					<td class="kboard-list-status table-pc"><?php echo __('Status', 'kboard')?></td>
 					<td class="kboard-list-user"><?php echo __('Author', 'kboard')?></td>
 					<td class="kboard-list-date"><?php echo __('Date', 'kboard')?></td>
 					<td class="kboard-list-vote"><?php echo __('Votes', 'kboard')?></td>
@@ -95,7 +95,7 @@
 							</div>
 				
 					</td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc">
 						<?php if($content->category2):?>
 							<!-- <span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span> -->
 						<?php endif?>
@@ -133,11 +133,11 @@
 							</div>
 							<div class="kboard-mobile-contents">
 								<span class="contents-item kboard-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></span>
-								<span class="contents-separator kboard-date">|</span>
+								<span class="contents-separator kboard-date">•</span>
 								<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 							</div>
 					</td>
-					<td class="kboard-list-status">
+					<td class="kboard-list-status table-pc">
 						<?php if($content->category2):?>
 							<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
 						<?php endif?>

@@ -26,12 +26,12 @@
 			</div>
 			<div class="kboard-mobile-contents">
 				<span class="contents-item kboard-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></span>
-				<span class="contents-separator kboard-date">|</span>
+				<span class="contents-separator kboard-date">•</span>
 				<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
 			</div>
 		</a>
 	</td>
-	<td class="kboard-list-status">
+	<td class="kboard-list-status table-pc">
 		<span class="kboard-franchise-qna-status status-answer"><?php echo __('Answer', 'kboard')?></span>
 	</td>
 	<td class="kboard-list-user"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?></td>

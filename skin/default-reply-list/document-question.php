@@ -160,11 +160,11 @@ $additional_class = $is_notice ? 'kboard-notice-document' : '';
 		<div class="kboard-control flex-center">
 			<div class="left">
 				<a href="<?php echo esc_url($url->getBoardList())?>" class="kboard-default-reply-list-button-small dalia-btn-01"><?php echo __('List', 'kboard')?></a>
-				<?php if($board->isReply() && !$content->notice):?><a href="<?php echo $url->set('parent_uid', $content->uid)->set('mod', 'editor')->toString()?>" class="kboard-default-reply-list-button-small dalia-btn-01"><?php echo __('Reply', 'kboard')?></a><?php endif?>
+				<?php if($board->isReply() && !$content->notice):?><a href="<?php echo $url->set('parent_uid', $content->uid)->set('mod', 'editor')->toString()?>" class="kboard-qna-button-gray dalia-btn-01"><?php echo __('Reply', 'kboard')?></a><?php endif?>
 			</div>
 			<?php if($content->isEditor() || $board->permission_write=='all'):?>
 			<div class="right">
-				<a href="<?php echo esc_url($url->getContentEditor($content->uid))?>" class="kboard-default-reply-list-button-small dalia-btn-01"><?php echo __('Edit', 'kboard')?></a>
+				<a href="<?php echo esc_url($url->getContentEditor($content->uid))?>" class="kboard-default-reply-list-button-small dalia-btn-01"><?php echo __('Edit', 'kboard'); ?></a>
 				<a href="<?php echo esc_url($url->getContentRemove($content->uid))?>" class="kboard-default-reply-list-button-small dalia-btn-01" onclick="return confirm('<?php echo __('Are you sure you want to delete?', 'kboard')?>');"><?php echo __('Delete', 'kboard')?></a>
 			</div>
 			<?php endif?>
