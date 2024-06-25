@@ -5,5 +5,4 @@ if ($is_answer_content) {
 } else {
 	require_once KBOARD_DIR_PATH . '/skin/default-reply-list/document-question.php';
 }
-
 ?>
