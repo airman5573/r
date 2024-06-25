@@ -659,7 +659,6 @@
 	}
 	#kboard-qna-document .kboard-detail .detail-attr {
 		display: flex;
-    	flex-direction: column;
 	}
 
 	#kboard-qna-document .kboard-document-action {

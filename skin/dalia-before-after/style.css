@@ -2,7 +2,7 @@
 /**
  * @author https://www.cosmosfarm.com/
  */
- .before-after-photo > .wrapper::before {
+ .before-after-photo > .wrapper .after-img-container::before {
 	content: "Before";
     z-index: 1;
     display: block;
@@ -17,9 +17,8 @@
     font-size: 14px;
     background: rgb(0 0 0 / .2);
 }
-.before-after-photo > .wrapper::after {
+.before-after-photo > .wrapper .before-img-container::before {
 	content: "After";
-    z-index: 1;
     display: block;
     position: absolute;
     right: 20px;
@@ -472,8 +471,11 @@
 }
 
 #kboard-dalia-before-after-list.mw600 .kboard-dalia-before-after-list .kboard-list-item {
-	margin: 0 1% 0 0;
-	width: 49%;
+	margin: 0 8px 0 0;
+    width: calc(50% - 4px);
+}
+#kboard-dalia-before-after-list.mw600 .kboard-dalia-before-after-list .kboard-list-item:nth-child(2n) {
+	margin: 0;
 }
 #kboard-dalia-before-after-list .kboard-dalia-before-after-list .kboard-list-item .category-bullet {
 	margin-right: 0;
@@ -841,7 +843,6 @@
 .before-after-photo > .wrapper .content-image {
 	height: 100%;
 	max-width: initial;
-	width: 100%;
 	object-fit: cover;
 }
 
@@ -918,8 +919,18 @@ ul.kboard-dalia-before-after-list.other {
 .before-after-photo > .wrapper .scroller:after {
 	bottom: 100%;
 }
-
+ul.kboard-dalia-before-after-list {
+	margin-left: 0;
+}
+@media screen and (max-width: 999px) {
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
+		width: 100%;
+		max-width: 100%;
+	
+	}
+} 
 @media screen and (max-width: 600px) {
+
 	#kboard-dalia-before-after-list .kboard-dalia-before-after-search select {
 		float: left;
 		margin-right: 1%;
@@ -1121,8 +1132,18 @@ ul.kboard-dalia-before-after-list.other {
 		width: 100%;
 		text-align: left;
 	}
+	ul.kboard-dalia-before-after-list.other {
+		margin-top: 0;
+	}
+	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
+		margin-top: 0;
+	}
 }
-
+@media (max-width: 400px) {
+	.before-after-photo {
+		height: 240px;
+	}
+}
 @keyframes fadein {
 	from {
 		opacity: 0;

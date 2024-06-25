@@ -131,24 +131,25 @@ $original_question_content = $original_question_content->initWithUID($parent_uid
 
     <div class="divider" style="height: 10px; background-color: green;"></div>
 
-	<form class="kboard-form" method="post" action="<?php echo $url->getContentEditorExecute()?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
-
-		<?php foreach($board->fields()->getSkinFields() as $key => $field): ?>
-			<?php echo $board->fields()->getTemplate($field, $content, $boardBuilder); ?>
-		<?php endforeach ?>
+	<form class="kboard-form" method="post" action="<?php echo esc_url($url->getContentEditorExecute())?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
+		<?php $skin->editorHeader($content, $board)?>
+		
+		<?php foreach($board->fields()->getSkinFields() as $key=>$field):?>
+			<?php echo $board->fields()->getTemplate($field, $content, $boardBuilder)?>
+		<?php endforeach?>
 		
 		<div class="kboard-control">
 			<div class="left">
 				<?php if($content->uid):?>
-				<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('Back', 'kboard')?></a>
-				<a href="<?php echo $url->getBoardList()?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('List', 'kboard')?></a>
+				<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>" class="kboard-default-button-small"><?php echo __('Back', 'kboard')?></a>
+				<a href="<?php echo esc_url($url->getBoardList())?>" class="kboard-default-button-small"><?php echo __('List', 'kboard')?></a>
 				<?php else:?>
-				<a href="<?php echo $url->getBoardList()?>" class="kboard-qna-button-small dalia-btn-01"><?php echo __('Back', 'kboard')?></a>  
+				<a href="<?php echo esc_url($url->getBoardList())?>" class="kboard-default-button-small"><?php echo __('Back', 'kboard')?></a>
 				<?php endif?>
 			</div>
 			<div class="right">
 				<?php if($board->isWriter()):?>
-				<button type="submit" class="kboard-qna-button-small dalia-btn-01"><?php echo __('Save', 'kboard')?></button>
+				<button type="submit" class="kboard-default-button-small"><?php echo __('Save', 'kboard')?></button>
 				<?php endif?>
 			</div>
 		</div>
