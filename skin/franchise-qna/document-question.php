@@ -35,7 +35,6 @@ $additional_class = $is_notice ? 'kboard-notice-document' : '';
                                     <?php while($board->hasNextCategory()):?>
                                     <option value="<?php echo $board->currentCategory()?>"<?php if($content->category2 == $board->currentCategory()):?> selected<?php endif?>><?php echo $board->currentCategory()?></option>
                                     <?php endwhile?>
-                                    <option value="">상태없음</option>
                                 </select>
                             </div>
                         </div>

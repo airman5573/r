@@ -27,7 +27,6 @@ if(!function_exists('kboard_ask_one_get_template_field_html')){
 						<?php while($board->hasNextCategory()):?>
 						<option value="<?php echo $board->currentCategory()?>"<?php if($content->category2 == $board->currentCategory()):?> selected<?php endif?>><?php echo $board->currentCategory()?></option>
 						<?php endwhile?>
-						<option value="">상태없음</option>
 					</select>
 					<div class="description">※ 상태는 관리자만 수정할 수 있습니다.</div>
 				</div>
