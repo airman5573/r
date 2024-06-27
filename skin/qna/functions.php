@@ -161,7 +161,7 @@ function dalia_qna_change_ask_status_to_reask_when_comment_inserted($comment_id,
 	];
 	$content->updateContent($data);
 }
-add_action( 'kboard_comments_insert_9', 'dalia_qna_change_ask_status_to_reask_when_comment_inserted', 10, 3 );
+// add_action( 'kboard_comments_insert_9', 'dalia_qna_change_ask_status_to_reask_when_comment_inserted', 10, 3 );
 
 // Function to log all functions registered to 'kboard_document_insert'
 function log_registered_functions_for_kboard_document_insert() {
