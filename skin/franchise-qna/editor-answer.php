@@ -1,5 +1,123 @@
-<div id="kboard-franchise-qna-editor">
-	<form class="kboard-form" method="post" action="<?php echo $url->getContentEditorExecute()?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
+<?php
+$fields = $board->fields();
+$parent_uid = $content->parent_uid;
+$original_question_content = new KBContent($content->board_id);
+$original_question_content = $original_question_content->initWithUID($parent_uid); ?>
+
+<div id="kboard-qna-editor">
+    <div class="original-question">
+        <div id="kboard-document">
+            <div id="kboard-default-reply-list-document">
+                <div class="kboard-document-wrap" itemscope itemtype="http://schema.org/Article">
+                    <div class="document-header">
+                        <div class="document-header-top">
+                            <div class="kboard-detail">
+  
+                                <?php if($original_question_content->category1):?>
+                                <div class="detail-attr detail-category1">
+                                    <div class="detail-name"><?php echo esc_html($original_question_content->category1)?></div>
+                                </div>
+                                <?php endif?>
+                                <?php if($original_question_content->category2):?>
+                                <div class="detail-attr detail-category2">
+                                    <div class="detail-name"><?php echo esc_html($original_question_content->category2)?></div>
+                                </div>
+                                <?php endif?>
+                                <?php if($original_question_content->category3):?>
+                                <div class="detail-attr detail-category3">
+                                    <div class="detail-name"><?php echo esc_html($original_question_content->category3)?></div>
+                                </div>
+                                <?php endif?>
+                                <?php if($original_question_content->category4):?>
+                                <div class="detail-attr detail-category4">
+                                    <div class="detail-name"><?php echo esc_html($original_question_content->category4)?></div>
+                                </div>
+                                <?php endif?>
+                                <?php if($original_question_content->category5):?>
+                                <div class="detail-attr detail-category5">
+                                    <div class="detail-name"><?php echo esc_html($original_question_content->category5)?></div>
+                                </div>
+                                <?php endif?>
+                                <?php if($original_question_content->option->tree_category_1):?>
+                                <?php for($i=1; $i<=$original_question_content->getTreeCategoryDepth(); $i++):?>
+                                <div class="detail-attr detail-tree-category-<?php echo $i?>">
+                                    <div class="detail-name"><?php echo esc_html($original_question_content->option->{'tree_category_'.$i})?></div>
+                                </div>
+                                <?php endfor?>
+                                <?php endif?>
+                                <?php dalia_print_notice_tag($original_question_content); ?>
+                                <div class="detail-attr detail-date">
+                                    <div class="detail-value"><?php echo date('Y-m-d H:i', strtotime($original_question_content->date))?></div>
+                                </div>
+                                <?php if($original_question_content->isNew()):?><span class="kboard-hwaikeul-video-slider-new-notify new-mark">N</span><?php endif?>
+                            </div>
+                        </div>
+                        <div class="document-header-middle">
+                            <div class="kboard-title" itemprop="name">
+                                <h1><?php echo $original_question_content->title?></h1>
+                            </div>
+                        </div>
+                        <div class="kboard-detail document-header-bottom">
+                            <?php
+                                if(!$board->initCategory2()){
+                                    $board->category = kboard_ask_status();
+                                }
+                            ?>
+                            <?php if($board->isAdmin()):?>
+                                
+                            <?php elseif($original_question_content->category2):?>
+                                <span class="kboard-qna-status status-<?php echo array_search($original_question_content->category2, $board->category)?>"><?php echo $original_question_content->category2?></span>
+                            <?php endif?>
+                            <div class="detail-attr">
+                                <div class="detail-name">작성자 :</div>
+                                <div class="detail-value"><?php echo dalia_qna_kboard_get_username($original_question_content, $boardBuilder); ?></div>
+                            </div>
+                            <div class="detail-attr">
+                                <div class="detail-name">이메일 :</div>
+                                <div class="detail-value"><?php echo dalia_qna_kboard_get_email($original_question_content); ?></div>
+                            </div>
+                            <div class="detail-attr detail-view">
+                                <div class="detail-name"><?php echo __('Views', 'kboard')?></div>
+                                <div class="detail-value"><?php echo $original_question_content->view?></div>
+                            </div>
+                            <div class="detail-attr">
+                                <div class="detail-name">IP :</div>
+                                <div class="detail-value"><?php echo $original_question_content->option->ip?></div>
+                            </div>
+                        </div>	
+                    </div>	
+                    <div class="kboard-content" itemprop="description">
+                        <div class="content-view">
+                            <?php echo $original_question_content->getDocumentOptionsHTML()?>
+                            <?php echo $original_question_content->content?>
+                        </div>
+                    </div>
+                    <div class="kboard-document-action">
+                        <?php if(!$board->meta->permission_vote_hide):?>
+                            <div class="left">
+                                <button type="button" class="kboard-button-action kboard-button-like" onclick="kboard_document_like(this)" data-uid="<?php echo $original_question_content->uid?>" title="<?php echo __('Like', 'kboard')?>"><?php echo __('Like', 'kboard')?> <span class="kboard-document-like-count"><?php echo intval($original_question_content->like)?></span></button>
+                                <button type="button" class="kboard-button-action kboard-button-unlike" onclick="kboard_document_unlike(this)" data-uid="<?php echo $original_question_content->uid?>" title="<?php echo __('Unlike', 'kboard')?>"><?php echo __('Unlike', 'kboard')?> <span class="kboard-document-unlike-count"><?php echo intval($original_question_content->unlike)?></span></button>
+                            </div>
+                        <?php endif?>
+                        <div class="right">
+                            <button type="button" class="kboard-button-action kboard-button-print" onclick="kboard_document_print('<?php echo $url->getDocumentPrint($original_question_content->uid)?>')" title="<?php echo __('Print', 'kboard')?>"><?php echo __('Print', 'kboard')?></button>
+                        </div>
+                    </div>
+                    <?php if($original_question_content->isAttached()):?>
+                    <div class="kboard-attach">
+                        <?php foreach($original_question_content->getAttachmentList() as $key=>$attach):?>
+                        <button type="button" class="kboard-button-action kboard-button-download" onclick="window.location.href='<?php echo $url->getDownloadURLWithAttach($original_question_content->uid, $key)?>'" title="<?php echo sprintf(__('Download %s', 'kboard'), $attach[1])?>"><?php echo $attach[1]?></button>
+                        <?php endforeach?>
+                    </div>
+                    <?php endif?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider" style="height: 10px; background-color: green;"></div>
+
+	<form class="kboard-form" method="post" action="<?php echo esc_url($url->getContentEditorExecute())?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
 		<?php $skin->editorHeader($content, $board)?>
 		
 		<?php foreach($board->fields()->getSkinFields() as $key=>$field):?>
@@ -37,88 +155,25 @@ jQuery(document).ready(function(){
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const toggleVisibilityAndRequirement = (elementParent, isHidden, isRequired) => {
-    isHidden ? elementParent.classList.add('hidden') : elementParent.classList.remove('hidden');
-    isRequired ? elementParent.classList.add('required') : elementParent.classList.remove('required');
-  };
+jQuery(($) => {
+    const removeFieldsForAdmin = () => {
+        const fieldsToRemove = [
+            'input[name="kboard_option_email"]',
+            'input[name="kboard_option_agree_checkbox[]"]',
+            'select[name="kboard_option_tel"]',
+            'select[name="password"]'
+        ];
 
-  const clearInputValue = (inputElement) => {
-    if (inputElement.type === 'checkbox') {
-      inputElement.checked = false;
-    } else {
-      inputElement.value = '';
-    }
-  };
+        fieldsToRemove.forEach(selector => {
+          $(selector).closest('.kboard-attr-row').remove();
+        });
+    };
 
-  const setInitialState = (element, isHidden, isRequired) => {
-    clearInputValue(element);
-    const elementParent = element.closest('.kboard-attr-row');
-    toggleVisibilityAndRequirement(elementParent, isHidden, isRequired);
-  };
 
-  const processNoticeInputChange = (isNotice) => {
-    const emailInput = document.querySelector('input[name="kboard_option_email"]');
-    const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox"]');
-    const telInput = document.querySelector('input[name="kboard_option_tel"]');
-    const passwordInput = document.querySelector('input[name="password"]');
-
-    setInitialState(emailInput, isNotice, !isNotice);
-    setInitialState(agreementInput, isNotice, !isNotice);
-    setInitialState(telInput, isNotice, !isNotice);
-    toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), isNotice, false);
-  };
-
-  const processSecretCheckboxChange = (isSecret) => {
-    const passwordInput = document.querySelector('input[name="password"]');
-    clearInputValue(passwordInput);
-    toggleVisibilityAndRequirement(passwordInput.closest('.kboard-attr-row'), !isSecret, false);
-  };
-
-  const noticeInput = document.querySelector('input[name="notice"]');
-  noticeInput.addEventListener('change', () => {
-    processNoticeInputChange(noticeInput.checked);
-  });
-
-  if (noticeInput.checked) {
-    processNoticeInputChange(true);
-  }
-
-  const secretInput = document.querySelector('input[name="secret"]');
-  secretInput.addEventListener('change', () => {
-    processSecretCheckboxChange(secretInput.checked);
-  });
-
-  if (secretInput.checked) {
-    processSecretCheckboxChange(true);
-  }
-
-  // Processing code exclusive to admin users
-  <?php
-    // if this user is admin, then uncheck secret checkbox
-    if (dalia_is_admin()) {
-      echo 'secretInput.checked = false;';
-      echo 'processNoticeInputChange(true);';
-      echo 'noticeInput.checked = true;';
-    }
-  ?>
+    // Admin-specific processing
+    const isAdmin = <?php echo json_encode(dalia_is_admin()) ?>;
+    if (isAdmin) {
+        removeFieldsForAdmin();
+      }
 });
-</script>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const telInput = document.querySelector('input[name="kboard_option_tel"]');
-    const lastFourTelInput = document.querySelector('input[name="kboard_option_tel_last_four"]');
-    if (!telInput || !lastFourTelInput) {
-      console.warn('Tel input or last four tel input not found');
-      return;
-    }
-    
-    // sync telInput to lastFourTelInput. Extract only last four digits and insert it into lastFourTelInput. Always sync.
-    telInput.addEventListener('input', () => {
-      const telValue = telInput.value;
-      const lastFourDigits = telValue.slice(-4);
-      lastFourTelInput.value = lastFourDigits;
-    });
-  });
 </script>
