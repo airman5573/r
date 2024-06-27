@@ -1,13 +1,13 @@
 <div id="kboard-franchise-qna-editor">
 	<form class="kboard-form" method="post" action="<?php echo $url->getContentEditorExecute()?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
 		<?php $skin->editorHeader($content, $board)?>
-		
+
 		<?php foreach($board->fields()->getSkinFields() as $key=>$field):?>
 			<?php echo $board->fields()->getTemplate($field, $content, $boardBuilder)?>
 		<?php endforeach?>
 		
 		<div class="kboard-control">
-			<div class="left">
+            <div class="left">
 				<?php if($content->uid):?>
 				<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>" class="kboard-franchise-qna-button-small dalia-btn-01"><?php echo __('Back', 'kboard')?></a>
 				<a href="<?php echo $url->getBoardList()?>" class="kboard-franchise-qna-button-small dalia-btn-01"><?php echo __('List', 'kboard')?></a>
@@ -52,6 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  const clearInputs = () => {
+    const inputsToClear = ['input[name="kboard_option_qna_email"]', 'input[name="kboard_option_tel"]', 'input[name="kboard_option_branch"]', 'select[name="kboard_option_notification_method"]', 'select[name="category1"]'];
+
+    inputsToClear.forEach((selector) => {
+      const input = document.querySelector(selector);
+      clearInputValue(input);
+    });
+  };
+
   const setInitialState = (element, isHidden, isRequired) => {
     clearInputValue(element);
     const elementParent = element.closest('.kboard-attr-row');
@@ -63,6 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const agreementInput = document.querySelector('input[name="kboard_option_agree_checkbox"]');
     const telInput = document.querySelector('input[name="kboard_option_tel"]');
     const passwordInput = document.querySelector('input[name="password"]');
+
+    clearInputs();
 
     setInitialState(emailInput, isNotice, !isNotice);
     setInitialState(agreementInput, isNotice, !isNotice);
@@ -80,10 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
   noticeInput.addEventListener('change', () => {
     processNoticeInputChange(noticeInput.checked);
   });
-
-  if (noticeInput.checked) {
-    processNoticeInputChange(true);
-  }
 
   const secretInput = document.querySelector('input[name="secret"]');
   secretInput.addEventListener('change', () => {
