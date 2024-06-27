@@ -2,7 +2,9 @@
 $fields = $board->fields();
 $parent_uid = $content->parent_uid;
 $original_question_content = new KBContent($content->board_id);
-$original_question_content = $original_question_content->initWithUID($parent_uid); ?>
+$original_question_content = $original_question_content->initWithUID($parent_uid);
+$is_original_question_secret = wp_validate_boolean($original_question_content->secret);
+$password_of_orignal_question = $original_question_content->password; ?>
 
 <div id="kboard-qna-editor">
     <div class="original-question">
@@ -143,19 +145,28 @@ $original_question_content = $original_question_content->initWithUID($parent_uid
 </div>
 
 <script type="text/javascript" src="<?php echo $skin_path?>/script.js?<?php echo KBOARD_VERSION?>"></script>
-<script>
-jQuery(document).ready(function(){
-	var auto_secret_check = false;
-	var document_uid = <?php echo intval($content->uid)?>;
-	if(auto_secret_check && !document_uid){
-		jQuery('input[name=secret]').prop('checked', true);
-		kboard_toggle_password_field(jQuery('input[name=secret]'));
-	}
-});
-</script>
 
 <script>
-jQuery(($) => {
+jQuery(document).ready(function($){
+    var document_uid = <?php echo intval($content->uid)?>;
+    var is_original_question_secret = <?php echo json_encode($is_original_question_secret); ?>;
+    var password_of_original_question = <?php echo json_encode($password_of_orignal_question); ?>;
+
+    if(document_uid){
+        $('input[name=secret]').prop('checked', true);
+        kboard_toggle_password_field($('input[name=secret]'));
+    }
+
+    // 원본 질문이 비밀글인 경우
+    if(is_original_question_secret) {
+        // 체크박스를 체크하고 비활성화
+        $('input[name=secret]').prop('checked', true);
+        kboard_toggle_password_field($('input[name=secret]'));
+        
+        // 비밀번호 필드에 값을 설정하고 읽기 전용으로 만듦
+        $('input[name=password]').val(password_of_original_question);
+    }
+
     const removeFieldsForAdmin = () => {
         const fieldsToRemove = [
             'input[name="kboard_option_email"]',
@@ -168,11 +179,10 @@ jQuery(($) => {
         });
     };
 
-
     // Admin-specific processing
     const isAdmin = <?php echo json_encode(dalia_is_admin()) ?>;
     if (isAdmin) {
         removeFieldsForAdmin();
-      }
+    }
 });
 </script>

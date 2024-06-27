@@ -13,13 +13,11 @@ if(!function_exists('kboard_franchise_qna_get_template_field_html')){
 	function kboard_franchise_qna_get_template_field_html($html, $field, $content, $board){
 		if($field['meta_key'] == 'category2' && $board->skin == 'franchise-qna'){
 			ob_start();
-			?>
-			<?php
 			if(!$board->initCategory2()){
 				$board->category = kboard_ask_status();
 			}
-			?>
-			<?php if($board->isAdmin()):?>
+
+			if($board->isAdmin()):?>
 			<div class="kboard-attr-row">
 				<label class="attr-name" for="kboard-select-category2"><?php echo __('Status', 'kboard')?></label>
 				<div class="attr-value">
@@ -28,7 +26,6 @@ if(!function_exists('kboard_franchise_qna_get_template_field_html')){
 						<option value="<?php echo $board->currentCategory()?>"<?php if($content->category2 == $board->currentCategory()):?> selected<?php endif?>><?php echo $board->currentCategory()?></option>
 						<?php endwhile?>
 					</select>
-					<div class="description">※ 상태는 관리자만 수정할 수 있습니다.</div>
 				</div>
 			</div>
 			<?php else:?>
@@ -91,6 +88,46 @@ function dalia_franchise_qna_send_email_when_user_add_comment_to_the_question_ar
     $mail->send();
 }
 add_action( 'kboard_comments_insert_12', 'dalia_franchise_qna_send_email_when_user_add_comment_to_the_question_article', 10, 3 );
+
+// Status Sync -- Start
+function dalia_franchise_qna_sync_status_when_insert_answer($content_uid, $board_id, $content, $board) {
+	global $wpdb;
+
+	// 답변인 경우에만 실행
+	$parent_uid = $content->parent_uid;
+	if (!$parent_uid) {
+		return;
+	}
+
+	$category2_of_answer = $content->category2;
+	if ($category2_of_answer) {
+		$wpdb->update($wpdb->prefix . 'kboard_board_content', ['category2' => $category2_of_answer], ['uid' => $parent_uid]);
+	}
+}
+add_action( 'kboard_document_insert_12', 'dalia_franchise_qna_sync_status_when_insert_answer', 10, 4 );
+
+function dalia_franchise_qna_sync_status_when_update_answer($content_uid, $board_id, $board) {
+	global $wpdb;
+
+	if ($board_id !== 12) {
+		return;
+	}
+
+	$content = new KBContent($board_id);
+	$content->initWithUID($content_uid);
+	$parent_uid = $content->parent_uid;
+	if (!$parent_uid) {
+		return;
+	}
+
+	$category2_of_answer = $content->category2;
+
+	if ($category2_of_answer) {
+		$wpdb->update($wpdb->prefix . 'kboard_board_content', ['category2' => $category2_of_answer], ['uid' => $parent_uid]);
+	}
+} 
+add_action('kboard_document_update', 'dalia_franchise_qna_sync_status_when_update_answer', 10, 3);
+// Status Sync -- End
 
 function dalia_franchise_qna_kboard_get_email(&$content) {
 	return $content->option->{'email'} ?: '';
