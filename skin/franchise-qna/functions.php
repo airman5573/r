@@ -114,4 +114,4 @@ function dalia_franchise_qna_change_ask_status_to_reask_when_comment_inserted($c
 	];
 	$content->updateContent($data);
 }
-add_action( 'kboard_comments_insert_12', 'dalia_franchise_qna_change_ask_status_to_reask_when_comment_inserted', 10, 3 );
+// add_action( 'kboard_comments_insert_12', 'dalia_franchise_qna_change_ask_status_to_reask_when_comment_inserted', 10, 3 );
