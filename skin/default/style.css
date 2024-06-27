@@ -3689,6 +3689,12 @@ body:not(.woocommerce-cart) .main-content #kboard-image-gallery-list .kboard-lis
 }
 
 /* qna reply */
+.reply-btn {
+	display: none;
+}
+.logged-in .reply-btn {
+	display: block;
+}
 .reply-content-wrap {
     display: flex;
     align-items: flex-start;
@@ -3708,6 +3714,9 @@ body:not(.woocommerce-cart) .main-content #kboard-image-gallery-list .kboard-lis
 .reply-content-wrap .reply-content-right {
     width: 100%;
 }
+.kboard-reply-document .reply-content-right .document-header-bottom {
+	display: none;
+} 
 @media (max-width: 1200px) {
 	.kboard-list .kboard-list-item  {
 		width: calc(33% - 17px);

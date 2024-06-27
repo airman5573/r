@@ -181,7 +181,7 @@ $question_content = $question_content->initWithUID($answer_content->parent_uid);
             </div>
             <?php if($answer_content->isEditor() || $board->permission_write=='all'):?>
             <div class="right">
-                <a href="<?php echo esc_url($url->getContentEditor($answer_content->uid))?>" class="kboard-default-reply-list-button-small dalia-btn-01"><?php echo '답글수정'; ?></a>
+                <a href="<?php echo esc_url($url->getContentEditor($answer_content->uid))?>" class="kboard-default-reply-list-button-small dalia-btn-01 reply-btn"><?php echo '답글수정'; ?></a>
                 <a href="<?php echo esc_url($url->getContentRemove($answer_content->uid))?>" class="kboard-default-reply-list-button-small dalia-btn-01" onclick="return confirm('<?php echo __('Are you sure you want to delete?', 'kboard')?>');"><?php echo __('Delete', 'kboard')?></a>
             </div>
             <?php endif?>
