@@ -14,8 +14,11 @@
 							</div>
 							<div class="one-latest-slider-wrap">
 								<div class="one-latest-slider-title gallery-title">
-									<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
-									<?php echo $content->title?>
+									<p>
+										<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
+										<?php echo $content->title?>
+									</p>
+									
 								</div>
 							</div>
 						</a>

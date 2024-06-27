@@ -192,6 +192,9 @@ jQuery(($) => {
 	const isAdmin = <?= json_encode(dalia_is_admin()) ?>;
 	if (isAdmin) {
 		removeFieldsForAdmin();
+		
+		// 공지사항 체크
+		$('input[name="notice"]').prop('checked', true);
 	}
 });
 

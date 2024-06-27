@@ -345,9 +345,18 @@ video.wp-video-shortcode,
 .one-latest-slider-list .kboard-list .kboard-list-item a {
     text-decoration: none;
 }
-
-
 .one-latest-slider-list .kboard-list .kboard-list-item .one-latest-slider-wrap .one-latest-slider-title {
+    padding: 24px;
+    display: block;
+    height: auto;
+    position: absolute;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.one-latest-slider-list .kboard-list .kboard-list-item .one-latest-slider-wrap .one-latest-slider-title p {
     display: -webkit-box;
     overflow: hidden;
     text-decoration: none;
@@ -360,9 +369,7 @@ video.wp-video-shortcode,
     font-size: 23px;
     font-weight: 700;
     line-height: 1.3;
-    position: absolute;
     bottom: -1px;
-    padding: 24px;
     width: 100%;
     z-index: 99;
 }
