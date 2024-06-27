@@ -160,8 +160,7 @@ jQuery(($) => {
         const fieldsToRemove = [
             'input[name="kboard_option_email"]',
             'input[name="kboard_option_agree_checkbox[]"]',
-            'select[name="kboard_option_tel"]',
-            'select[name="password"]'
+            'input[name="kboard_option_tel"]',
         ];
 
         fieldsToRemove.forEach(selector => {
