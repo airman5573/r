@@ -49,8 +49,8 @@
 			<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>" title="<?php echo esc_attr($content->title)?>">
 				<div class="revew-latest-title revew-latest-cut-strings">
 					
-					<p class="text"><?php if($content->isNew()):?><span class="revew-latest-new-notify">N</span><?php endif?>
-					<?php if($content->secret):?><i class="xi-lock"></i><?php endif?><?php echo $content->title?></p>
+					<p class="text">
+					<?php if($content->secret):?><i class="xi-lock"></i><?php endif?><?php echo $content->title?><?php if($content->isNew()):?><span class="revew-latest-new-notify new-mark">N</span><?php endif?></p>
 				</div>
 				<div class="revew-latest-date revew-cut-strings">
 					<?php echo $content->getDate()?>

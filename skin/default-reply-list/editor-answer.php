@@ -5,7 +5,8 @@ $fields = $board->fields();
 $parent_uid = $content->parent_uid;
 $original_question_content = new KBContent($content->board_id);
 $original_question_content = $original_question_content->initWithUID($parent_uid);
-?>
+$is_original_question_secret = wp_validate_boolean($original_question_content->secret);
+$password_of_orignal_question = $original_question_content->password; ?>
 
 <div id="kboard-default-reply-list-editor" class="kboard-default-reply-list-editor--answer">
     <div class="original-question">
@@ -185,5 +186,4 @@ jQuery(($) => {
 		removeFieldsForAdmin();
 	}
 });
-
 </script>
