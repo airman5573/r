@@ -157,7 +157,6 @@ $password_of_orignal_question = $original_question_content->password; ?>
 
 <?php wp_enqueue_script('kboard-default-reply-list-script', "{$skin_path}/script.js", array(), KBOARD_VERSION, true)?>
 
-
 <script>
 jQuery(($) => {
     const documentUid = <?php echo intval($content->uid); ?>;
