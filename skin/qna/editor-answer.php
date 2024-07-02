@@ -4,7 +4,9 @@ $care_programs = dalia_get_care_programs();
 $fields = $board->fields();
 $parent_uid = $content->parent_uid;
 $original_question_content = new KBContent($content->board_id);
-$original_question_content = $original_question_content->initWithUID($parent_uid); ?>
+$original_question_content = $original_question_content->initWithUID($parent_uid); 
+$is_original_question_secret = wp_validate_boolean($original_question_content->secret);
+$password_of_orignal_question = $original_question_content->password; ?>
 
 <div id="kboard-qna-editor">
     <div class="original-question">
@@ -171,6 +173,23 @@ jQuery(document).ready(function(){
 
 <script>
 jQuery(($) => {
+    const config = {
+        is_original_question_secret: <?php echo json_encode($is_original_question_secret); ?>,
+        password_of_original_question: <?php echo json_encode($password_of_orignal_question); ?>,
+        isAdmin: <?php echo json_encode(dalia_is_admin()) ?>
+    };
+
+    const handleSecretQuestion = () => {
+        if (!config.is_original_question_secret) return;
+
+        const secretCheckbox = $('input[name=secret]');
+        const passwordInput = $('input[name=password]');
+
+        secretCheckbox.prop('checked', true);
+        kboard_toggle_password_field(secretCheckbox);
+        passwordInput.val(config.password_of_original_question);
+    };
+
     const removeFieldsForAdmin = () => {
         const fieldsToRemove = [
             'input[name="kboard_option_qna_email"]',
@@ -184,24 +203,31 @@ jQuery(($) => {
             'select[name="notification_method"]'
         ];
 
-        fieldsToRemove.forEach(selector => {
-            $(selector).closest('.kboard-attr-row').remove();
-        });
+        fieldsToRemove.forEach(selector => 
+            $(selector).closest('.kboard-attr-row').remove()
+        );
 
-        // 첨부파일 필드 제거
+        // Uncomment if needed:
         // $('.kboard-attr-attach').remove();
     };
 
     const setNoticeForAdmin = () => {
         const noticeCheckbox = $('input[name="notice"]');
-        noticeCheckbox.prop('checked', true);
-        noticeCheckbox.closest('.kboard-attr-row').hide();
+        noticeCheckbox.prop('checked', true)
+                      .closest('.kboard-attr-row').hide();
     };
 
-    // Admin-specific processing
-    const isAdmin = <?php echo json_encode(dalia_is_admin()) ?>;
-    if (isAdmin) {
+    const processAdminSpecificTasks = () => {
+        if (!config.isAdmin) return;
         removeFieldsForAdmin();
-    }
+        // setNoticeForAdmin(); // 사용하지 않는 코드
+    };
+
+    const init = () => {
+        handleSecretQuestion();
+        processAdminSpecificTasks();
+    };
+
+    init();
 });
 </script>
