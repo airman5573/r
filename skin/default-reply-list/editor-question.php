@@ -180,7 +180,6 @@ jQuery(($) => {
 			'select[name="care_program_3"]',
 			'select[name="kboard_option_notification_method"]',
 			'select[name="category1"]',
-			'input[name="password"]',
 		];
 
 		fieldsToRemove.forEach(selector => {
@@ -194,7 +193,7 @@ jQuery(($) => {
 		removeFieldsForAdmin();
 		
 		// 공지사항 체크
-		$('input[name="notice"]').prop('checked', true);
+		// $('input[name="notice"]').prop('checked', true);
 	}
 });
 

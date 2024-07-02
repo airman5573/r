@@ -136,7 +136,7 @@ $password_of_orignal_question = $original_question_content->password; ?>
 	<form class="kboard-form" method="post" action="<?php echo esc_url($url->getContentEditorExecute())?>" enctype="multipart/form-data" onsubmit="return kboard_editor_execute(this);">
 		<?php $skin->editorHeader($content, $board)?>
 		
-		<?php foreach($board->fields()->getSkinFields() as $key=>$field):?>
+		<?php foreach($board->fields()->getSkinFields() as $key=>$field): ?>
 			<?php echo $board->fields()->getTemplate($field, $content, $boardBuilder)?>
 		<?php endforeach?>
 		
@@ -159,31 +159,48 @@ $password_of_orignal_question = $original_question_content->password; ?>
 
 
 <script>
-// 관리자인 경우에 자동으로 필수 필드 삭제 및 공지사항 자동 체크
 jQuery(($) => {
-	const removeFieldsForAdmin = () => {
-		const fieldsToRemove = [
-			'input[name="kboard_option_email"]',
-			'input[name="kboard_option_agree_checkbox[]"]',
-			'input[name="kboard_option_tel"]',
-			'input[name="kboard_option_branch"]',
-			'select[name="care_program_1"]',
-			'select[name="care_program_2"]',
-			'select[name="care_program_3"]',
-			'select[name="kboard_option_notification_method"]',
-			'select[name="category1"]',
-			'input[name="password"]',
-		];
+    const documentUid = <?php echo intval($content->uid); ?>;
+    const isOriginalQuestionSecret = <?php echo json_encode($is_original_question_secret); ?>;
+    const passwordOfOriginalQuestion = <?php echo json_encode($password_of_orignal_question); ?>;
+    const isAdmin = <?php echo json_encode(dalia_is_admin()); ?>;
 
-		fieldsToRemove.forEach(selector => {
-			$(selector).closest('.kboard-attr-row').remove();
-		});
-	};
+    const removeFieldsForAdmin = () => {
+        const fieldsToRemove = [
+            'input[name="kboard_option_email"]',
+            'input[name="kboard_option_agree_checkbox[]"]',
+            'input[name="kboard_option_tel"]',
+            'input[name="kboard_option_branch"]',
+            'select[name="care_program_1"]',
+            'select[name="care_program_2"]',
+            'select[name="care_program_3"]',
+            'select[name="kboard_option_notification_method"]',
+            'select[name="category1"]',
+        ];
 
-	// Admin-specific processing
-	const isAdmin = <?= json_encode(dalia_is_admin()) ?>;
-	if (isAdmin) {
-		removeFieldsForAdmin();
-	}
+        fieldsToRemove.forEach(selector => {
+            // $(selector).closest('.kboard-attr-row').remove();
+        });
+    };
+
+    const handleSecretQuestion = () => {
+        if (isOriginalQuestionSecret) {
+            $('input[name=secret]').prop('checked', true)
+            kboard_toggle_password_field($('input[name=secret]'));
+            $('input[name=password]').val(passwordOfOriginalQuestion);
+        }
+    };
+
+    const handleAdminSpecificProcessing = () => {
+        if (isAdmin) {
+            removeFieldsForAdmin();
+            // 공지사항 자동 체크 (관리자의 경우)
+            // $('input[name=notice]').prop('checked', true);
+        }
+    };
+
+    // 실행
+    // handleSecretQuestion();
+    // handleAdminSpecificProcessing();
 });
 </script>

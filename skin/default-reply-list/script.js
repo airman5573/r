@@ -73,7 +73,7 @@ function kboard_toggle_password_field(checkbox){
 	}
 	else{
 		jQuery('.secret-password-row', form).hide();
-		jQuery('.secret-password-row input[name=password]', form).val('');
+		// jQuery('.secret-password-row input[name=password]', form).val('');
 	}
 }
 

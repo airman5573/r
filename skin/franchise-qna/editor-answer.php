@@ -152,18 +152,15 @@ jQuery(document).ready(function($){
     var is_original_question_secret = <?php echo json_encode($is_original_question_secret); ?>;
     var password_of_original_question = <?php echo json_encode($password_of_orignal_question); ?>;
 
-    if(document_uid){
-        $('input[name=secret]').prop('checked', true);
-        kboard_toggle_password_field($('input[name=secret]'));
-    }
-
     // 원본 질문이 비밀글인 경우
     if(is_original_question_secret) {
-        // 체크박스를 체크하고 비활성화
+        // 체크박스 체크
         $('input[name=secret]').prop('checked', true);
+
+        // 비밀번호 인풋 보이도록 하기
         kboard_toggle_password_field($('input[name=secret]'));
         
-        // 비밀번호 필드에 값을 설정하고 읽기 전용으로 만듦
+        // 비밀번호 인풋에 값 입력
         $('input[name=password]').val(password_of_original_question);
     }
 
