@@ -179,7 +179,7 @@ jQuery(($) => {
         ];
 
         fieldsToRemove.forEach(selector => {
-            // $(selector).closest('.kboard-attr-row').remove();
+            $(selector).closest('.kboard-attr-row').remove();
         });
     };
 
@@ -200,7 +200,7 @@ jQuery(($) => {
     };
 
     // 실행
-    // handleSecretQuestion();
-    // handleAdminSpecificProcessing();
+    handleSecretQuestion();
+    handleAdminSpecificProcessing();
 });
 </script>
