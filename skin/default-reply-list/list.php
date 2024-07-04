@@ -122,16 +122,16 @@
 					<td class="kboard-list-uid"><?php echo $list->index()?></td>
 					<td class="kboard-list-title">
 							<div class="kboard-default-reply-list-cut-strings">
+								
+
+								<?php dalia_print_branch_term_name($content); ?>
+
+								<?php dalia_print_care_program_term_name($content); ?>
 								<?php if($content->getThumbnail(500, 375)):?>
 									<div class="image-wrapper">
 										<img src="<?php echo $content->getThumbnail(500, 375)?>" alt="<?php echo esc_attr($content->title)?>">
 									</div>
 								<?php endif?>
-
-								<?php dalia_print_branch_term_name($content); ?>
-
-								<?php dalia_print_care_program_term_name($content); ?>
-								
 								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>

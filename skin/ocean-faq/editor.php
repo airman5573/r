@@ -34,7 +34,7 @@
 		</div>
 		<!-- 비밀글 비밀번호 필드 끝 -->
 		
-		<?php endif?>
+		<!-- <?php endif?>
 		<?php if($board->use_category):?>
 			<?php if($board->isTreeCategoryActive()):?>
 				<div class="kboard-attr-row">
@@ -75,7 +75,7 @@
 				</div>
 				<?php endif?>
 			<?php endif?>
-		<?php endif?>
+		<?php endif?> -->
 		<!-- <?php if($board->useCAPTCHA() && !$content->uid):?>
 			<?php if(kboard_use_recaptcha()):?>
 				<div class="kboard-attr-row">

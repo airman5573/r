@@ -1,7 +1,7 @@
 <div id="kboard-ocean-faq-list">
 	
 	<!-- 카테고리 시작 -->
-	<?php
+	<!-- <?php
     	if($board->use_category == 'yes'){
     		if($board->isTreeCategoryActive()){
     			$category_type = 'tree-select';
@@ -12,7 +12,7 @@
     		$category_type = apply_filters('kboard_skin_category_type', $category_type, $board, $boardBuilder);
     		echo $skin->load($board->skin, "list-category-{$category_type}.php", $vars);
     	}
-    	?>
+    	?> -->
     	<!-- 카테고리 끝 -->
 	<div class="kboard-header"> <?php
 		kboard_category1() ? dalia_print_kboard_current_category_article_count($board) : dalia_print_kboard_count_of_all_article($board); ?>
@@ -58,7 +58,7 @@
 		<li class="kboard-faq-item" data-index="<?php $faq_item_index=$list->index(); echo $faq_item_index;?>">
 			<div class="kboard-faq-question" onclick="kboard_faq_view_answer('<?php echo $faq_item_index?>')">
 			<!-- 카테고리 불릿 추가 -->
-			<?php dalia_print_category1_name($content); ?>
+			<!-- <?php dalia_print_category1_name($content); ?> -->
 			<!-- 카테고리 불릿 추가 -->
 			<?php echo $content->title?><?php if($content->isNew()):?><span class="kboard-hwaikeul-video-slider-new-notify new-mark">N</span><?php endif?></div>
 			

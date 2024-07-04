@@ -26,7 +26,6 @@ img {
 
 #kboard-ocean-faq-list .kboard-header {
 	float: left;
-	margin-top: 0;
 	width: 100%;
 }
 
@@ -194,9 +193,12 @@ img {
 }
 
 #kboard-ocean-faq-list .kboard-list .kboard-faq-answer .kboard-faq-control {
-	display: inline-block;
 	width: 100%;
 	padding-top: 15px;
+	display: none;
+}
+.logged-in #kboard-ocean-faq-list .kboard-list .kboard-faq-answer .kboard-faq-control  {
+	display: inline-block;
 }
 /* #kboard-ocean-faq-list .kboard-list .kboard-faq-item .kboard-faq-answer {
 	display: none;
