@@ -280,6 +280,7 @@ function kboard_qna_get_template_field_html($html, $field, $content, $board){
 	return $html;
 }
 
+// Branch and Location Sync -- Start
 function dalia_qna_sync_branch_and_location($content) {
     $branch_term_id = $content->option->{'branch'};
     if (!$branch_term_id) {
@@ -321,3 +322,4 @@ function dalia_qna_sync_branch_id_with_location_text_and_branch_text_when_update
 
     dalia_qna_sync_branch_and_location($content);
 }
+// Branch and Location Sync -- End

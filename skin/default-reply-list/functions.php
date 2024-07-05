@@ -68,3 +68,47 @@ function kboard_homepage_review_get_template_field_html($html, $field, $content,
 	
 	return $html;
 }
+
+// Branch and Location Sync -- Start
+function dalia_review_sync_branch_and_location($content) {
+    $branch_term_id = $content->option->{'branch'};
+    if (!$branch_term_id) {
+        return;
+    }
+
+    $branch_term = get_term($branch_term_id, 'branch-location');
+    if (!$branch_term) {
+        return;
+    }
+
+    $branch_location = get_term($branch_term->parent, 'branch-location');
+    if (!$branch_location) {
+        return;
+    }
+
+    $branch_term_name = $branch_term->name;
+    $branch_location_name = $branch_location->name;
+
+    $content->updateOptions([
+        'branch_text' => $branch_term_name,
+        'location_text' => $branch_location_name
+    ]);
+}
+
+add_action('kboard_document_insert_21', 'dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert', 11, 3);
+function dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert($content_uid, $board_id, $content, $board) {
+    dalia_review_sync_branch_and_location($content);
+}
+
+add_action('kboard_document_update', 'dalia_review_sync_branch_id_with_location_text_and_branch_text_when_update', 11, 3);
+function dalia_review_sync_branch_id_with_location_text_and_branch_text_when_update($content_uid, $board_id, $board) {
+    if ($board_id !== 21) {
+        return;
+    }
+
+    $content = new KBContent($board_id);
+    $content->initWithUID($content_uid);
+
+    dalia_review_sync_branch_and_location($content);
+}
+// Branch and Location Sync -- End
