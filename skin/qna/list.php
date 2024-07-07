@@ -110,8 +110,8 @@
 					<td class="kboard-list-view"><?php echo $content->view?></td>
 				</tr>
 				<?php endwhile?>
-				<!-- 공지 -->
-				<?php while($content = $list->hasNext()):?>
+				<!-- 공지 끝 -->
+				<?php while($content = $list->hasNext()): ?>
 				<tr class="<?php if($content->uid == kboard_uid()):?>kboard-list-selected<?php endif?>" onClick="location.href='<?php echo $url->getDocumentURLWithUID($content->uid)?>'">
 					<td class="kboard-list-uid"><?php echo $list->index()?></td>
 					<!-- <?php if($board->use_category == 'yes' && $board->initCategory1()):?>
@@ -130,8 +130,6 @@
 						<?php endif?>
 						<div class="kboard-qna-cut-strings">
 							<span class="table-pc"><?php dalia_print_branch_term_name($content); ?></span>
-							
-							
 							
 							<!-- <?php if($board->use_category == 'yes' && $board->initCategory1()):?>
 								<span class="category-bullet"><?php if($content->category1):?><?php echo $content->category1?><?php endif?></span>
