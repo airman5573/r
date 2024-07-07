@@ -95,7 +95,7 @@ function dalia_review_sync_branch_and_location($content) {
     ]);
 }
 
-add_action('kboard_document_insert_21', 'dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert', 11, 3);
+add_action('kboard_document_insert_21', 'dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert', 11, 4);
 function dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert($content_uid, $board_id, $content, $board) {
     dalia_review_sync_branch_and_location($content);
 }
