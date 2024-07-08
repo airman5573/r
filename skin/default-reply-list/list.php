@@ -123,7 +123,6 @@
 					<td class="kboard-list-title">
 							<div class="kboard-default-reply-list-cut-strings">
 								
-
 								<?php dalia_print_branch_term_name($content); ?>
 
 								<?php dalia_print_care_program_term_name($content); ?>

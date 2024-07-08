@@ -743,12 +743,15 @@ class KBoard {
 	 * @return int
 	 */
 	public function getTotal(){
-		global $wpdb;
+		global $wpdb;		
 		if(!$this->id){
 			return 0;
 		}
 		if(!$this->meta->total || $this->meta->total<=0){
-			$this->meta->total = $wpdb->get_var("SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE `board_id`='$this->id'");
+			// shoplic - customization 2024-07-08
+			// $this->meta->total = $wpdb->get_var("SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE `board_id`='$this->id'");
+			$this->meta->total = $wpdb->get_var("SELECT COUNT(*) FROM `{$wpdb->prefix}kboard_board_content` WHERE `board_id`='$this->id' AND `parent_uid`='0'");
+
 		}
 		return intval($this->meta->total);
 	}
