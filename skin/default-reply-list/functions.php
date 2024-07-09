@@ -68,3 +68,22 @@ function kboard_homepage_review_get_template_field_html($html, $field, $content,
 	
 	return $html;
 }
+
+// Branch and Location Sync -- Start
+add_action('kboard_document_insert_21', 'dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert', 11, 4);
+function dalia_review_sync_branch_id_with_location_text_and_branch_text_when_insert($content_uid, $board_id, $content, $board) {
+    dalia_sync_branch_and_location($content);
+}
+
+add_action('kboard_document_update', 'dalia_review_sync_branch_id_with_location_text_and_branch_text_when_update', 11, 3);
+function dalia_review_sync_branch_id_with_location_text_and_branch_text_when_update($content_uid, $board_id, $board) {
+    if ($board_id !== 21) {
+        return;
+    }
+
+    $content = new KBContent($board_id);
+    $content->initWithUID($content_uid);
+
+    dalia_sync_branch_and_location($content);
+}
+// Branch and Location Sync -- End

@@ -15,7 +15,7 @@
 				<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
 					<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>
 				<?php endif?>
-				
+				<?php dalia_print_branch_term_name($content); ?>
 				<?php echo $content->title?>
 				<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 				<?php if($content->isNew()):?><span class="kboard-qna-new-notify new-mark">N</span><?php endif?>
