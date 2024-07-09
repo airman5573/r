@@ -152,6 +152,7 @@ form {
 }
 body[data-fancy-form-rcs="1"] .kboard-list-header .select2-container {
     width: 100px!important;
+	height: 51px;
 }
 .kboard-category {
     width: 100%;
