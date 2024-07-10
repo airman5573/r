@@ -79,11 +79,11 @@ $additional_class = $is_notice ? 'kboard-notice-document' : '';
 				<?php endif?>
 				<div class="detail-attr">
 					<div class="detail-name">작성자 :</div>
-					<div class="detail-value"><?php echo dalia_qna_kboard_get_username($content, $boardBuilder); ?></div>
+					<div class="detail-value"><?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder); ?></div>
 				</div>
 				<div class="detail-attr">
 					<div class="detail-name">이메일 :</div>
-					<div class="detail-value"><?php echo dalia_qna_kboard_get_email($content); ?></div>
+					<div class="detail-value"><?php echo $content->option->{'email'}; ?></div>
 				</div>
 				<div class="detail-attr detail-view">
 					<div class="detail-name"><?php echo __('Views', 'kboard')?></div>

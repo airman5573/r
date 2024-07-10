@@ -62,7 +62,7 @@
 					<td class="kboard-list-uid"> <span class="notice-tag">공지</span> </td>
 					<td class="kboard-list-title">
 							<div class="kboard-default-reply-list-cut-strings">
-								<?php if($content->secret):?><i class="xi-lock"></i><?php endif?>
+								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify new-mark">N</span><?php endif?>
@@ -93,7 +93,7 @@
 					<td class="kboard-list-title">
 		
 							<div class="kboard-default-reply-list-cut-strings">
-								<?php if($content->secret):?><i class="xi-lock"></i><?php endif?>
+								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify">N</span><?php endif?>
@@ -131,7 +131,7 @@
 										<img src="<?php echo $content->getThumbnail(500, 375)?>" alt="<?php echo esc_attr($content->title)?>">
 									</div>
 								<?php endif?>
-								<?php if($content->secret):?><i class="xi-lock"></i><?php endif?>
+								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify new-mark">N</span><?php endif?>
