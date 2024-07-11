@@ -49,8 +49,8 @@ $additional_class = $is_notice ? 'kboard-notice-document' : '';
                         <div class="detail-name">이메일 :</div>
                         <div class="detail-value"><?php echo dalia_franchise_qna_kboard_get_email($content); ?></div>
                     </div>
-                    <div class="detail-attr">
-                        <div class="detail-name">휴대폰번호 :</div>
+                    <div class="detail-attr admin-only">
+                        <div class="detail-name ">휴대폰번호 :</div>
                         <div class="detail-value"><?php echo dalia_franchise_qna_kboard_get_tel($content); ?></div>
                     </div>
                     <div class="detail-attr detail-view">
