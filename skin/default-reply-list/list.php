@@ -43,6 +43,7 @@
 	<!-- 카테고리 끝 -->
 	
 	<!-- 리스트 시작 -->
+	 
 	<div class="kboard-list">
 		<table>
 			<thead>
@@ -120,30 +121,41 @@
 				<?php while($content = $list->hasNext()):?>
 				<tr class="<?php echo esc_attr($content->getClass())?>" onClick="location.href='<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>'">
 					<td class="kboard-list-uid"><?php echo $list->index()?></td>
-					<td class="kboard-list-title">
+					<td class="kboard-list-title hompage-review-list">
+						<div class="text">
 							<div class="kboard-default-reply-list-cut-strings">
 								
 								<?php dalia_print_branch_term_name($content); ?>
 
 								<?php dalia_print_care_program_term_name($content); ?>
+								<div class="pc">
 								<?php if($content->getThumbnail(500, 375)):?>
 									<div class="image-wrapper">
 										<img src="<?php echo $content->getThumbnail(500, 375)?>" alt="<?php echo esc_attr($content->title)?>">
 									</div>
 								<?php endif?>
+								</div>
 								<?php if($content->secret):?><i class="xi-lock"></i><?php endif?>
-								<?php echo $content->title?>
+								<div class="reply-content"><?php echo $content->title?></div>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 								<?php if($content->isNew()):?><span class="kboard-default-reply-list-new-notify new-mark">N</span><?php endif?>
 							</div>
-						<div class="kboard-mobile-contents">
-							<span class="contents-item kboard-user"><?php echo $content->getUserDisplay()?></span>
-							<span class="contents-separator kboard-date">|</span>
-							<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
-							<!-- <span class="contents-separator kboard-vote">|</span> -->
-							<!-- <span class="contents-item kboard-vote"><?php echo __('Votes', 'kboard')?> <?php echo $content->vote?></span> -->
-							<!-- <span class="contents-separator kboard-view">|</span>
-							<span class="contents-item kboard-view"><?php echo __('Views', 'kboard')?> <?php echo $content->view?></span> -->
+							<div class="kboard-mobile-contents">
+								<span class="contents-item kboard-user"><?php echo $content->getUserDisplay()?></span>
+								<span class="contents-separator kboard-date">|</span>
+								<span class="contents-item kboard-date"><?php echo $content->getDate()?></span>
+								<!-- <span class="contents-separator kboard-vote">|</span> -->
+								<!-- <span class="contents-item kboard-vote"><?php echo __('Votes', 'kboard')?> <?php echo $content->vote?></span> -->
+								<!-- <span class="contents-separator kboard-view">|</span>
+								<span class="contents-item kboard-view"><?php echo __('Views', 'kboard')?> <?php echo $content->view?></span> -->
+							</div>
+						</div>
+						<div class="mo">
+						<?php if($content->getThumbnail(500, 375)):?>
+							<div class="image-wrapper">
+								<img src="<?php echo $content->getThumbnail(500, 375)?>" alt="<?php echo esc_attr($content->title)?>">
+							</div>
+						<?php endif?>
 						</div>
 					</td>
 					<td class="kboard-list-user"><?php echo $content->getUserDisplay()?></td>

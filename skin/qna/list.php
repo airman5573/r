@@ -72,19 +72,21 @@
 						<td class="kboard-list-category"><?php echo $content->category1?></td>
 					<?php endif?> -->
 					
-					<td class="kboard-list-title">
+					<td class="kboard-list-title" colspan='3'>
 					
-							<?php if($content->category2):?>
+							<!-- <?php if($content->category2):?>
 								<div class="kboard-mobile-status">
 									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>">
-										<!-- <?php echo $content->category2?> -->
+										 <?php echo $content->category2?> 
 									</span>
 								</div>
-							<?php endif?>
+							<?php endif?> -->
 							<div class="kboard-qna-cut-strings">
 								<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
 									<!-- <span class="category-bullet"><?php if($content->category1):?><?php echo $content->category1?><?php endif?></span> -->
 								<?php endif?>
+								<div class="mo"><span class="notice-tag">공지</span></div>
+								
 								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
 								<?php echo $content->title?>
 								<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
@@ -97,17 +99,8 @@
 							</div>
 				
 					</td>
-					<td class="kboard-list-status table-pc-02">
-						<?php if($content->category2):?>
-							<!-- <span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span> -->
-						<?php endif?>
-					</td>
-					<td class="kboard-list-user">
-						<!-- <?php echo apply_filters('kboard_user_display', $content->getUserName(), $content->getUserID(), $content->getUserName(), 'kboard', $boardBuilder)?> -->
-					</td>
+					
 					<td class="kboard-list-date"><?php echo $content->getDate()?></td>
-					<td class="kboard-list-vote"><?php echo $content->vote?></td>
-					<td class="kboard-list-view"><?php echo $content->view?></td>
 				</tr>
 				<?php endwhile?>
 				<!-- 공지 끝 -->

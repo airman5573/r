@@ -11,7 +11,7 @@
 			<div class="kboard-franchise-qna-cut-strings">
 			<i class="xi-subdirectory-arrow kboard-icon-reply"></i>
 				
-				<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/icon-lock.png" class="kboard-icon-lock" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
+				<?php if($content->secret):?><i class="xi-lock"></i><?php endif?>
 				
 				<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
 					<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>

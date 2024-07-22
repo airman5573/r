@@ -8,15 +8,16 @@
 	
 	<td class="kboard-list-title">
 		<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
-			<div class="kboard-qna-cut-strings">
+			<div class="kboard-qna-cut-strings reply-wrap">
 				<i class="xi-subdirectory-arrow kboard-icon-reply"></i>
-				<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
+				
 				
 				<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
 					<span class="kboard-mobile-category"><?php if($content->category1):?>[<?php echo $content->category1?>]<?php endif?></span>
 				<?php endif?>
 				<?php dalia_print_branch_term_name($content); ?>
-				<?php echo $content->title?>
+				
+				<div class="reply-content"><?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?><?php echo $content->title?></div>
 				<span class="kboard-comments-count"><?php echo $content->getCommentsCount()?></span>
 				<?php if($content->isNew()):?><span class="kboard-qna-new-notify new-mark">N</span><?php endif?>
 			</div>

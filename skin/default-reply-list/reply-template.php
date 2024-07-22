@@ -1,7 +1,7 @@
 <?php while($content = $list->hasNextReply()):?>
 <tr class="<?php if($content->uid == kboard_uid()):?>kboard-list-selected<?php endif?>">
 	<td class="kboard-list-uid"></td>
-	<td class="kboard-list-title" style="padding-left:<?php echo ($depth+1)*5?>px">
+	<td class="kboard-list-title reply-wrap" style="padding-left:<?php echo ($depth+1)*5?>px">
 		<a href="<?php echo esc_url($url->getDocumentURLWithUID($content->uid))?>">
 			<div class="kboard-default-reply-list-cut-strings">
 				<i class="xi-subdirectory-arrow"></i>

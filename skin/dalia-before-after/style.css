@@ -950,20 +950,15 @@ ul.kboard-dalia-before-after-list {
 }
 @media screen and (max-width: 999px) {
 	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide {
-		width: 100%;
-		max-width: 100%;
+		display: none;
 	
 	}
 	.kboard-dalia-before-after-list.owl-carousel .owl-stage-outer {
 		height: 0;
-		padding-bottom: 60%;
-	}
-	#kboard-dalia-before-after-list #kboard-dalia-before-after-list-slide .kboard-dalia-before-after-list .kboard-list-item {
-
+		padding-bottom: 100%;
 	}
 } 
 @media screen and (max-width: 600px) {
-
 	#kboard-dalia-before-after-list .kboard-dalia-before-after-search select {
 		float: left;
 		margin-right: 1%;

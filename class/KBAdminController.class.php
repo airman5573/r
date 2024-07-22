@@ -360,8 +360,8 @@ class KBAdminController {
 				header('Pragma: no-cache');
 				header('Expires: 0');
 				
-				@ob_clean();
-				@flush();
+				ob_clean();
+				flush();
 				
 				$csv = fopen('php://output', 'w');
 				
@@ -392,8 +392,8 @@ class KBAdminController {
 						
 						fputcsv($csv, $row_data);
 					}
-					@ob_flush();
-					@flush();
+					ob_flush();
+					flush();
 				}
 				
 				fclose($csv);
@@ -406,12 +406,16 @@ class KBAdminController {
 	
 	public function csv_upload(){
 		global $wpdb;
+		function_exists('ray') && ray('1');
+		
 		if(!current_user_can('manage_kboard')) wp_die(__('You do not have permission.', 'kboard'));
 		if(isset($_POST['kboard-setting-execute-nonce']) && wp_verify_nonce($_POST['kboard-setting-execute-nonce'], 'kboard-setting-execute')){
-			set_time_limit(3600);
+			set_time_limit(36000);
 			ini_set('memory_limit', '-1');
 			
 			header('Content-Type: text/html; charset=UTF-8');
+
+			function_exists('ray') && ray('2');
 			
 			$board_id = isset($_POST['board_id']) ? intval($_POST['board_id']) : '';
 			$board    = new KBoard($board_id);
@@ -423,6 +427,8 @@ class KBAdminController {
 			
 			$file      = $_FILES['kboard_csv_upload_file']['tmp_name'];
 			$file_name = basename($_FILES['kboard_csv_upload_file']['name']);
+
+			function_exists('ray') && ray('3');
 			
 			if(is_uploaded_file($file) && $board->id){
 				$file_extension = explode('.', $file_name);
@@ -430,9 +436,13 @@ class KBAdminController {
 				if(end($file_extension) == 'csv' || end($file_extension) == 'CSV'){
 					if(($handle = fopen($file, 'r')) !== false){
 						$length = 0;
+
+						function_exists('ray') && ray('4');
 						
 						while(($data = fgetcsv($handle, 0, ',')) !== false){
 							$total = count($data);
+
+							function_exists('ray') && ray('4 - 1');
 							
 							for($index=0; $index<$total; $index++){
 								// Zero Width No-Break Space 삭제
@@ -442,7 +452,7 @@ class KBAdminController {
 								if(function_exists('mb_detect_encoding')){
 									$encoding = mb_detect_encoding($value, 'auto');
 									if($encoding != 'UTF-8'){
-										$value = @iconv($encoding, 'UTF-8//TRANSLIT', $value);
+										$value = iconv($encoding, 'UTF-8//TRANSLIT', $value);
 									}
 								}
 								
@@ -469,6 +479,8 @@ class KBAdminController {
 							if(isset($row_data)){
 								$rows[] = $row_data;
 							}
+
+							function_exists('ray') && ray('length', $length);
 							
 							$length++;
 						}
@@ -488,8 +500,8 @@ class KBAdminController {
 										
 										$content->updateOptions($row);
 										unset($rows[$key]);
-										@ob_flush();
-										@flush();
+										ob_flush();
+										flush();
 									}
 								}
 								foreach($rows as $key=>$row){
@@ -498,8 +510,8 @@ class KBAdminController {
 									$content->insertContent($row);
 									$content->updateOptions($row);
 									unset($rows[$key]);
-									@ob_flush();
-									@flush();
+									ob_flush();
+									flush();
 								}
 							}
 							else if($option == 'update'){ // update
@@ -512,8 +524,8 @@ class KBAdminController {
 										$content->updateContent($row);
 										$content->updateOptions($row);
 										unset($rows[$key]);
-										@ob_flush();
-										@flush();
+										ob_flush();
+										flush();
 									}
 								}
 							}
@@ -529,8 +541,8 @@ class KBAdminController {
 										
 										$content->updateOptions($row);
 										unset($rows[$key]);
-										@ob_flush();
-										@flush();
+										ob_flush();
+										flush();
 									}
 								}
 								foreach($rows as $key=>$row){
@@ -539,13 +551,15 @@ class KBAdminController {
 									$content->insertContent($row);
 									$content->updateOptions($row);
 									unset($rows[$key]);
-									@ob_flush();
-									@flush();
+									ob_flush();
+									flush();
 								}
 							}
 							
 							$board->resetTotal();
 						}
+
+						function_exists('ray') && ray('5');
 						
 						fclose($handle);
 					}
@@ -560,9 +574,14 @@ class KBAdminController {
 			}
 			
 			if($file) unlink($file);
+
+			function_exists('ray') && ray('6');
 			
 			$tab_kboard_setting = isset($_POST['tab_kboard_setting']) ? '#tab-kboard-setting-'.intval($_POST['tab_kboard_setting']) : '';
 			$redirect_url       = admin_url('admin.php?page=kboard_list&board_id=' . $board_id . $tab_kboard_setting);
+
+			function_exists('ray') && ray('7');
+
 			echo "<script>window.location.href='{$redirect_url}'</script>";
 			exit;
 		}

@@ -39,121 +39,134 @@
 	
 	
 	<!-- 리스트 시작 -->
-	 <?php if($list->getNoticeList()):?>
-	<div class="kboard-list notice-list-02 notice-list">
-		<ul <?php if(kboard_image_gallery_list($board)):?> <?php echo kboard_image_gallery_list($board)?><?php endif?>">
-			<?php while($content = $list->hasNextNotice()):?>
-			<li class="kboard-list-notice<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
-				<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
-					<div class="kboard-list-title">				
-						<div class="kboard-list-uid">
+<?php if($list->getNoticeList() || $list->getList()):?>
+    <ul class="kboard-list<?php if(kboard_image_gallery_list($board)):?> <?php echo kboard_image_gallery_list($board)?><?php endif?>">
+        <!-- 공지사항 출력 -->
+        <?php if($list->getNoticeList()):?>
+            <?php while($content = $list->hasNextNotice()):?>
+                <li class="kboard-list-item kboard-list-notice<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
+                    <a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
+                        <div class="item-padding">
+                            <div class="kboard-image-gallery-thumbnail">
+                                <?php if($content->getThumbnail(600, 338)):?>
+                                    <div class="kboard-light-gallery">
+                                        <div class="kboard-image-gallery-container wide target-image" data-thumb="<?php echo $content->getThumbnail(200, 200)?>" data-src="<?php echo $content->getThumbnail()?>">
+                                            <img src="<?php echo $content->getThumbnail(600, 338)?>" alt="<?php echo esc_attr($content->title)?>">
+                                        </div>
+                                        <?php $media_list = $content->getMediaList()?>
+                                        <?php if($media_list):?>
+                                            <?php foreach($media_list as $media_item):?>
+                                                <?php if($content->getThumbnail() == site_url($media_item->file_path)) continue?>
+                                                <div class="kboard-image-gallery-container wide target-image" data-thumb="<?php echo kboard_resize($media_item->file_path, 200, 200)?>" data-src="<?php echo site_url($media_item->file_path)?>">
+                                                    <img src="<?php echo kboard_resize($media_item->file_path, 600, 338)?>" alt="<?php echo esc_attr(basename($media_item->file_name))?>">
+                                                </div>
+                                            <?php endforeach?>
+                                        <?php endif?>
+                                    </div>
+                                <?php else:?>
+                                    <?php if($content->getThumbnail(600, 338)):?>
+                                        <div class="kboard-image-gallery-container wide" style="background-image:url(<?php echo $content->getThumbnail(600, 338)?>)"></div>
+                                    <?php else:?>
+                                        <div class="kboard-image-gallery-container wide no-image"></div>
+                                    <?php endif?>
+                                <?php endif?>
+                            </div>
+                            <div class="kboard-image-gallery-wrap">
 							<?php
-							$info_value = array();
-							$info_value[] = sprintf('<span class="kboard-info-value notice-tag">공지</span>', __('Notice', 'kboard'));
-							?>
-							<?php if($info_value):?>
-							<div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">
-								<?php echo implode('<span class="kboard-info-separator">ㆍ</span>', $info_value);?>
-							</div>
-							<?php endif?>
-		
-						</div>
-						<p class="kboard-image-gallery-title kboard-default-cut-strings">
-							<?php if($content->isNew()):?><span class="kboard-image-gallery-new-notify">New</span><?php endif?>
-							<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
-							<?php echo $content->title?>
-						</p>		
-					</div>
-					<?php
-					$info_value = array();
-					$info_value[] = sprintf('<span class="kboard-info-value kboard-date kboard-list-date">%s</span>', $content->getDate());
-					?>
-					<?php if($info_value):?>
-					<div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">
-						<?php echo implode('<span class="kboard-info-separator">ㆍ</span>', $info_value);?>
-					</div>
-					<?php endif?>
-				</a>
-			</li>
-			<?php endwhile?>
-		</ul>
-	</div>
-	<?php endif?> 
-	<ul class="kboard-list<?php if(kboard_image_gallery_list($board)):?> <?php echo kboard_image_gallery_list($board)?><?php endif?>">
-	<?php while($content = $list->hasNext()):?>
-		<li class="kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
-			<a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
-				<div class="item-padding">
-					<div class="kboard-image-gallery-thumbnail">
-						<?php if($content->getThumbnail(600, 338)):?>
-							<div class="kboard-light-gallery">
-								<div class="kboard-image-gallery-container wide target-image" data-thumb="<?php echo $content->getThumbnail(200, 200)?>" data-src="<?php echo $content->getThumbnail()?>">
-									<img src="<?php echo $content->getThumbnail(600, 338)?>" alt="<?php echo esc_attr($content->title)?>">
-									<!-- <div class="enlarge-btn"><i class="xi-search"></i></div> -->
-								</div>
-								<?php $media_list = $content->getMediaList()?>
-								<?php if($media_list):?>
-									<?php foreach($media_list as $media_item):?>
-										<?php if($content->getThumbnail() == site_url($media_item->file_path)) continue?>
-										<div class="kboard-image-gallery-container wide target-image" data-thumb="<?php echo kboard_resize($media_item->file_path, 200, 200)?>" data-src="<?php echo site_url($media_item->file_path)?>">
-											<img src="<?php echo kboard_resize($media_item->file_path, 600, 338)?>" alt="<?php echo esc_attr(basename($media_item->file_name))?>">
-											<!-- <div class="enlarge-btn"><i class="xi-search"></i></div> -->
-										</div>
-									<?php endforeach?>
-								<?php endif?>
-							</div>
-							<!-- <div class="kboard-image-gallery-foreground"></div>
-							<div class="kboard-image-gallery-foreground-search"></div> -->
-						<?php else:?>
-							
-								<?php if($content->getThumbnail(600, 338)):?>
-									<div class="kboard-image-gallery-container wide" style="background-image:url(<?php echo $content->getThumbnail(600, 338)?>)"></div>
-								<?php else:?>
-									<div class="kboard-image-gallery-container wide no-image"></div>
-								<?php endif?>
-								<!-- <div class="kboard-image-gallery-foreground"></div>
-								<div class="kboard-image-gallery-foreground-search"></div> -->
-						
-						<?php endif?>
-					</div>
-					<div class="kboard-image-gallery-wrap">
-					<?php
-						$info_value = array();
-						if($content->category1){
-							$info_value[] = sprintf('<span class="kboard-info-value job-category kboard-category1">%s</span>', $content->category1);
-						}
-						$info_value[] = sprintf('<span class="kboard-info-value kboard-date">%s</span>', $content->getDate());
-						
-						if($content->category2){
-							$info_value[] = sprintf('<span class="kboard-info-value kboard-category2">%s</span>', $content->category2);
-						}
-						if($content->option->tree_category_1){
-							for($i=1; $i<=$content->getTreeCategoryDepth(); $i++){
-								$info_value[] = sprintf('<span class="kboard-info-value kboard-tree-category-'.$i.'">%s</span>', $content->option->{'tree_category_'.$i});
-							}
-						}
-						?>
-						<?php if($info_value):?>
-						<div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">
-							<?php echo implode($info_value);?>
-							<?php if($content->isNew()):?><span class="kboard-image-gallery-new-notify new-mark">N</span><?php endif?>
-						</div>
-						<?php endif?>
-							<div class="kboard-image-gallery-title gallery-title">
-								
-								<?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
-								<?php echo $content->title?>
-								
-							</div>
-					
-						
-					</div>
-				</div>
-			</a>
-		</li>
-	<?php endwhile?>
-	</ul>
-	<!-- 리스트 끝 -->
+                                $info_value = array();
+                                if($content->category1){
+                                    $info_value[] = sprintf('<span class="kboard-info-value job-category kboard-category1">%s</span>', $content->category1);
+                                }
+                                $info_value[] = sprintf('<span class="kboard-info-value kboard-date">%s</span>', $content->getDate());
+                                if($content->category2){
+                                    $info_value[] = sprintf('<span class="kboard-info-value kboard-category2">%s</span>', $content->category2);
+                                }
+                                if($content->option->tree_category_1){
+                                    for($i=1; $i<=$content->getTreeCategoryDepth(); $i++){
+                                        $info_value[] = sprintf('<span class="kboard-info-value kboard-tree-category-'.$i.'">%s</span>', $content->option->{'tree_category_'.$i});
+                                    }
+                                }
+                            ?>
+                                <?php if($info_value):?>
+                                    <div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">
+                                        <?php echo implode($info_value);?>
+                                        <?php if($content->isNew()):?><span class="kboard-image-gallery-new-notify new-mark">N</span><?php endif?>
+                                    </div>
+                                <?php endif?>
+                                <div class="kboard-image-gallery-title gallery-title">
+                                    <?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
+                                    <?php echo $content->title?>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            <?php endwhile?>
+        <?php endif?>
+        
+        <!-- 일반 콘텐츠 출력 -->
+        <?php while($content = $list->hasNext()):?>
+            <li class="kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">
+                <a href="<?php echo $url->getDocumentURLWithUID($content->uid)?>">
+                    <div class="item-padding">
+                        <div class="kboard-image-gallery-thumbnail">
+                            <?php if($content->getThumbnail(600, 338)):?>
+                                <div class="kboard-light-gallery">
+                                    <div class="kboard-image-gallery-container wide target-image" data-thumb="<?php echo $content->getThumbnail(200, 200)?>" data-src="<?php echo $content->getThumbnail()?>">
+                                        <img src="<?php echo $content->getThumbnail(600, 338)?>" alt="<?php echo esc_attr($content->title)?>">
+                                    </div>
+                                    <?php $media_list = $content->getMediaList()?>
+                                    <?php if($media_list):?>
+                                        <?php foreach($media_list as $media_item):?>
+                                            <?php if($content->getThumbnail() == site_url($media_item->file_path)) continue?>
+                                            <div class="kboard-image-gallery-container wide target-image" data-thumb="<?php echo kboard_resize($media_item->file_path, 200, 200)?>" data-src="<?php echo site_url($media_item->file_path)?>">
+                                                <img src="<?php echo kboard_resize($media_item->file_path, 600, 338)?>" alt="<?php echo esc_attr(basename($media_item->file_name))?>">
+                                            </div>
+                                        <?php endforeach?>
+                                    <?php endif?>
+                                </div>
+                            <?php else:?>
+                                <?php if($content->getThumbnail(600, 338)):?>
+                                    <div class="kboard-image-gallery-container wide" style="background-image:url(<?php echo $content->getThumbnail(600, 338)?>)"></div>
+                                <?php else:?>
+                                    <div class="kboard-image-gallery-container wide no-image"></div>
+                                <?php endif?>
+                            <?php endif?>
+                        </div>
+                        <div class="kboard-image-gallery-wrap">
+                            <?php
+                                $info_value = array();
+                                if($content->category1){
+                                    $info_value[] = sprintf('<span class="kboard-info-value job-category kboard-category1">%s</span>', $content->category1);
+                                }
+                                $info_value[] = sprintf('<span class="kboard-info-value kboard-date">%s</span>', $content->getDate());
+                                if($content->category2){
+                                    $info_value[] = sprintf('<span class="kboard-info-value kboard-category2">%s</span>', $content->category2);
+                                }
+                                if($content->option->tree_category_1){
+                                    for($i=1; $i<=$content->getTreeCategoryDepth(); $i++){
+                                        $info_value[] = sprintf('<span class="kboard-info-value kboard-tree-category-'.$i.'">%s</span>', $content->option->{'tree_category_'.$i});
+                                    }
+                                }
+                            ?>
+                            <?php if($info_value):?>
+                                <div class="kboard-image-gallery-info kboard-image-gallery-cut-strings">
+                                    <?php echo implode($info_value);?>
+                                    <?php if($content->isNew()):?><span class="kboard-image-gallery-new-notify new-mark">N</span><?php endif?>
+                                </div>
+                            <?php endif?>
+                            <div class="kboard-image-gallery-title gallery-title">
+                                <?php if($content->secret):?><img src="<?php echo $skin_path?>/images/lock-gray-14.png" srcset="<?php echo $skin_path?>/images/lock-gray-28.png 2x, <?php echo $skin_path?>/images/lock-gray-42.png 3x" alt="<?php echo __('Secret', 'kboard')?>"><?php endif?>
+                                <?php echo $content->title?>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        <?php endwhile?>
+    </ul>
+<?php endif?>
+<!-- 리스트 끝 -->
 	
 	<!-- 페이징 시작 -->
 	<div class="kboard-pagination">

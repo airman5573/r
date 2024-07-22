@@ -72,12 +72,12 @@
 					<?php endif?> -->
 					
 					<td class="kboard-list-title">
-					
-							<?php if($content->category2):?>
+						<span class="notice-tag">공지</span>
+							<!-- <?php if($content->category2):?>
 								<div class="kboard-mobile-status">
 									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
 								</div>
-							<?php endif?>
+							<?php endif?> -->
 							<div class="kboard-qna-cut-strings">
 								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
 								<?php if($board->use_category == 'yes' && $board->initCategory1()):?>
@@ -115,11 +115,12 @@
 						<td class="kboard-list-category"><?php echo $content->category1?></td>
 					<?php endif?> -->
 					<td class="kboard-list-title">
-							<?php if($content->category2):?>
+							<span class="notice-tag">공지</span>
+							<!-- <?php if($content->category2):?>
 								<div class="kboard-mobile-status">
 									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>
 								</div>
-							<?php endif?>
+							<?php endif?> -->
 							<div class="kboard-qna-cut-strings">
 								<?php if($content->secret):?><i class="xi-lock kboard-icon-lock"></i><?php endif?>
 								
