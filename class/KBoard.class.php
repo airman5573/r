@@ -700,11 +700,13 @@ class KBoard {
 	 * 모든 게시글을 삭제한다.
 	 */
 	public function truncate(){
+		function_exists('ray') && ray('---- truncate start');
+		
 		if($this->id){
+			function_exists('ray') && ray('uid', $this->id);
 			$list = new KBContentList($this->id);
 			$list->rpp(1000);
 			$list->initFirstList();
-			
 			while($list->hasNextList()){
 				while($content = $list->hasNext()){
 					$content->delete(false);
@@ -714,6 +716,8 @@ class KBoard {
 			
 			$this->resetTotal();
 		}
+
+		function_exists('ray') && ray('truncate end ----');
 	}
 	
 	/**

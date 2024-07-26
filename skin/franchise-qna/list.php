@@ -72,7 +72,8 @@
 					<?php endif?> -->
 					
 					<td class="kboard-list-title">
-						<span class="notice-tag">공지</span>
+						<div class="mo"><span class="notice-tag">공지</span></div>
+						
 							<!-- <?php if($content->category2):?>
 								<div class="kboard-mobile-status">
 									<span class="kboard-qna-status status-<?php echo array_search($content->category2, $status_list)?>"><?php echo $content->category2?></span>

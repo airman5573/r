@@ -165,7 +165,10 @@ img {
 	
 }
 #kboard-ocean-faq-list .kboard-list .kboard-faq-answer {
-	padding: 16px 16px 16px 46px;
+	padding: 16px 16px 30px 46px;
+}
+.wpb-js-composer #kboard-ocean-faq-list .kboard-list .kboard-faq-answer {
+
 }
 #kboard-ocean-faq-list .kboard-list .kboard-faq-answer::before {
 	content: "A";
@@ -212,7 +215,7 @@ img {
 }
 #kboard-ocean-faq-list .kboard-list .kboard-faq-item.answer-open > .kboard-faq-answer  {
 	display: block;
-	max-height: 400px;
+	max-height: 600px;
 	/* animation: expandHeight 0.5s ease; */
 }
 /* @keyframes expandHeight {

@@ -737,6 +737,17 @@ body:not(.woocommerce-cart) .main-content .kboard-list .kboard-mobile-contents .
 .document-header-bottom .kboard-qna-status {
     margin-right: 12px;
 }
+.reply-content {
+	display: -webkit-box;
+    overflow: hidden;
+    line-height: 1.3;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    white-space: normal;
+}
 .document-header-bottom .detail-attr {
     /* width: auto; */
     flex-shrink: 0;
@@ -1404,7 +1415,9 @@ body:not(.woocommerce-cart) .main-content .kboard-list.notice-list-02 .kboard-li
 #kboard-hwaikeul-video-list .kboard-list .kboard-list-item a {
 	text-decoration: none;
 }
-
+#kboard-hwaikeul-video-list .kboard-list.notice-list-02.notice-list {
+	margin-bottom: 24px;
+}
 #kboard-hwaikeul-video-list .kboard-list .kboard-list-item .item-padding > .kboard-hwaikeul-gallery-wrap {
 	position: absolute;
     bottom: 0;

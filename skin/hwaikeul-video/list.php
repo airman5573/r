@@ -81,7 +81,7 @@
 		</ul>
 	</div>
 	<?php endif?>
-	<p class="info-text">* 작성자들의 동의 하에 게시물 업로드하였습니다.</p>
+
 	<ul class="kboard-list<?php if(kboard_hwaikeul_video_list($board)):?> <?php echo esc_attr(kboard_hwaikeul_video_list($board))?><?php endif?>">
 	<?php while($content = $list->hasNext()):?>
 		<li class="kboard-list-item<?php if($content->uid == kboard_uid()):?> kboard-list-selected<?php endif?>">

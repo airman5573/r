@@ -406,16 +406,15 @@ class KBAdminController {
 	
 	public function csv_upload(){
 		global $wpdb;
-		function_exists('ray') && ray('1');
 		
 		if(!current_user_can('manage_kboard')) wp_die(__('You do not have permission.', 'kboard'));
 		if(isset($_POST['kboard-setting-execute-nonce']) && wp_verify_nonce($_POST['kboard-setting-execute-nonce'], 'kboard-setting-execute')){
-			set_time_limit(36000);
+			set_time_limit(3600000);
 			ini_set('memory_limit', '-1');
 			
 			header('Content-Type: text/html; charset=UTF-8');
 
-			function_exists('ray') && ray('2');
+			
 			
 			$board_id = isset($_POST['board_id']) ? intval($_POST['board_id']) : '';
 			$board    = new KBoard($board_id);
@@ -428,7 +427,7 @@ class KBAdminController {
 			$file      = $_FILES['kboard_csv_upload_file']['tmp_name'];
 			$file_name = basename($_FILES['kboard_csv_upload_file']['name']);
 
-			function_exists('ray') && ray('3');
+			
 			
 			if(is_uploaded_file($file) && $board->id){
 				$file_extension = explode('.', $file_name);
@@ -437,12 +436,12 @@ class KBAdminController {
 					if(($handle = fopen($file, 'r')) !== false){
 						$length = 0;
 
-						function_exists('ray') && ray('4');
+						
 						
 						while(($data = fgetcsv($handle, 0, ',')) !== false){
 							$total = count($data);
 
-							function_exists('ray') && ray('4 - 1');
+							
 							
 							for($index=0; $index<$total; $index++){
 								// Zero Width No-Break Space 삭제
@@ -480,16 +479,21 @@ class KBAdminController {
 								$rows[] = $row_data;
 							}
 
-							function_exists('ray') && ray('length', $length);
+							
 							
 							$length++;
 						}
+
+						
+						
 						
 						if($length >= 2){
 							$content = new KBContent();
 							$content->setBoardID($board->id);
 							
 							if($option == 'keep'){ // insert
+								
+								
 								foreach($rows as $key=>$row){
 									if(!isset($row['parent_uid']) || !intval($row['parent_uid'])){
 										$row['board_id'] = $board->id;
@@ -515,6 +519,7 @@ class KBAdminController {
 								}
 							}
 							else if($option == 'update'){ // update
+								
 								foreach($rows as $key=>$row){
 									$uid = isset($row['uid']) ? intval($row['uid']) : 0;
 									
@@ -530,37 +535,50 @@ class KBAdminController {
 								}
 							}
 							else if($option == 'delete'){ // delete
+								$board->resetTotal();
+								
+								
 								$board->truncate();
+
+								
+								
 								foreach($rows as $key=>$row){
 									if(!isset($row['parent_uid']) || !intval($row['parent_uid'])){
 										$row['board_id'] = $board->id;
 										$insert_id       = $content->insertContent($row);
+																			
 										if(isset($row['uid'])){
 											$new_uids[] = $insert_id;
 										}
-										
 										$content->updateOptions($row);
 										unset($rows[$key]);
 										ob_flush();
 										flush();
 									}
 								}
+
+								
+
+
 								foreach($rows as $key=>$row){
 									$row['board_id']   = $board->id;
 									$row['parent_uid'] = $new_uids[$row['parent_uid']];
+
+									
+									
 									$content->insertContent($row);
 									$content->updateOptions($row);
 									unset($rows[$key]);
 									ob_flush();
 									flush();
 								}
+
+								
 							}
 							
 							$board->resetTotal();
 						}
 
-						function_exists('ray') && ray('5');
-						
 						fclose($handle);
 					}
 					echo '<script>alert("CSV 파일을 업로드했습니다.");</script>';
@@ -575,12 +593,12 @@ class KBAdminController {
 			
 			if($file) unlink($file);
 
-			function_exists('ray') && ray('6');
+			
 			
 			$tab_kboard_setting = isset($_POST['tab_kboard_setting']) ? '#tab-kboard-setting-'.intval($_POST['tab_kboard_setting']) : '';
 			$redirect_url       = admin_url('admin.php?page=kboard_list&board_id=' . $board_id . $tab_kboard_setting);
 
-			function_exists('ray') && ray('7');
+			
 
 			echo "<script>window.location.href='{$redirect_url}'</script>";
 			exit;

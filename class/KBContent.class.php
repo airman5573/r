@@ -859,7 +859,8 @@ class KBContent {
 					$key = str_replace(KBContent::$SKIN_OPTION_PREFIX, '', $key);
 					$key = sanitize_key($key);
 					
-					if($key == 'ip'){
+					// 이거 그냥 ip입력 되도록 커스텀함
+					if(false && $key == 'ip'){
 						/*
 						 * IP 주소는 게시글 작성 시에만 입력되고 수정되지 않는다.
 						 */
@@ -990,8 +991,13 @@ class KBContent {
 	 */
 	public function remove($delete_action=true){
 		global $wpdb;
+
+		
 		if($this->uid){
 			$board = $this->getBoard();
+
+
+			
 			
 			if($delete_action){
 				// 게시글 삭제 전에 액션 실행
@@ -1026,12 +1032,20 @@ class KBContent {
 			if($this->status != 'trash'){
 				$board->meta->list_total = $board->getListTotal() - 1;
 			}
+
+
 			
 			$this->_deleteAllOptions();
+
 			$this->_deleteAllAttached();
+
 			$this->removeThumbnail(false);
+
 			$this->deletePost($this->getPostID());
+
 			$this->deleteReply($this->uid);
+
+
 			
 			if(defined('KBOARD_COMMNETS_VERSION')){
 				$comment_list = new KBCommentList($this->uid);
@@ -1045,6 +1059,8 @@ class KBContent {
 					$comment_list->initFirstList();
 				}
 			}
+
+
 			
 			// 미디어 파일을 삭제한다.
 			$media = new KBContentMedia();
@@ -1057,12 +1073,17 @@ class KBContent {
 			$wpdb->query("DELETE FROM `{$wpdb->prefix}kboard_vote` WHERE `target_uid`='{$this->uid}' AND `target_type`='document'");
 			
 			$wpdb->flush();
+
+
 			
 			if($delete_action){
 				// 게시글 삭제 액션 실행
 				do_action('kboard_document_delete', $this->uid, $this->board_id, $this, $board);
 			}
 		}
+
+
+		
 	}
 	
 	/**
@@ -1088,9 +1109,15 @@ class KBContent {
 	public function deleteReply($parent_uid){
 		global $wpdb;
 		$parent_uid = intval($parent_uid);
+
 		$results = $wpdb->get_results("SELECT * FROM `{$wpdb->prefix}kboard_board_content` WHERE `parent_uid`='$parent_uid'");
+
 		$wpdb->flush();
 		foreach($results as $row){
+			if ($row->uid === $parent_uid) {
+
+				return;
+			}
 			$content = new KBContent();
 			$content->initWithRow($row);
 			$content->remove(false);
@@ -1101,7 +1128,7 @@ class KBContent {
 	 * 휴지통으로 이동할 때 실행한다.
 	 * @param string $content_uid
 	 */
-	public function moveReplyToTrash($parent_uid){
+	public function moveReplyToTrash($parent_uid) {
 		global $wpdb;
 		
 		$board = $this->getBoard();

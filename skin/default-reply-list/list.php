@@ -1,11 +1,9 @@
 <div id="kboard-default-reply-list-list" class="kboard-list-wrap">
 	<!-- 게시판 정보 시작 -->
 	<div class="kboard-list-header">
-		<?php if(!$board->isPrivate()):?>
-			<div class="kboard-total-count">
-				<?php echo __('Total', 'kboard')?> <span class="text-mint"><?php echo number_format($board->getListTotal())?></span>
-			</div>
-		<?php endif?>
+		<?php if(!$board->isPrivate()): 
+			echo dalia_print_total_article_count($list);
+		endif?>
 		
 		<div class="kboard-list-header-right flex-item">
 		

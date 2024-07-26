@@ -37,7 +37,6 @@
 	?>
 	<!-- 카테고리 끝 -->
 	<!-- 리스트 시작 -->
-	<p class="info-text">* 작성자들의 동의 하에 게시물 업로드하였습니다.</p>
 	<?php if($list->getNoticeList() || $list->getList()):?>
 	<ul class="kboard-list<?php if(kboard_hwaikeul_video_list($board)):?> <?php echo esc_attr(kboard_hwaikeul_video_list($board))?><?php endif?>">
 		<?php if($list->getNoticeList()):?>
